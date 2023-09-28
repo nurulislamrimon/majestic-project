@@ -13,86 +13,68 @@
       crossorigin="anonymous"
     />
     <!-- custom css -->
-    <link rel="stylesheet" href="custom.css" />
+    <link rel="stylesheet" href="../custom.css" />
   </head>
   <body>
-    <div
-      class="modal fade"
-      id="exampleModalToggle"
-      aria-hidden="true"
-      aria-labelledby="exampleModalToggleLabel"
-      tabindex="-1"
-    >
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalToggleLabel">
-              Modal 1
-            </h1>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            Show a second modal and hide this one with the button below.
-          </div>
-          <div class="modal-footer">
-            <button
-              class="btn btn-primary"
-              data-bs-target="#exampleModalToggle2"
-              data-bs-toggle="modal"
-            >
-              Open second modal
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      class="modal fade"
-      id="exampleModalToggle2"
-      aria-hidden="true"
-      aria-labelledby="exampleModalToggleLabel2"
-      tabindex="-1"
-    >
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">
-              Modal 2
-            </h1>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            Hide this modal and show the first with the button below.
-          </div>
-          <div class="modal-footer">
-            <button
-              class="btn btn-primary"
-              data-bs-target="#exampleModalToggle"
-              data-bs-toggle="modal"
-            >
-              Back to first
-            </button>
+    <!-- ========================main section===================== -->
+    <!-- Button trigger modal -->
+    <div class="vh-100 d-flex justify-content-center align-items-center">
+      <button
+        type="button"
+        class="btn btn-primary align-self-center"
+        data-bs-toggle="modal"
+        data-bs-target="#paymentMethodsModal"
+      >
+        Open payment methods
+      </button>
+
+      <!-- Modal -->
+      <div
+        class="modal payment-modal"
+        id="paymentMethodsModal"
+        tabindex="-1"
+        aria-labelledby="paymentMethodsModalLabel"
+        aria-hidden="true"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+      >
+        <div
+          class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down"
+        >
+          <div class="modal-content h-100">
+            <!-- modal header section -->
+            <div class="d-flex justify-content-between border-bottom pt-2 px-3">
+              <h1
+                class="fs-5 fw-bold payment-method-header-color"
+                id="paymentMethodsModalLabel"
+              >
+                Cashier
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <button
-      class="btn btn-primary"
-      data-bs-target="#exampleModalToggle"
-      data-bs-toggle="modal"
-    >
-      Open first modal
-    </button>
+
+    <!-- /===========================================scripts -->
+
+    <!-- Include jQuery from the CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- custom js -->
+    <script>
+      $(document).ready(function () {
+        $("#paymentMethodsModal").modal({
+          backdrop: "static",
+          keyboard: false,
+        });
+      });
+    </script>
 
     <!-- bootstrap cdn -->
     <script

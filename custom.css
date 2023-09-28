@@ -1,3 +1,9 @@
+/* custom fonts */
+@font-face {
+  font-family: averta;
+  src: url(./fonts/AvertaCY-Regular.ttf);
+}
+
 /* variables */
 :root {
   --header-color: #0e0e6e;
@@ -6,9 +12,14 @@
 }
 
 /* custom classes */
+.payment-modal * {
+  font-family: averta;
+}
+
 .payment-method-header-color {
   color: var(--header-color);
 }
+
 .btn-secondary-color {
   background-color: var(--bg-light-green);
 }
@@ -24,4 +35,17 @@
 .payment-method-modal-custom-radio-input:checked {
   background-color: #309e3a;
   border-color: #309e3a;
+
+/* ===search box===== */
+.search_box {
+  width: 90%;
+}
+
+.container {
+  width: 95%;
+}
+
+.input_con {
+  border-color: rgba(0, 0, 0, 0.1);
+  height: 40px;
 }
