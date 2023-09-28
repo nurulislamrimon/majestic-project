@@ -17,3 +17,6 @@
 .payment-method-header-color {
   color: var(--header-color);
 }
+.payment-method-secondary-color {
+  background: #1ce8c7;
+}
