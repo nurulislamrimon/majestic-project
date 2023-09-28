@@ -17,3 +17,19 @@
 .payment-method-header-color {
   color: var(--header-color);
 }
+.btn-secondary-color {
+  background-color: var(--bg-light-green);
+}
+
+/* ===search box===== */
+.search_box {
+  width: 90%;
+}
+.container {
+  width: 95%;
+}
+
+.input_con {
+  border-color: rgba(0, 0, 0, 0.1);
+  height: 40px;
+}
