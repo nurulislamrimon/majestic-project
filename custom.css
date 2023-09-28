@@ -12,3 +12,8 @@
 .btn-secondary-color {
   background-color: var(--bg-light-green);
 }
+
+/* ===search box===== */
+.search_box {
+  width: 90%;
+}
