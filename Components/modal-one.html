@@ -21,25 +21,25 @@
       <!-- Button trigger modal -->
       <button
         type="button"
-        class="btn btn-primary align-self-center"
+        class="btn btn-primary"
         data-bs-toggle="modal"
-        data-bs-target="#paymentMethodsModal"
+        data-bs-target="#paymentModal"
       >
-        Open payment methods
+        Go to the payment option
       </button>
 
       <!-- Modal -->
       <div
-        class="modal payment-modal"
-        id="paymentMethodsModal"
-        tabindex="-1"
-        aria-labelledby="paymentMethodsModalLabel"
-        aria-hidden="true"
+        class="modal fade payment-modal"
+        id="paymentModal"
         data-bs-backdrop="static"
         data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="paymentModalLabel"
+        aria-hidden="true"
       >
         <div
-          class="modal-dialog modal-lg modal-dialog-centered modal-fullscreen-sm-down"
+          class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down modal-lg"
         >
           <div class="modal-content">
             <!-- modal header section -->
@@ -61,21 +61,6 @@
         </div>
       </div>
     </div>
-
-    <!-- /===========================================scripts -->
-
-    <!-- Include jQuery from the CDN -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <!-- custom js -->
-    <script>
-      $(document).ready(function () {
-        $("#paymentMethodsModal").modal({
-          backdrop: "static",
-          keyboard: false,
-        });
-      });
-    </script>
-
     <!-- bootstrap cdn -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

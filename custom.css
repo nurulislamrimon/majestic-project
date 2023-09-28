@@ -17,7 +17,8 @@
 }
 .payment-modal .modal-content {
   height: clamp(500px, 90vh, 640px);
-  width: clamp(500px, 90vw, 640px);
+  max-width: 640px;
+  margin-inline: auto;
 }
 
 .payment-method-header-color {
@@ -44,4 +45,13 @@
 
 .custom_color {
   background-color: rgba(207, 226, 255, 0.3);
+}
+
+/* ======================================== */
+/* ========for small device=============== */
+/* ======================================== */
+@media screen and (max-width: 580px) {
+  .payment-modal .modal-content {
+    height: 100vh;
+  }
 }
