@@ -9,9 +9,12 @@
   --header-color: #0e0e6e;
   --bg-light-blue: #cfe2ff;
   --bg-light-green: #1ce8c7;
+  --bg-dark-gray: #f2f2f2;
 }
 
-/* custom classes */
+/* ======================================== */
+/* ========custom classes================== */
+/* ======================================== */
 
 .payment-modal * {
   font-family: averta;
@@ -28,11 +31,17 @@
 .btn-secondary-color {
   background-color: var(--bg-light-green);
 }
-/* ===search box===== */
+/* =================country selection section================= */
 .country-search-box {
   width: 90%;
 }
-
+.countries-container {
+  height: calc(clamp(500px, 90vh, 640px) - 170px);
+}
+.payment-modal-country:hover {
+  background-color: var(--bg-dark-gray);
+  cursor: pointer;
+}
 .container {
   width: 95%;
 }
@@ -52,5 +61,9 @@
 @media screen and (max-width: 580px) {
   .payment-modal .modal-content {
     height: 100vh;
+  }
+
+  .countries-container {
+    height: calc(100vh - 170px);
   }
 }
