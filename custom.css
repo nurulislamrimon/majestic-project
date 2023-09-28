@@ -15,6 +15,11 @@
 .payment-modal * {
   font-family: averta;
 }
+.payment-modal .modal-content {
+  height: clamp(500px, 90vh, 640px);
+  max-width: 640px;
+  margin-inline: auto;
+}
 
 .payment-method-header-color {
   color: var(--header-color);
@@ -48,4 +53,17 @@
 .input_con {
   border-color: rgba(0, 0, 0, 0.1);
   height: 40px;
+}
+
+.custom_color {
+  background-color: rgba(207, 226, 255, 0.3);
+}
+
+/* ======================================== */
+/* ========for small device=============== */
+/* ======================================== */
+@media screen and (max-width: 580px) {
+  .payment-modal .modal-content {
+    height: 100vh;
+  }
 }
