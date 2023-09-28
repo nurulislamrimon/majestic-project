@@ -55,20 +55,42 @@
 
     <h1>this is payment method input </h1>
 
-    <div class="input-group mb-3">
-      <input type="text" class="form-control py-4 fs-4 " aria-label="Text input with dropdown button" placeholder="$ 0.00" >
-      <button class="btn payment-method-secondary-color  dropdown-toggle px-4   " type="button" data-bs-toggle="dropdown" aria-expanded="false">
-      <h1 class="me-5   fs-5  ">USD</h1>
-      CreDit/ Debit Card
+    <div>
+      <p>You spend</p>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control py-4 fs-4 " aria-label="Text input with dropdown button" placeholder="$ 0.00" >
+        <button class="btn payment-method-secondary-color  dropdown-toggle px-4   " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <h1 class="me-5   fs-5  ">USD</h1>
+        CreDit/ Debit Card
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end ">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li><a class="dropdown-item" href="#">Another action</a></li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="#">Separated link</a></li>
+        </ul>
+    
+      </div>
+      <p>You receive</p>
+      <div class="input-group mb-3 opacity-50 ">
+        <input type="text" class="form-control py-4 fs-4 " aria-label="Text input with dropdown button" placeholder="$ 0.00" >
+        <button class="btn payment-method-secondary-color   px-4   " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <h1 class="me-4   fs-5  ">LTC</h1>
+        Litecoin
+        </button>
+
+    
+      </div>
+      <p ><span class="opacity-50  ">You receive in Fiat -</span> <span class="h1 fs-6 text-dark ">0 USD</span></p>
+      <div class="d-grid  g-2 ">
+        <button
+        class="btn btn-light border border-primary text-black  p-2 payment-method-secondary-color "
+        type="button"
+      >
+        Continue
       </button>
-      <ul class="dropdown-menu dropdown-menu-end ">
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Separated link</a></li>
-      </ul>
-  
+      </div>
     </div>
     
 
