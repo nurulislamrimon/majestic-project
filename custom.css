@@ -1,0 +1,14 @@
+/* variables */
+:root {
+  --header-color: #0e0e6e;
+  --bg-light-blue: #cfe2ff;
+  --bg-light-green: #1ce8c7;
+}
+
+/* custom classes */
+.payment-method-header-color {
+  color: var(--header-color);
+}
+.btn-secondary-color {
+  background-color: var(--bg-light-green);
+}
