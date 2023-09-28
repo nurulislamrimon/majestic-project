@@ -20,6 +20,10 @@
   color: var(--header-color);
 }
 
+.payment-method-secondary-color {
+  background: #1ce8c7;
+}
+
 .btn-secondary-color {
   background-color: var(--bg-light-green);
 }
@@ -42,6 +46,7 @@
   background-color: rgba(207, 226, 255, 0.30);
   ;
 }
+
 .custom_color_for_worning {
   background-color: rgba(255, 243, 205, 0.30);
   ;
@@ -49,4 +54,13 @@
 
 .payment_method {
   font-size: 12px;
+}
+
+@media only screen and (max-width: 480px) {
+  .small_screen_resize_button {
+    position: absolute;
+    bottom: 20px;
+    margin-top: 200px;
+    width: 90%;
+  }
 }
