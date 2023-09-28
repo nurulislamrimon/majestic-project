@@ -12,6 +12,7 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
+
     <!-- custom css -->
     <link rel="stylesheet" href="../custom.css" />
   </head>
@@ -41,13 +42,11 @@
         <div
           class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down modal-lg"
         >
-          <div class="modal-content overflow-hidden">
+          <div class="modal-content">
             <!-- modal header section -->
-            <div
-              class="d-flex justify-content-between border-bottom py-2 px-3 mb-3"
-            >
+            <div class="d-flex justify-content-between border-bottom pt-2 px-3">
               <h1
-                class="fs-5 fw-bold payment-modal-header-color"
+                class="fs-5 fw-bold payment-method-header-color"
                 id="paymentMethodsModalLabel"
               >
                 Cashier
@@ -59,8 +58,10 @@
                 aria-label="Close"
               ></button>
             </div>
-            <!-- modal body part -->
-            <div>
+
+            <!-- alerts -->
+
+            <div class="payment-method-modal-container mt-4">
               <div class="px-3">
                 <!-- alert section -->
                 <div
@@ -81,51 +82,81 @@
                     X
                   </button>
                 </div>
-                <!-- country selection by search section -->
-                <h4 class="fs-6">Select Country</h4>
-
-                <label
-                  class="d-flex align-items-center w-100 border input_con ps-2 rounded-1 mb-2"
-                >
-                  <span class="ms-2">
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M17.4999 17.5L13.1691 13.1692M13.1691 13.1692C14.3412 11.997 14.9997 10.4072 14.9997 8.74958C14.9997 7.09191 14.3412 5.50214 13.1691 4.33C11.9969 3.15785 10.4072 2.49934 8.7495 2.49934C7.09184 2.49934 5.50207 3.15785 4.32992 4.33C3.15777 5.50214 2.49927 7.09191 2.49927 8.74958C2.49927 10.4072 3.15777 11.997 4.32992 13.1692C5.50207 14.3413 7.09184 14.9998 8.7495 14.9998C10.4072 14.9998 11.9969 14.3413 13.1691 13.1692Z"
-                        stroke="black"
-                        stroke-opacity="0.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  </span>
+                <p>You spend</p>
+                <div class="input-group mb-5">
                   <input
-                    name="country-input"
-                    id="search-country-input"
                     type="text"
-                    class="focus-ring ms-2 border-0 w-100 h-100 m-auto"
-                    placeholder="Search"
-                    aria-label="Search"
-                    aria-describedby="basic-addon1"
+                    class="form-control py-2 fs-4"
+                    aria-label="Text input with dropdown button"
+                    placeholder="$ 0.00"
                   />
-                </label>
+                  <button
+                    class="btn payment-method-secondary-color dropdown-toggle px-4"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <h1 class="me-5 fs-5 fw-bold">USD</h1>
+                    CreDit/ Debit Card
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li>
+                      <a class="dropdown-item" href="#">Another action</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li>
+                      <a class="dropdown-item" href="#">Separated link</a>
+                    </li>
+                  </ul>
+                </div>
+                <p>You receive</p>
+                <div class="input-group mb-5 opacity-50">
+                  <input
+                    type="text"
+                    class="form-control py-2 fs-4"
+                    aria-label="Text input with dropdown button"
+                    placeholder="$ 0.00"
+                  />
+                  <button
+                    class="btn payment-method-secondary-color px-4"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <h1 class="me-4 fs-5">LTC</h1>
+                    Litecoin
+                  </button>
+                </div>
+                <p class="mb-3">
+                  <span class="opacity-50">You receive in Fiat -</span>
+                  <span class="h1 fs-6 text-dark fw-bold">0 USD</span>
+                </p>
+                <div class="d-grid g-2">
+                  <button
+                    class="btn btn-light border border-primary text-black p-2 payment-method-secondary-color"
+                    type="button"
+                  >
+                    Continue
+                  </button>
+                </div>
+                <div
+                  class="d-flex justify-content-center align-content-center gap-3 mt-4"
+                >
+                  <img src="../asset/image/masterCard.svg" alt="" />
+                  <img src="../asset/image/visa.svg" alt="" />
+                  <img src="../asset/image/applePay.svg" alt="" />
+                  <img src="../asset/image/googlePay.svg" alt="" />
+                </div>
               </div>
-              <div
-                id="countries-container"
-                class="countries-container overflow-auto pb-5"
-              ></div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- custom js -->
-    <script src="../script.js"></script>
     <!-- bootstrap cdn -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
@@ -137,7 +168,7 @@
       integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
       crossorigin="anonymous"
     ></script>
-    <!-- font awesome -->
+    <!-- font Awesome cdn -->
     <script
       src="https://kit.fontawesome.com/56fc42ddae.js"
       crossorigin="anonymous"

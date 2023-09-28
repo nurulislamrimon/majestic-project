@@ -33,7 +33,35 @@
 .payment-modal-header-color {
   color: var(--header-color);
 }
+.payment-modal-header-color {
+  color: var(--header-color);
+}
+.payment-method-modal-container {
+  width: 95%;
+  margin: 0 auto;
+}
+.payment-method-secondary-color {
+  background: #1ce8c7;
+}
 
+.btn-secondary-color {
+  background-color: var(--bg-light-green);
+}
+
+.text-custom-gray {
+  color: rgba(0, 0, 0, 0.5);
+}
+.card-description-text {
+  font-size: 12px;
+}
+.card-title-text {
+  font-size: 16px;
+}
+.payment-method-modal-custom-radio-input:checked {
+  background-color: #309e3a;
+  border-color: #309e3a;
+}
+/* ===search box===== */
 .btn-secondary-color {
   background-color: var(--bg-light-green);
 }
@@ -52,6 +80,18 @@
   cursor: pointer;
 }
 
+.input_con {
+  border-color: rgba(0, 0, 0, 0.1);
+  height: 40px;
+}
+.payment-method-modal-alerts {
+  margin-top: 15px;
+  background: rgba(207, 226, 255, 0.3);
+  border: 1px solid #cfe2ff;
+}
+.custom_color {
+  background-color: rgba(207, 226, 255, 0.3);
+}
 
 /* ======================================== */
 /* ========for small device=============== */
