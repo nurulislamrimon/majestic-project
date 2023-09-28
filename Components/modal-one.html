@@ -43,7 +43,9 @@
         >
           <div class="modal-content">
             <!-- modal header section -->
-            <div class="d-flex justify-content-between border-bottom pt-2 px-3">
+            <div
+              class="d-flex justify-content-between border-bottom pt-2 px-3 mb-3"
+            >
               <h1
                 class="fs-5 fw-bold payment-method-header-color"
                 id="paymentMethodsModalLabel"
@@ -56,6 +58,25 @@
                 data-bs-dismiss="modal"
                 aria-label="Close"
               ></button>
+            </div>
+            <!-- modal body part -->
+            <div class="px-3">
+              <!-- alert section -->
+              <div
+                class="alert alert-info alert-dismissible fade show p-1 d-flex justify-content-between"
+                role="alert"
+              >
+                Holy guacamole!
+                <button
+                  type="button"
+                  class="btn btn-sm"
+                  data-bs-dismiss="alert"
+                  aria-label="Close"
+                >
+                  X
+                </button>
+              </div>
+              <h4 class="fs-6">Select Country</h4>
             </div>
           </div>
         </div>
