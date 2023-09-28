@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Majestic payment methods</title>
+
+    <!-- bootstrap style cdn -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <!-- custom css -->
+    <link rel="stylesheet" href="../custom.css" />
+  </head>
+  <body>
+    <!-- ========================main section===================== -->
+    <div class="vh-100 d-flex justify-content-center align-items-center">
+      <!-- Button trigger modal -->
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#paymentModal"
+      >
+        Go to the payment option
+      </button>
+
+      <!-- Modal -->
+      <div
+        class="modal fade payment-modal"
+        id="paymentModal"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="paymentModalLabel"
+        aria-hidden="true"
+      >
+        <div
+          class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down modal-lg"
+        >
+          <div class="modal-content overflow-hidden">
+            <!-- modal header section -->
+            <div
+              class="d-flex justify-content-between border-bottom py-2 px-3 mb-3"
+            >
+              <h1
+                class="fs-5 fw-bold payment-modal-header-color"
+                id="paymentMethodsModalLabel"
+              >
+                Cashier
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <!-- modal body part -->
+            <div>
+              <div class="px-3">
+                <!-- alert section -->
+                <div
+                  class="alert alert-info alert-dismissible fade show p-1 d-flex justify-content-between px-3"
+                  role="alert"
+                >
+                  Holy guacamole!
+                  <button
+                    type="button"
+                    class="btn btn-sm"
+                    data-bs-dismiss="alert"
+                    aria-label="Close"
+                  >
+                    X
+                  </button>
+                </div>
+                <!-- country selection by search section -->
+                <h4 class="fs-6">Select Country</h4>
+
+                <label
+                  class="d-flex align-items-center w-100 border input_con ps-2 rounded-1 mb-2"
+                >
+                  <span class="ms-2">
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M17.4999 17.5L13.1691 13.1692M13.1691 13.1692C14.3412 11.997 14.9997 10.4072 14.9997 8.74958C14.9997 7.09191 14.3412 5.50214 13.1691 4.33C11.9969 3.15785 10.4072 2.49934 8.7495 2.49934C7.09184 2.49934 5.50207 3.15785 4.32992 4.33C3.15777 5.50214 2.49927 7.09191 2.49927 8.74958C2.49927 10.4072 3.15777 11.997 4.32992 13.1692C5.50207 14.3413 7.09184 14.9998 8.7495 14.9998C10.4072 14.9998 11.9969 14.3413 13.1691 13.1692Z"
+                        stroke="black"
+                        stroke-opacity="0.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </span>
+                  <input
+                    name="country-input"
+                    id="search-country-input"
+                    type="text"
+                    class="focus-ring ms-2 border-0 w-100 h-100 m-auto"
+                    placeholder="Search"
+                    aria-label="Search"
+                    aria-describedby="basic-addon1"
+                  />
+                </label>
+              </div>
+              <div
+                id="countries-container"
+                class="countries-container overflow-auto pb-5"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- custom js -->
+    <script src="../script.js"></script>
+    <!-- bootstrap cdn -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

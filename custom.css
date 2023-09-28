@@ -9,49 +9,59 @@
   --header-color: #0e0e6e;
   --bg-light-blue: #cfe2ff;
   --bg-light-green: #1ce8c7;
+  --bg-dark-gray: #f2f2f2;
 }
 
-/* custom classes */
+/* ======================================== */
+/* ========custom classes================== */
+/* ======================================== */
+
 .payment-modal * {
   font-family: averta;
 }
 
-.payment-method-header-color {
-  color: var(--header-color);
+.payment-modal .modal-content {
+  height: clamp(500px, 90vh, 640px);
+  max-width: 640px;
+  margin-inline: auto;
 }
 
 .payment-method-secondary-color {
   background: #1ce8c7;
 }
 
+.payment-modal-header-color {
+  color: var(--header-color);
+}
+
 .btn-secondary-color {
   background-color: var(--bg-light-green);
 }
 
-/* ===search box===== */
-.search_box {
+/* =================country selection section================= */
+.country-search-box {
   width: 90%;
 }
 
-.container {
-  width: 95%;
+.countries-container {
+  height: calc(clamp(500px, 90vh, 640px) - 170px);
 }
 
-.input_con {
-  border-color: rgba(0, 0, 0, 0.1);
-  height: 40px;
+.payment-modal-country:hover {
+  background-color: var(--bg-dark-gray);
+  cursor: pointer;
 }
 
-.custom_color {
-  background-color: rgba(207, 226, 255, 0.30);
-  ;
-}
 
-.custom_color_for_worning {
-  background-color: rgba(255, 243, 205, 0.30);
-  ;
-}
+/* ======================================== */
+/* ========for small device=============== */
+/* ======================================== */
+@media screen and (max-width: 580px) {
+  .payment-modal .modal-content {
+    height: 100vh;
+  }
 
-.payment_method {
-  font-size: 12px;
+  .countries-container {
+    height: calc(100vh - 170px);
+  }
 }
