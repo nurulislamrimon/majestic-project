@@ -3,6 +3,7 @@
   font-family: averta;
   src: url(./fonts/AvertaCY-Regular.ttf);
 }
+
 /* variables */
 :root {
   --header-color: #0e0e6e;
@@ -14,9 +15,27 @@
 .payment-modal * {
   font-family: averta;
 }
+
 .payment-method-header-color {
   color: var(--header-color);
 }
 .payment-method-secondary-color {
   background: #1ce8c7;
+}
+.btn-secondary-color {
+  background-color: var(--bg-light-green);
+}
+
+/* ===search box===== */
+.search_box {
+  width: 90%;
+}
+
+.container {
+  width: 95%;
+}
+
+.input_con {
+  border-color: rgba(0, 0, 0, 0.1);
+  height: 40px;
 }
