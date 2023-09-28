@@ -72,10 +72,15 @@
         getFilteredData(searchKey);
       });
 
+<<<<<<< HEAD
       const getFilteredData = (searchKey) => {
         if (!searchKey) {
           searchKey = "a";
         }
+=======
+                const getFilteredData = (searchKey) => {
+                if (!searchKey) searchKey = 'a'
+>>>>>>> 067a33ec6584473be215f4f6379540ff57f140a9
         fetch(
           `https://restcountries.com/v3.1/name/${searchKey}?fields=name,flags`
         )
