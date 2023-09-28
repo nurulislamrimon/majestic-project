@@ -72,7 +72,8 @@
         getFilteredData(searchKey);
       });
 
-      const getFilteredData = (searchKey) => {
+                const getFilteredData = (searchKey) => {
+                if (!searchKey) searchKey = 'a'
         fetch(
           `https://restcountries.com/v3.1/name/${searchKey}?fields=name,flags`
         )
