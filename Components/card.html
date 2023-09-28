@@ -22,7 +22,7 @@
           <div class="card-body g-4">
             <div class="d-flex align-items-center">
               <div
-                class="d-flex justify-content-center align-items-center me-3"
+                class="d-flex justify-content-center align-items-center me-2"
               >
                 <img
                   src="../asset/image/visa.svg"
@@ -56,7 +56,7 @@
           <div class="card-body g-3">
             <div class="d-flex align-items-center">
               <div
-                class="d-flex justify-content-center align-items-center me-3"
+                class="d-flex justify-content-center align-items-center me-2"
               >
                 <img
                   src="../asset/image/masterCard.svg"
@@ -98,7 +98,7 @@
           <div class="card-body g-4">
             <div class="d-flex align-items-center">
               <div
-                class="d-flex justify-content-center align-items-center me-3"
+                class="d-flex justify-content-center align-items-center me-2"
               >
                 <img
                   src="../asset/image/applePay.svg"
@@ -132,7 +132,7 @@
           <div class="card-body g-4">
             <div class="d-flex align-items-center">
               <div
-                class="d-flex justify-content-center align-items-center me-3"
+                class="d-flex justify-content-center align-items-center me-2"
               >
                 <img
                   src="../asset/image/googlePay.svg"
@@ -165,7 +165,7 @@
           <div class="card-body g-4">
             <div class="d-flex align-items-center">
               <div
-                class="d-flex justify-content-center align-items-center me-3"
+                class="d-flex justify-content-center align-items-center me-2"
               >
                 <img
                   src="../asset/image/cashApp.svg"
@@ -199,7 +199,7 @@
           <div class="card-body g-4">
             <div class="d-flex align-items-center">
               <div
-                class="d-flex justify-content-center align-items-center me-3"
+                class="d-flex justify-content-center align-items-center me-2"
               >
                 <img
                   src="../asset/image/robinHood.svg"
@@ -232,7 +232,7 @@
           <div class="card-body g-4">
             <div class="d-flex align-items-center">
               <div
-                class="d-flex justify-content-center align-items-center me-3"
+                class="d-flex justify-content-center align-items-center me-2"
               >
                 <img
                   src="../asset/image/sepa.svg"
@@ -268,7 +268,7 @@
           <div class="card-body g-4">
             <div class="d-flex align-items-center">
               <div
-                class="d-flex justify-content-center align-items-center me-3"
+                class="d-flex justify-content-center align-items-center me-2"
               >
                 <img
                   src="../asset/image/REVOLUT.svg"
@@ -304,7 +304,7 @@
           <div class="card-body g-4">
             <div class="d-flex align-items-center">
               <div
-                class="d-flex justify-content-center align-items-center me-3"
+                class="d-flex justify-content-center align-items-center me-2"
               >
                 <img
                   src="../asset/image/pse.svg"
@@ -340,7 +340,7 @@
           <div class="card-body g-4">
             <div class="d-flex align-items-center">
               <div
-                class="d-flex justify-content-center align-items-center me-3"
+                class="d-flex justify-content-center align-items-center me-2"
               >
                 <img
                   src="../asset/image/openBanking.svg"
@@ -376,7 +376,7 @@
           <div class="card-body g-4">
             <div class="d-flex align-items-center">
               <div
-                class="d-flex justify-content-center align-items-center me-3"
+                class="d-flex justify-content-center align-items-center me-2"
               >
                 <img
                   src="../asset/image/fasterPayments.svg"
@@ -418,17 +418,20 @@
       crossorigin="anonymous"
     ></script>
 
-    <!-- redio icon select funtion -->
+    <!-- redio icon select funtion  -->
+    <script>
+      const cards = document.querySelectorAll(".card");
+      const radioButtons = document.querySelectorAll(".form-check-input");
 
-    <!-- <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const card = document.querySelector(".card");
-        const radioInput = document.querySelector("#payment-types");
+      cards.forEach((card, index) => {
+        card.addEventListener("click", () => {
+          radioButtons.forEach((radio) => {
+            radio.checked = false;
+          });
 
-        card.addEventListener("click", function () {
-          radioInput.checked = !radioInput.checked;
+          radioButtons[index].checked = true;
         });
       });
-    </script> -->
+    </script>
   </body>
 </html>
