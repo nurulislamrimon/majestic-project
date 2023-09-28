@@ -34,9 +34,10 @@
 }
 
 .input_con {
-  border-color: rgba(0, 0, 0, 0.10);
+  border-color: rgba(0, 0, 0, 0.1);
   height: 40px;
 }
+
 .custom_color {
   background-color: rgba(207, 226, 255, 0.30);
   ;
