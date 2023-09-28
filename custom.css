@@ -12,6 +12,7 @@
 }
 
 /* custom classes */
+
 .payment-modal * {
   font-family: averta;
 }
@@ -21,16 +22,14 @@
   margin-inline: auto;
 }
 
-.payment-method-header-color {
+.payment-modal-header-color {
   color: var(--header-color);
 }
-
 .btn-secondary-color {
   background-color: var(--bg-light-green);
 }
-
 /* ===search box===== */
-.search_box {
+.country-search-box {
   width: 90%;
 }
 

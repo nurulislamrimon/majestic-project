@@ -41,13 +41,13 @@
         <div
           class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down modal-lg"
         >
-          <div class="modal-content">
+          <div class="modal-content overflow-hidden">
             <!-- modal header section -->
             <div
               class="d-flex justify-content-between border-bottom pt-2 px-3 mb-3"
             >
               <h1
-                class="fs-5 fw-bold payment-method-header-color"
+                class="fs-5 fw-bold payment-modal-header-color"
                 id="paymentMethodsModalLabel"
               >
                 Cashier
@@ -76,12 +76,47 @@
                   X
                 </button>
               </div>
+              <!-- country selection by search section -->
               <h4 class="fs-6">Select Country</h4>
+
+              <label
+                class="d-flex align-items-center w-100 border input_con ps-2 rounded-1"
+              >
+                <span class="ms-2">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M17.4999 17.5L13.1691 13.1692M13.1691 13.1692C14.3412 11.997 14.9997 10.4072 14.9997 8.74958C14.9997 7.09191 14.3412 5.50214 13.1691 4.33C11.9969 3.15785 10.4072 2.49934 8.7495 2.49934C7.09184 2.49934 5.50207 3.15785 4.32992 4.33C3.15777 5.50214 2.49927 7.09191 2.49927 8.74958C2.49927 10.4072 3.15777 11.997 4.32992 13.1692C5.50207 14.3413 7.09184 14.9998 8.7495 14.9998C10.4072 14.9998 11.9969 14.3413 13.1691 13.1692Z"
+                      stroke="black"
+                      stroke-opacity="0.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </span>
+                <input
+                  name="country-input"
+                  id="search-country-input"
+                  type="text"
+                  class="focus-ring ms-2 border-0 w-100 h-100 m-auto"
+                  placeholder="Search"
+                  aria-label="Search"
+                  aria-describedby="basic-addon1"
+                />
+              </label>
+              <div id="countries-container" class="h-25 overflow-auto"></div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <!-- custom js -->
+    <script src="../script.js"></script>
     <!-- bootstrap cdn -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
