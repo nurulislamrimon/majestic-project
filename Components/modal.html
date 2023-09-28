@@ -42,9 +42,12 @@
           class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down"
         >
           <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="paymentMethodsModalLabel">
-                Modal title
+            <div class="d-flex justify-content-between border-bottom pt-2 px-3">
+              <h1
+                class="fs-5 fw-bold payment-method-header-color"
+                id="paymentMethodsModalLabel"
+              >
+                Cashier
               </h1>
               <button
                 type="button"
@@ -70,11 +73,21 @@
         </div>
       </div>
     </div>
+
     <!-- /===========================================scripts -->
+
+    <!-- Include jQuery from the CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- custom js -->
     <script>
-      $("#paymentMethodsModal").modal({ backdrop: "static", keyboard: false });
+      $(document).ready(function () {
+        $("#paymentMethodsModal").modal({
+          backdrop: "static",
+          keyboard: false,
+        });
+      });
     </script>
+
     <!-- bootstrap cdn -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
