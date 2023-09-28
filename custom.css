@@ -37,3 +37,7 @@
   border-color: rgba(0, 0, 0, 0.10);
   height: 40px;
 }
+.custom_color {
+  background-color: rgba(207, 226, 255, 0.30);
+  ;
+}
