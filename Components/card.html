@@ -13,28 +13,398 @@
       crossorigin="anonymous"
     />
     <!-- custom css -->
-    <link rel="stylesheet" href="custom.css" />
+    <link rel="stylesheet" href="../custom.css" />
   </head>
   <body>
-    <div class="card mb-3" style="max-width: 540px">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img
-            src="../image/image 2.webp"
-            class="img-fluid rounded-start"
-            alt="..."
-          />
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">Visa</h5>
-            <p class="card-text">
-              Verification required: <br />
-              <strong>ID card</strong> or <strong>passport</strong>.
-            </p>
+    <div>
+      <div class="container mt-4">
+        <div class="card">
+          <div class="card-body g-4">
+            <div class="d-flex align-items-center">
+              <div
+                class="d-flex justify-content-center align-items-center me-3"
+              >
+                <img
+                  src="../asset/image/visa.svg"
+                  alt="Image"
+                  style="width: 60px; height: 20px"
+                />
+              </div>
+
+              <div class="flex-grow-1 ml-3">
+                <h5 class="card-title card-title-text">Visa</h5>
+                <p class="card-text text-custom-gray card-description-text">
+                  Verification required:
+                  <strong class="text-black">ID card</strong> or
+                  <strong class="text-black">passport.</strong>
+                </p>
+              </div>
+
+              <input
+                type="radio"
+                class="form-check-input payment-method-modal-custom-radio-input"
+                id="payment-types"
+                name="payment-types"
+              />
+            </div>
           </div>
         </div>
       </div>
+      <!-- card visa end -->
+      <div class="container mt-4">
+        <div class="card">
+          <div class="card-body g-4">
+            <div class="d-flex align-items-center">
+              <div
+                class="d-flex justify-content-center align-items-center me-3"
+              >
+                <img
+                  src="../asset/image/masterCard.svg"
+                  alt="Image"
+                  style="width: 60px; height: 20px"
+                />
+              </div>
+
+              <div class="flex-grow-1 ml-3">
+                <h5 class="card-title card-title-text">Mastercard</h5>
+                <p class="card-text text-custom-gray card-description-text">
+                  Verification required:
+                  <strong class="text-black">ID card</strong> or
+                  <strong class="text-black">passport.</strong>
+                </p>
+              </div>
+
+              <div
+                class="ml-auto d-flex justify-content-center align-items-center"
+              >
+                <div class="form-check">
+                  <input
+                    type="radio"
+                    class="form-check-input payment-method-modal-custom-radio-input"
+                    id="payment-types"
+                    name="payment-types"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- card Mastercard end -->
+
+      <div class="container mt-4">
+        <div class="card">
+          <div class="card-body g-4">
+            <div class="d-flex align-items-center">
+              <div
+                class="d-flex justify-content-center align-items-center me-3"
+              >
+                <img
+                  src="../asset/image/applePay.svg"
+                  alt="Image"
+                  style="width: 60px; height: 20px"
+                />
+              </div>
+
+              <div class="flex-grow-1 ml-3">
+                <h5 class="card-title card-title-text">Apple Pay</h5>
+                <p class="card-text text-custom-gray card-description-text">
+                  Verification required:
+                  <strong class="text-black">ID card</strong> or
+                  <strong class="text-black">passport.</strong>
+                </p>
+              </div>
+              <input
+                type="radio"
+                class="form-check-input payment-method-modal-custom-radio-input"
+                id="payment-types"
+                name="payment-types"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- card Apple Pay end -->
+
+      <div class="container mt-4">
+        <div class="card">
+          <div class="card-body g-4">
+            <div class="d-flex align-items-center">
+              <div
+                class="d-flex justify-content-center align-items-center me-3"
+              >
+                <img
+                  src="../asset/image/googlePay.svg"
+                  alt="Image"
+                  style="width: 60px; height: 20px"
+                />
+              </div>
+
+              <div class="flex-grow-1 ml-3">
+                <h5 class="card-title card-title-text">Google Pay</h5>
+                <p class="card-text text-custom-gray card-description-text">
+                  Verification required:
+                  <strong class="text-black">ID card</strong> or
+                  <strong class="text-black">passport.</strong>
+                </p>
+              </div>
+              <input
+                type="radio"
+                class="form-check-input payment-method-modal-custom-radio-input"
+                id="payment-types"
+                name="payment-types"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- card Google Pay end -->
+      <div class="container mt-4">
+        <div class="card">
+          <div class="card-body g-4">
+            <div class="d-flex align-items-center">
+              <div
+                class="d-flex justify-content-center align-items-center me-3"
+              >
+                <img
+                  src="../asset/image/cashApp.svg"
+                  alt="Image"
+                  style="width: 60px; height: 20px"
+                />
+              </div>
+
+              <div class="flex-grow-1 ml-3">
+                <h5 class="card-title card-title-text">Cash App</h5>
+                <p class="card-text text-custom-gray card-description-text">
+                  Verification required:
+                  <strong class="text-black">ID card</strong> or
+                  <strong class="text-black">passport.</strong>
+                </p>
+              </div>
+              <input
+                type="radio"
+                class="form-check-input payment-method-modal-custom-radio-input"
+                id="payment-types"
+                name="payment-types"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- card Cash App end -->
+      <div class="container mt-4">
+        <div class="card">
+          <div class="card-body g-4">
+            <div class="d-flex align-items-center">
+              <div
+                class="d-flex justify-content-center align-items-center me-3"
+              >
+                <img
+                  src="../asset/image/robinHood.svg"
+                  alt="Image"
+                  style="width: 60px; height: 20px"
+                />
+              </div>
+
+              <div class="flex-grow-1 ml-3">
+                <h5 class="card-title card-title-text">Robinhood Connect</h5>
+                <p class="card-text text-custom-gray card-description-text">
+                  Buy and transfer instantly using your debit card, bank
+                  account, or Robinhood balance. USA only
+                </p>
+              </div>
+
+              <input
+                type="radio"
+                class="form-check-input payment-method-modal-custom-radio-input"
+                id="payment-types"
+                name="payment-types"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- card Robinhood Connect end -->
+      <div class="container mt-4">
+        <div class="card">
+          <div class="card-body g-4">
+            <div class="d-flex align-items-center">
+              <div
+                class="d-flex justify-content-center align-items-center me-3"
+              >
+                <img
+                  src="../asset/image/sepa.svg"
+                  alt="Image"
+                  style="width: 60px; height: 20px"
+                />
+              </div>
+
+              <div class="flex-grow-1 ml-3">
+                <h5 class="card-title card-title-text">SEPA</h5>
+                <p class="card-text text-custom-gray card-description-text">
+                  Verification required:
+                  <strong class="text-black">ID card</strong> or
+                  <strong class="text-black">passport.</strong>
+                </p>
+              </div>
+
+              <input
+                type="radio"
+                class="form-check-input payment-method-modal-custom-radio-input"
+                id="payment-types"
+                name="payment-types"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- card SEPA end -->
+
+      <div class="container mt-4">
+        <div class="card">
+          <div class="card-body g-4">
+            <div class="d-flex align-items-center">
+              <div
+                class="d-flex justify-content-center align-items-center me-3"
+              >
+                <img
+                  src="../asset/image/REVOLUT.svg"
+                  alt="Image"
+                  style="width: 60px; height: 20px"
+                />
+              </div>
+
+              <div class="flex-grow-1 ml-3">
+                <h5 class="card-title card-title-text">REVOLUT</h5>
+                <p class="card-text text-custom-gray card-description-text">
+                  Verification required:
+                  <strong class="text-black">ID card</strong> or
+                  <strong class="text-black">passport.</strong>
+                </p>
+              </div>
+
+              <input
+                type="radio"
+                class="form-check-input payment-method-modal-custom-radio-input"
+                id="payment-types"
+                name="payment-types"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- card REVOLUT end -->
+
+      <div class="container mt-4">
+        <div class="card">
+          <div class="card-body g-4">
+            <div class="d-flex align-items-center">
+              <div
+                class="d-flex justify-content-center align-items-center me-3"
+              >
+                <img
+                  src="../asset/image/pse.svg"
+                  alt="Image"
+                  style="width: 60px; height: 20px"
+                />
+              </div>
+
+              <div class="flex-grow-1 ml-3">
+                <h5 class="card-title card-title-text">-PSE</h5>
+                <p class="card-text text-custom-gray card-description-text">
+                  Verification required:
+                  <strong class="text-black">ID card</strong> or
+                  <strong class="text-black">passport.</strong>
+                </p>
+              </div>
+
+              <input
+                type="radio"
+                class="form-check-input payment-method-modal-custom-radio-input"
+                id="payment-types"
+                name="payment-types"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- card -PSE end -->
+
+      <div class="container mt-4">
+        <div class="card">
+          <div class="card-body g-4">
+            <div class="d-flex align-items-center">
+              <div
+                class="d-flex justify-content-center align-items-center me-3"
+              >
+                <img
+                  src="../asset/image/openBanking.svg"
+                  alt="Image"
+                  style="width: 60px; height: 20px"
+                />
+              </div>
+
+              <div class="flex-grow-1 ml-3">
+                <h5 class="card-title card-title-text">Open Banking</h5>
+                <p class="card-text text-custom-gray card-description-text">
+                  Verification required:
+                  <strong class="text-black">ID card</strong> or
+                  <strong class="text-black">passport.</strong>
+                </p>
+              </div>
+
+              <input
+                type="radio"
+                class="form-check-input payment-method-modal-custom-radio-input"
+                id="payment-types"
+                name="payment-types"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- card Open Banking end -->
+
+      <div class="container mt-4">
+        <div class="card">
+          <div class="card-body g-4">
+            <div class="d-flex align-items-center">
+              <div
+                class="d-flex justify-content-center align-items-center me-3"
+              >
+                <img
+                  src="../asset/image/fasterPayments.svg"
+                  alt="Image"
+                  style="width: 60px; height: 20px"
+                />
+              </div>
+
+              <div class="flex-grow-1 ml-3">
+                <h5 class="card-title card-title-text">Faster Payments</h5>
+                <p class="card-text text-custom-gray card-description-text">
+                  Verification required:
+                  <strong class="text-black">ID card</strong> or
+                  <strong class="text-black">passport.</strong>
+                </p>
+              </div>
+
+              <input
+                type="radio"
+                class="form-check-input payment-method-modal-custom-radio-input"
+                id="payment-types"
+                name="payment-types"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- card Faster Payments end -->
     </div>
 
     <script
