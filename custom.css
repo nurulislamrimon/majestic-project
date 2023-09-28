@@ -55,12 +55,3 @@
 .payment_method {
   font-size: 12px;
 }
-
-@media only screen and (max-width: 480px) {
-  .small_screen_resize_button {
-    position: absolute;
-    bottom: 20px;
-    margin-top: 200px;
-    width: 90%;
-  }
-}
