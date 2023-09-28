@@ -61,6 +61,22 @@
   background-color: #309e3a;
   border-color: #309e3a;
 }
+.custom-payment-input {
+  font-weight: 700;
+  border: none;
+  border-left: 2px solid rgba(13, 110, 253, 0.3) !important;
+  font-size: 40px !important;
+  padding-left: 10px !important;
+}
+.custom-payment-input::-webkit-inner-spin-button,
+.custom-payment-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.custom-payment-input:focus {
+  outline: none !important;
+}
+
 /* ===search box===== */
 .btn-secondary-color {
   background-color: var(--bg-light-green);
