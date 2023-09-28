@@ -61,21 +61,27 @@
 
             <!-- alerts -->
 
-            <div class="payment-method-modal-container">
-              <div
-                class="alert b alert-dismissible fade show payment-method-modal-alerts"
-                role="alert"
-              >
-                <i class="fa-regular fa-circle-question"></i>
-                Want to check your payment status?
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="alert"
-                  aria-label="Close"
-                ></button>
-              </div>
-              <div>
+            <div class="payment-method-modal-container mt-4">
+              <div class="px-3">
+                <!-- alert section -->
+                <div
+                  class="alert alert-info alert-dismissible fade show p-1 d-flex justify-content-between px-3"
+                  role="alert"
+                >
+                  <span>
+                    <i class="fa-regular fa-circle-question me-2"></i> Want to
+                    check your payment status?
+                    <a href="#">Click here</a>
+                  </span>
+                  <button
+                    type="button"
+                    class="btn btn-sm"
+                    data-bs-dismiss="alert"
+                    aria-label="Close"
+                  >
+                    X
+                  </button>
+                </div>
                 <p>You spend</p>
                 <div class="input-group mb-5">
                   <input
