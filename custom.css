@@ -42,3 +42,11 @@
   background-color: rgba(207, 226, 255, 0.30);
   ;
 }
+.custom_color_for_worning {
+  background-color: rgba(255, 243, 205, 0.30);
+  ;
+}
+
+.payment_method {
+  font-size: 12px;
+}
