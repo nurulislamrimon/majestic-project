@@ -36,10 +36,6 @@
 .payment-modal-header-color {
   color: var(--header-color);
 }
-.payment-method-modal-container {
-  width: 95%;
-  margin: 0 auto;
-}
 .payment-method-secondary-color {
   background: #1ce8c7;
 }
@@ -76,8 +72,6 @@
 .custom-payment-input:focus {
   outline: none !important;
 }
-
-/* ===search box===== */
 .btn-secondary-color {
   background-color: var(--bg-light-green);
 }
@@ -108,7 +102,24 @@
 .custom_color {
   background-color: rgba(207, 226, 255, 0.3);
 }
-
+/*========== payment confirmation section========== */
+.amount-tooltip {
+  width: 30%;
+  right: -35%;
+  top: 90px;
+}
+.amount-tooltip::after {
+  content: "";
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  top: 20px;
+  left: -10px;
+  background-color: white;
+  border-bottom-left-radius: 5px;
+  rotate: 45deg;
+  z-index: -1;
+}
 /* ======================================== */
 /* ========for small device=============== */
 /* ======================================== */
@@ -120,4 +131,20 @@
   .countries-container {
     height: calc(100vh - 170px);
   }
+  /* ====poran shaheb========== */
+  /* .amount-tooltip {
+    border-top: 4px solid darkorange;
+    padding: 10px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3%;
+    height: 123px;
+    width: 100%;
+    text-align: left;
+  }
+  .tooltip-info p {
+    font-size: 14px;
+    margin: 0;
+  } */
 }

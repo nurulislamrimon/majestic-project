@@ -42,7 +42,7 @@
         <div
           class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down modal-lg"
         >
-          <div class="modal-content">
+          <div class="modal-content position-relative">
             <!-- modal header section -->
             <div class="d-flex justify-content-between border-bottom pt-2 px-3">
               <h1
@@ -59,9 +59,7 @@
               ></button>
             </div>
 
-            <!-- alerts -->
-
-            <div class="payment-method-modal-container mt-4">
+            <div class="mx-2 mt-2">
               <div class="px-3">
                 <!-- alert section -->
                 <div
@@ -83,7 +81,7 @@
                   </button>
                 </div>
                 <p>You spend</p>
-                <div class="input-group mb-5">
+                <div class="input-group mb-2">
                   <input
                     type="text"
                     class="form-control py-2 fs-4"
@@ -114,7 +112,7 @@
                   </ul>
                 </div>
                 <p>You receive</p>
-                <div class="input-group mb-5 opacity-50">
+                <div class="input-group mb-2 opacity-50">
                   <input
                     type="text"
                     class="form-control py-2 fs-4"
@@ -151,6 +149,23 @@
                   <img src="../asset/image/applePay.svg" alt="" />
                   <img src="../asset/image/googlePay.svg" alt="" />
                 </div>
+              </div>
+            </div>
+
+            <!-- ===========tooltip========== -->
+
+            <div
+              class="amount-tooltip position-absolute border-top border-5 border-warning rounded-3 text-center bg-white"
+            >
+              <img src="assets/question-mark.svg" class="mt-3 mb-3" />
+              <div class="tooltip-info d-flex flex-column gap-2">
+                <p class="text-left">
+                  You Enter the amount <span class="fw-bold">$100</span> in the
+                  spend box and click continue.
+                </p>
+                <p class="fw-bold">
+                  You will receive full amount paid fees won't be deduced.
+                </p>
               </div>
             </div>
           </div>
