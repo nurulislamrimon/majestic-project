@@ -10,25 +10,30 @@
 </head>
 <body>
 <!-- Poran -->
-<div class="container mt-4">
-    <div class="form-group">
-        <label for="dropdownSelect">Please Select A Currency For Payment:</label>
-        <select class="form-select" id="dropdownSelect">
-            <option value="USD">$ USD</option>
-            <option value="EURO">EURO</option>
-            <option value="AUD">AUD</option>
-            <option value="GBP">GBP</option>
-            <option value="BZD">BZD</option>
-            <option value="CAD">CAD</option>
-            <option value="CLP">CLP</option>
-            <option value="COP">COP</option>
-            <option value="CRC">CRC</option>
-            <option value="DKK">DKK</option>
-            <option value="DOP">DOP</option>
-        </select>
+<section class="d-flex">
+    <div class="border border-2">
+        <input type="text" class="form-control fs-2 border-0" placeholder="$0.00" aria-label="Username" aria-describedby="basic-addon1">
     </div>
-    <p>Your Selected Currency: <span id="selectedValue"></span></p>
-</div>
+    <div class="container mt-4">
+        <div class="form-group">
+            <label for="dropdownSelect">Please Select A Currency For Payment:</label>
+            <select class="form-select shadow-none" id="dropdownSelect">
+                <option value="USD"> USD</option>
+                <option value="EURO">EURO</option>
+                <option value="AUD">AUD</option>
+                <option value="GBP">GBP</option>
+                <option value="BZD">BZD</option>
+                <option value="CAD">CAD</option>
+                <option value="CLP">CLP</option>
+                <option value="COP">COP</option>
+                <option value="CRC">CRC</option>
+                <option value="DKK">DKK</option>
+                <option value="DOP">DOP</option>
+            </select>
+        </div>
+        <p>Your Selected Currency: <span id="selectedValue"></span></p>
+    </div>
+</section>
 
 
 <!-- bootstrap cdn -->
