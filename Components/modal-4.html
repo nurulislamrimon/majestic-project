@@ -42,11 +42,11 @@
         <div
           class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down modal-lg"
         >
-          <div class="modal-content">
+          <div class="modal-content position-relative">
             <!-- modal header section -->
             <div class="d-flex justify-content-between border-bottom pt-2 px-3">
               <h1
-                class="fs-5 fw-bold payment-method-header-color"
+                class="fs-5 fw-bold payment-modal-title-color"
                 id="paymentMethodsModalLabel"
               >
                 Cashier
@@ -59,9 +59,7 @@
               ></button>
             </div>
 
-            <!-- alerts -->
-
-            <div class="payment-method-modal-container mt-4">
+            <div class="mx-2 mt-2">
               <div class="px-3">
                 <!-- alert section -->
                 <div
@@ -83,7 +81,7 @@
                   </button>
                 </div>
                 <p>You spend</p>
-                <div class="input-group mb-5">
+                <div class="input-group mb-2">
                   <input
                     type="text"
                     class="form-control py-2 fs-4"
@@ -91,7 +89,7 @@
                     placeholder="$ 0.00"
                   />
                   <button
-                    class="btn payment-method-secondary-color dropdown-toggle px-4"
+                    class="btn payment-modal-bg-light-green dropdown-toggle px-4"
                     type="button"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
@@ -114,7 +112,7 @@
                   </ul>
                 </div>
                 <p>You receive</p>
-                <div class="input-group mb-5 opacity-50">
+                <div class="input-group mb-2 opacity-50">
                   <input
                     type="text"
                     class="form-control py-2 fs-4"
@@ -122,7 +120,7 @@
                     placeholder="$ 0.00"
                   />
                   <button
-                    class="btn payment-method-secondary-color px-4"
+                    class="btn payment-modal-bg-light-green px-4"
                     type="button"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
@@ -137,7 +135,7 @@
                 </p>
                 <div class="d-grid g-2">
                   <button
-                    class="btn btn-light border border-primary text-black p-2 payment-method-secondary-color"
+                    class="btn btn-light border border-primary text-black p-2 payment-modal-bg-light-green"
                     type="button"
                   >
                     Continue
@@ -151,6 +149,28 @@
                   <img src="../asset/image/applePay.svg" alt="" />
                   <img src="../asset/image/googlePay.svg" alt="" />
                 </div>
+              </div>
+            </div>
+
+            <!-- ===========tooltip========== -->
+
+            <div
+              class="amount-tooltip position-absolute rounded-3 bg-white text-md-center d-flex flex-sm-column align-items-center"
+            >
+              <img
+                src="assets/question-mark.svg"
+                class="mt-lg-3 mb-lg-3"
+                height="30"
+                width="30"
+              />
+              <div class="tooltip-info d-flex flex-column gap-md-2">
+                <p class="text-left mb-0">
+                  You Enter the amount <span class="fw-bold">$100</span> in the
+                  spend box and click continue.
+                </p>
+                <p class="fw-bold mb-0">
+                  You will receive full amount paid fees won't be deduced.
+                </p>
               </div>
             </div>
           </div>
