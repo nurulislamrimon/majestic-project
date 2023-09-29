@@ -1,15 +1,16 @@
-// =======================================
-// ======country selection section========
-// =======================================
-const searchBox = document.getElementById("search-country-input");
-const countriesContainer = document.getElementById("countries-container");
+// internal imports
 
-searchBox.addEventListener("keyup", function (event) {
+// ====================================================
+// ======country selection sectionsection / p-1========
+// ====================================================
+const searchBox = document.getElementById("payment-modal-search-country-input");
+const countriesContainer = document.getElementById(
+  "payment-modal-countries-container"
+);
+
+searchBox?.addEventListener("keyup", function (event) {
   const searchKey = event.target.value;
-  //   const fetchTimeout = setTimeout(() => {
   getFilteredData(searchKey);
-  //     clearTimeout(fetchTimeout);
-  //   }, 500);
 });
 
 const getFilteredData = (searchKey) => {
@@ -38,14 +39,77 @@ const renderCountries = (countries) => {
       );
       newDiv.innerHTML = `<img src=${country?.flags?.svg} alt="" height='18' width='24'/>
     <p style="font-size: 18px; margin-top: 12px; margin-left: 20px">${country?.name?.common}</p>`;
-      countriesContainer.appendChild(newDiv);
+      countriesContainer?.appendChild(newDiv);
     });
   } else {
     countriesContainer.innerHTML = `<p class="h-100 text-center mt-5 ">No countries found</p>`;
   }
 };
-getFilteredData("a");
+getFilteredData();
 
-// =======================================
-// ======2 selection section========
-// =======================================
+// ====================================================
+// ======payment method selection section / p-2========
+// ====================================================
+const currencies = [
+  {
+    label: "USD",
+    value: "usd",
+  },
+  {
+    label: "EURO",
+    value: "euro",
+  },
+  {
+    label: "AUD",
+    value: "aud",
+  },
+  {
+    label: "GBP",
+    value: "gbp",
+  },
+  {
+    label: "BZD",
+    value: "bzd",
+  },
+  {
+    label: "CAD",
+    value: "cad",
+  },
+  {
+    label: "CLP",
+    value: "clp",
+  },
+  {
+    label: "COP",
+    value: "cop",
+  },
+  {
+    label: "CRC",
+    value: "crc",
+  },
+  {
+    label: "DKK",
+    value: "dkk",
+  },
+  {
+    label: "DOP",
+    value: "dop",
+  },
+];
+const currenciesSelectContainer = document.getElementById(
+  "currencies-container"
+);
+
+currencies.forEach((currency) => {
+  const newCurrencyOption = document.createElement("button");
+  newCurrencyOption.classList.add(
+    "border-0",
+    "bg-transparent",
+    "d-flex",
+    "align-items-center",
+    "gap-2",
+    "my-2"
+  );
+  newCurrencyOption.innerHTML = `<img src="../asset/flags/${currency.value}.svg" alt=${currency.label} /> <span>${currency.label}</span>`;
+  currenciesSelectContainer.appendChild(newCurrencyOption);
+});
