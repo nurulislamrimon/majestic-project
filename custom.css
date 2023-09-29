@@ -1,3 +1,6 @@
+/* ======================================== */
+/* ========payment modal custom css======== */
+/* ======================================== */
 /* custom fonts */
 @font-face {
   font-family: averta;
@@ -6,16 +9,18 @@
 
 /* variables */
 :root {
-  --header-color: #0e0e6e;
+  --title-color: #0e0e6e;
+  --text-dark-gray: #00000080;
   --bg-light-blue: #cfe2ff;
   --bg-light-green: #1ce8c7;
-  --bg-dark-gray: #f2f2f2;
+  --bg-light-gray: #f2f2f2;
+  --border-light-navy: #0d6efd4d;
 }
 
 /* ======================================== */
 /* ========custom classes================== */
 /* ======================================== */
-
+/* ------payment modal main classes -------*/
 .payment-modal * {
   font-family: averta;
 }
@@ -26,67 +31,51 @@
   margin-inline: auto;
 }
 
-.payment-method-secondary-color {
-  background: #1ce8c7;
+/*------repeatedly used classes-----*/
+.payment-modal-title-color {
+  color: var(--title-color);
 }
-
-.payment-modal-header-color {
-  color: var(--header-color);
+.payment-modal-bg-light-green {
+  background: var(--bg-light-green);
 }
-.payment-modal-header-color {
-  color: var(--header-color);
+.payment-modal-text-dark-gray {
+  color: var(--text-dark-gray);
 }
-.payment-method-secondary-color {
-  background: #1ce8c7;
-}
-
-.btn-secondary-color {
-  background-color: var(--bg-light-green);
-}
-
-.text-custom-gray {
-  color: rgba(0, 0, 0, 0.5);
-}
-.card-description-text {
+.payment-modal-font-xs {
   font-size: 12px;
 }
-.card-title-text {
-  font-size: 16px;
-}
-.payment-method-modal-custom-radio-input:checked {
+.payment-modal input[type="radio"]:checked {
   background-color: #309e3a;
   border-color: #309e3a;
 }
-.custom-payment-input {
-  font-weight: 700;
-  border: none;
-  border-left: 2px solid rgba(13, 110, 253, 0.3) !important;
-  font-size: 40px !important;
-  padding-left: 10px !important;
-}
-.custom-payment-input::-webkit-inner-spin-button,
-.custom-payment-input::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-.custom-payment-input:focus {
-  outline: none !important;
-}
-.btn-secondary-color {
-  background-color: var(--bg-light-green);
-}
 
+/* pages designed custom css========= */
+/* ------payment modal payment input page----- */
+.payment-amount-input {
+  border-color: var(--border-light-navy) !important;
+}
+.payment-amount-input:focus {
+  outline: none;
+}
+.currencies-dropdown-element {
+  width: 50px !important;
+  height: 30vh;
+  overflow: auto;
+}
+.currencies-dropdown-element > * {
+  margin-block: 5px;
+}
 /* =================country selection section================= */
 .country-search-box {
   width: 90%;
 }
 
-.countries-container {
+.payment-modal-countries-container {
   height: calc(clamp(500px, 90vh, 640px) - 170px);
 }
 
 .payment-modal-country:hover {
-  background-color: var(--bg-dark-gray);
+  background-color: var(--bg-light-gray);
   cursor: pointer;
 }
 
@@ -107,6 +96,7 @@
   width: 30%;
   right: -35%;
   top: 90px;
+  border-top: 9px solid orange;
 }
 .amount-tooltip::after {
   content: "";
@@ -121,30 +111,32 @@
   z-index: -1;
 }
 /* ======================================== */
-/* ========for small device=============== */
+/* ========tab / medium device=============== */
+/* ======================================== */
+@media screen and (max-width: 850px) {
+  /* confirmation section  */
+  .amount-tooltip {
+    top: unset;
+    left: 5%;
+    width: 90%;
+    bottom: 5%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 5px solid orange;
+    font-size: small;
+  }
+  .amount-tooltip::after {
+    display: none;
+  }
+}
+/* ======================================== */
+/* ========small device=============== */
 /* ======================================== */
 @media screen and (max-width: 580px) {
   .payment-modal .modal-content {
     height: 100vh;
   }
 
-  .countries-container {
+  .payment-modal-countries-container {
     height: calc(100vh - 170px);
   }
-  /* ====poran shaheb========== */
-  /* .amount-tooltip {
-    border-top: 4px solid darkorange;
-    padding: 10px 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 3%;
-    height: 123px;
-    width: 100%;
-    text-align: left;
-  }
-  .tooltip-info p {
-    font-size: 14px;
-    margin: 0;
-  } */
 }
