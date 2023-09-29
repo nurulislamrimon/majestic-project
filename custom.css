@@ -58,7 +58,7 @@
   outline: none;
 }
 .currencies-dropdown-element {
-  min-width: clamp(100px,100%,150px) !important;
+  min-width: clamp(100px, 100%, 150px) !important;
   height: 30vh;
   overflow: auto;
 }
@@ -108,7 +108,7 @@
   z-index: -1;
 }
 /* ======================================== */
-/* ========tab / medium device=============== */
+/* ========tab / medium device============= */
 /* ======================================== */
 @media screen and (max-width: 850px) {
   /* confirmation section  */
@@ -137,20 +137,23 @@
     height: calc(100vh - 170px);
   }
 }
-/* =====scrollbar customization===== */
-::-webkit-scrollbar {
+/* ======================================== */
+/* ==========scrollbar customization======= */
+/* ======================================== */
+
+.payment-modal ::-webkit-scrollbar {
   width: 5px;
 }
 
-::-webkit-scrollbar-track {
+.payment-modal ::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
 
-::-webkit-scrollbar-thumb {
+.payment-modal ::-webkit-scrollbar-thumb {
   background: #dbd8d8;
   border-radius: 10px;
 }
 
-::-webkit-scrollbar-thumb:hover {
+.payment-modal ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
