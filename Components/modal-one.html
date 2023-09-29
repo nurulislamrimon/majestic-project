@@ -44,17 +44,17 @@
           <div class="modal-content overflow-hidden">
             <!-- modal header section -->
             <div
-              class="d-flex justify-content-between border-bottom py-2 px-3 mb-3"
+              class="d-flex justify-content-between align-items-center border-bottom py-2 px-3 mb-3"
             >
               <h1
-                class="fs-5 fw-bold payment-modal-header-color"
+                class="fs-5 fw-bold payment-modal-title-color"
                 id="paymentMethodsModalLabel"
               >
                 Cashier
               </h1>
               <button
                 type="button"
-                class="btn-close"
+                class="btn btn-close btn-sm"
                 data-bs-dismiss="modal"
                 aria-label="Close"
               ></button>
@@ -106,7 +106,7 @@
                   </span>
                   <input
                     name="country-input"
-                    id="search-country-input"
+                    id="payment-modal-search-country-input"
                     type="text"
                     class="focus-ring ms-2 border-0 w-100 h-100 m-auto"
                     placeholder="Search"
@@ -116,8 +116,8 @@
                 </label>
               </div>
               <div
-                id="countries-container"
-                class="countries-container overflow-auto pb-5"
+                id="payment-modal-countries-container"
+                class="payment-modal-countries-container overflow-auto pb-5"
               ></div>
             </div>
           </div>
