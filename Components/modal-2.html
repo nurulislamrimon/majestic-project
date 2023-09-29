@@ -71,12 +71,15 @@
                 aria-describedby="basic-addon1"
               />
               <!-- currency select dropdown -->
-              <div class="dropdown">
+              <div class="dropdown w-25">
                 <button
-                  class="btn w-100 btn-md d-flex align-items-center justify-content-between"
+                  class="btn w-100 btn-md d-flex align-items-center justify-content-between w-100"
                   data-bs-toggle="dropdown"
                 >
-                  $ USD
+                  <span
+                    id="show-selected-currency"
+                    class="d-flex align-items-center gap-2"
+                  ></span>
                   <img src="../asset/icons/down-arrow.svg" alt="down-arrow" />
                 </button>
                 <ul

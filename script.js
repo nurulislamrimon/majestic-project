@@ -99,7 +99,12 @@ const currencies = [
 const currenciesSelectContainer = document.getElementById(
   "currencies-container"
 );
+const showSelectedCurrency = document.getElementById("show-selected-currency");
 
+const setSelectedCurrency = (currency) => {
+  showSelectedCurrency.innerHTML = `<img src="../asset/flags/${currency.value}.svg" alt=${currency.label} /> <span>${currency.label}</span>`;
+};
+setSelectedCurrency(currencies[0]);
 currencies.forEach((currency) => {
   const newCurrencyOption = document.createElement("button");
   newCurrencyOption.classList.add(
@@ -110,6 +115,10 @@ currencies.forEach((currency) => {
     "gap-2",
     "my-2"
   );
-  newCurrencyOption.innerHTML = `<img src="../asset/flags/${currency.value}.svg" alt=${currency.label} /> <span>${currency.label}</span>`;
+  const currencyWithFlag = `<img src="../asset/flags/${currency.value}.svg" alt=${currency.label} /> <span>${currency.label}</span>`;
+  newCurrencyOption.innerHTML = currencyWithFlag;
+  newCurrencyOption.addEventListener("click", () =>
+    setSelectedCurrency(currency)
+  );
   currenciesSelectContainer.appendChild(newCurrencyOption);
 });
