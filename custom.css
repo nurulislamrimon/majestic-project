@@ -120,6 +120,7 @@
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-top: 5px solid orange;
     font-size: small;
+    padding: 10px;
   }
   .amount-tooltip::after {
     display: none;
@@ -135,6 +136,26 @@
 
   .payment-modal-countries-container {
     height: calc(100vh - 170px);
+  }
+
+  /* poran css */
+  .amount-tooltip {
+    border-top: 4px solid darkorange;
+    padding: 10px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 3%;
+    height: 123px;
+    width: 90%;
+    text-align: left;
+  }
+  /* .amount-tooltip {
+    padding: 10px;
+  } */
+  .tooltip-info p {
+    font-size: 14px;
+    margin: 0;
   }
 }
 /* ======================================== */
