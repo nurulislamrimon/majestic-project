@@ -53,9 +53,9 @@
 }
 /* ===search box===== */
 .search_box {
-.btn-secondary-color {
-  background-color: var(--bg-light-green);
-}
+  .btn-secondary-color {
+    background-color: var(--bg-light-green);
+  }
 }
 /* =================country selection section================= */
 .country-search-box {
@@ -84,6 +84,19 @@
 .custom_color {
   background-color: rgba(207, 226, 255, 0.3);
 }
+.amount-tooltip {
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border-top: 9px solid darkorange;
+  width: 220px;
+  height: 250px;
+  background-color: lemonchiffon;
+  padding: 10px 20px;
+  text-align: center;
+}
+.tooltip-info p {
+  font-size: 14px;
+}
 
 /* ======================================== */
 /* ========for small device=============== */
@@ -95,5 +108,22 @@
 
   .countries-container {
     height: calc(100vh - 170px);
+  }
+
+  /* poran css */
+  .amount-tooltip {
+    border-top: 4px solid darkorange;
+    padding: 10px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3%;
+    height: 123px;
+    width: 100%;
+    text-align: left;
+  }
+  .tooltip-info p {
+    font-size: 14px;
+    margin: 0;
   }
 }
