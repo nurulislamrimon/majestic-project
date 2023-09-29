@@ -58,12 +58,8 @@
   outline: none;
 }
 .currencies-dropdown-element {
-  width: 50px !important;
   height: 30vh;
   overflow: auto;
-}
-.currencies-dropdown-element > * {
-  margin-block: 5px;
 }
 /* =================country selection section================= */
 .country-search-box {

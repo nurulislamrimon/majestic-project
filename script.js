@@ -107,7 +107,8 @@ currencies.forEach((currency) => {
     "bg-transparent",
     "d-flex",
     "align-items-center",
-    "gap-2"
+    "gap-2",
+    "my-2"
   );
   newCurrencyOption.innerHTML = `<img src="../asset/flags/${currency.value}.svg" alt=${currency.label} /> <span>${currency.label}</span>`;
   currenciesSelectContainer.appendChild(newCurrencyOption);
