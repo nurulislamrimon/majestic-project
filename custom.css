@@ -58,6 +58,7 @@
   outline: none;
 }
 .currencies-dropdown-element {
+  min-width: clamp(100px,100%,150px) !important;
   height: 30vh;
   overflow: auto;
 }
@@ -136,8 +137,20 @@
     height: calc(100vh - 170px);
   }
 }
-/* =====dropdown menu===== */
+/* =====scrollbar customization===== */
+::-webkit-scrollbar {
+  width: 5px;
+}
 
-.dropdown-menu {
-  width: 120px;
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #dbd8d8;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
