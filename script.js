@@ -13,6 +13,7 @@ const showSelectedCurrency = document.getElementById("show-selected-currency");
 const paymentMethodsContainer = document.getElementById(
   "payment-methods-container"
 );
+const paymentAmountInput = document.getElementById("payment-amount-input");
 // Payment modal - confirm payment / p-3
 const confirmOrderCountryInfoContainer = document.getElementById(
   "confirm-order-country-info-container"
@@ -20,13 +21,15 @@ const confirmOrderCountryInfoContainer = document.getElementById(
 const confirmOrderPaymentMethodContainer = document.getElementById(
   "confirm-order-payment-method-container"
 );
+const confirmPaymentAmount = document.getElementById("confirm-payment-amount");
 
 // --------==========variables=========---------
 let selectedCountry = {
   name: { common: "United State" },
   flags: { svg: "https://flagcdn.com/pf.svg" },
 };
-let selectedCurrency;
+let selectedCurrency = "USD";
+let selectedAmount = 0;
 let selectedPaymentMethod = { label: "Visa" };
 
 // currencies variable-------------------------->
@@ -367,8 +370,14 @@ getFilteredData();
 // ====================================================
 // ======payment method selection section / p-2========
 // ====================================================
-
-const handleSelectedCurrencies = (currency) => {
+// get payment input
+if (paymentAmountInput) {
+  paymentAmountInput.addEventListener("keyup", () => {
+    selectedAmount = paymentAmountInput.value;
+  });
+}
+// handle selected currency
+const handleSelectedCurrency = (currency) => {
   if (showSelectedCurrency) {
     showSelectedCurrency.innerHTML = `<img src="../asset/flags/${currency.value}.svg" alt=${currency.label} /> <span>${currency.label}</span>`;
   }
@@ -391,7 +400,7 @@ currencies.forEach((currency) => {
   const currencyWithFlag = `<img src="../asset/flags/${currency.value}.svg" alt=${currency.label} /> <span>${currency.label}</span>`;
   newCurrencyOption.innerHTML = currencyWithFlag;
   newCurrencyOption.addEventListener("click", () =>
-    handleSelectedCurrencies(currency)
+    handleSelectedCurrency(currency)
   );
   currenciesSelectContainer?.appendChild(newCurrencyOption);
 });
@@ -471,7 +480,7 @@ const renderPaymentCards = (availablePaymentMethods) => {
 };
 
 // for initial currency
-handleSelectedCurrencies(currencies[0]);
+handleSelectedCurrency(currencies[0]);
 
 // ====================================================
 // ======Review & confirm payment section / p-3========
@@ -486,3 +495,8 @@ confirmOrderPaymentMethodContainer.innerHTML = `
     <img src="../asset/logos/${selectedPaymentMethod.label.toLowerCase()}.svg" alt="${
   selectedPaymentMethod.label
 } image" />`;
+
+// const handleSetConfirmPaymentAmount = () => {
+confirmPaymentAmount.innerHTML = `
+  ${selectedAmount}<span class="h6">${selectedCurrency}</span>`;
+// };
