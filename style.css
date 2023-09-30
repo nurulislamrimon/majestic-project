@@ -176,6 +176,10 @@
   .payment-methods-container {
     height: calc(100vh - 180px);
   }
+  .modal-3-bottom-button-custom-style{
+    display: flex !important;
+    flex-direction:column-reverse !important;
+  }
 }
 /* ======================================== */
 /* ==========scrollbar customization======= */

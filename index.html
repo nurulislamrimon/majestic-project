@@ -63,7 +63,55 @@
             <!--  ====================================================
                   ====country selection section / p-1 === Start ======
                   ====================================================-->
-           
+            <section class="payment-modal-body overflow-hidden d-none ">
+              <div class="px-3">
+                <!-- alert section -->
+                <div
+                  class="alert alert-info alert-dismissible fade show p-1 d-flex justify-content-between px-3"
+                  role="alert"
+                >
+                  <span>
+                    <i class="fa-regular fa-circle-question me-2"></i> Want to
+                    check your payment status?
+                    <a href="#">Click here</a>
+                  </span>
+                  <button
+                    type="button"
+                    class="btn btn-sm"
+                    data-bs-dismiss="alert"
+                    aria-label="Close"
+                  >
+                    X
+                  </button>
+                </div>
+                <!-- country selection by search section -->
+                <h4 class="fs-6">Select Country</h4>
+
+                <label
+                  class="d-flex align-items-center w-100 border input_con ps-2 rounded-1 mb-2"
+                >
+                  <span class="ms-2">
+                    <img
+                      src="./asset//icons/search-icon.svg"
+                      alt="search icon"
+                    />
+                  </span>
+                  <input
+                    name="country-input"
+                    id="payment-modal-search-country-input"
+                    type="text"
+                    class="focus-ring ms-2 border-0 w-100 h-100 m-auto"
+                    placeholder="Search"
+                    aria-label="Search"
+                    aria-describedby="basic-addon1"
+                  />
+                </label>
+              </div>
+              <div
+                id="payment-modal-countries-container"
+                class="payment-modal-countries-container overflow-auto pb-5"
+              ></div>
+            </section>
             <!--  ====================================================
                   ====country selection section / p-1 === End ======
                   ====================================================-->
@@ -73,7 +121,58 @@
                   ====================================================-->
 
             <!-- amount input & currency select dropdown  -->
-           
+            <section class="payment-modal-body d-none">
+              <div
+                class="d-flex px-4 justify-content-center align-items-center border-bottom"
+              >
+                <input
+                  type="number"
+                  id="payment-amount-input"
+                  pattern="[0-9]"
+                  class="fs-1 ps-3 my-3 border-0 w-75 fw-medium border-start border-2 payment-amount-input"
+                  placeholder="$0.00"
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                />
+                <!-- currency select dropdown -->
+                <div class="dropdown w-25">
+                  <button
+                    class="btn w-100 btn-md d-flex align-items-center justify-content-between w-100 border border-1"
+                    data-bs-toggle="dropdown"
+                  >
+                    <span
+                      id="show-selected-currency"
+                      class="d-flex align-items-center gap-2"
+                    ></span>
+                    <img src="../asset/icons/down-arrow.svg" alt="down-arrow" />
+                  </button>
+                  <ul
+                    id="currencies-container"
+                    class="dropdown-menu currencies-dropdown-element"
+                  >
+                    <!-- currencies appended through DOM manupulation -->
+                  </ul>
+                </div>
+              </div>
+
+              <!-- payment method cards -->
+
+              <div class="p-2">
+                <div
+                  class="overflow-y-scroll overflow-x-hidden payment-methods-container"
+                  id="payment-methods-container"
+                >
+                  <!-- payment methods appended through DOM manupulation -->
+                </div>
+                <!-- next button -->
+                <button
+                  class="btn btn-light border border-primary text-primary w-100 bg-white mt-2"
+                  type="button"
+                >
+                  Step Next
+                </button>
+              </div>
+            </section>
             <!--  ====================================================
                   ====select payment method / p-2 === End ======
                   ====================================================-->
@@ -144,16 +243,16 @@
 
               <!-- ====== Bottom button start========= -->
               <div
-                class="d-md-flex flex-md-row gap-3 w-75 mx-auto position-absolute bottom-0 end-0 start-0 mb-3"
+                class=" modal-3-bottom-button-custom-style d-flex flex-column d-lg-flex flex-lg-row flex-md-row flex-sm-column-reverse gap-3 w-75 mx-auto position-absolute bottom-0 end-0 start-0 mb-3"
               >
                 <button
-                  class="btn btn-outline-secondary bg-white w-100 py-2"
+                  class="btn text-secondary  btn-outline-secondary bg-white w-100 py-2"
                   type="button"
                 >
                   Back
                 </button>
                 <button
-                  class="btn btn-outline-secondary mt-lg-0 mt-md-0 mt-3 text-white btn-primary w-100"
+                  class="btn mt-lg-0 mt-md-0 mt-3 text-white btn-primary w-100"
                   type="button"
                 >
                   Pay now
@@ -168,7 +267,128 @@
             <!--  ====================================================
                   ====confirm with coin finalization / p-4 === Start ======
                   ====================================================-->
-           
+            <section class="payment-modal-body d-none  ">
+              <div
+                class="mx-2 mt-2 overflow-auto overflow-md-scroll modal-scroll-bar-add"
+              >
+                <div class="px-3">
+                  <!-- alert section -->
+                  <div
+                    class="alert alert-info alert-dismissible fade show p-1 d-flex justify-content-between px-3"
+                    role="alert"
+                  >
+                    <span>
+                      <i class="fa-regular fa-circle-question me-2"></i> Want to
+                      check your payment status?
+                      <a href="#">Click here</a>
+                    </span>
+                    <button
+                      type="button"
+                      class="btn btn-sm"
+                      data-bs-dismiss="alert"
+                      aria-label="Close"
+                    >
+                      X
+                    </button>
+                  </div>
+                  <p>You spend</p>
+                  <div class="input-group mb-2 border border-1 p-1 rounded-3">
+                    <input
+                      type="text"
+                      class="form-control py-2 fs-4 border border-0"
+                      aria-label="Text input with dropdown button"
+                      placeholder="$ 0.00"
+                    />
+                    <button
+                      class="btn payment-modal-bg-light-green dropdown-toggle px-4 border border-0 border-3 rounded-3"
+                      type="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      <h1 class="fs-5 fw-bold d-flex">USD</h1>
+                      CreDit/ Debit Card
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li>
+                        <a class="dropdown-item" href="#">Another action</a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#"
+                          >Something else here</a
+                        >
+                      </li>
+                      <li><hr class="dropdown-divider" /></li>
+                      <li>
+                        <a class="dropdown-item" href="#">Separated link</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <p>You receive</p>
+                  <div
+                    class="input-group mb-2 opacity-50 border border-1 p-1 rounded-3"
+                  >
+                    <input
+                      type="text"
+                      class="form-control py-2 fs-4 border border-0"
+                      aria-label="Text input with dropdown button"
+                      placeholder="$ 0.00"
+                    />
+                    <button
+                      class="btn payment-modal-bg-light-green px-4 border border-0 border-3 rounded-3"
+                      type="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      <h1 class="me-4 fs-5">LTC</h1>
+                      Litecoin
+                    </button>
+                  </div>
+                  <p class="mb-3">
+                    <span class="opacity-50">You receive in Fiat -</span>
+                    <span class="text-dark fw-bold">0 USD</span>
+                  </p>
+                  <div class="d-grid g-2">
+                    <button
+                      class="btn btn-light border border-primary text-black p-2 payment-modal-bg-light-green"
+                      type="button"
+                    >
+                      Continue
+                    </button>
+                  </div>
+                  <div
+                    class="d-flex justify-content-center align-content-center gap-3 mt-4"
+                  >
+                    <img src="../asset/logos/masterCard.svg" alt="" />
+                    <img src="../asset/logos/visa.svg" alt="" />
+                    <img src="../asset/logos/applePay.svg" alt="" />
+                    <img src="../asset/logos/googlePay.svg" alt="" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- ===========tooltip========== -->
+
+              <div
+                class="amount-tooltip position-absolute rounded-3 bg-white text-md-center d-flex flex-sm-column align-items-center p-sm-1"
+              >
+                <img
+                  src="../asset/icons/question-mark.svg"
+                  class="mt-lg-3 mb-lg-3"
+                  height="25"
+                  width="25"
+                />
+                <div class="tooltip-info d-flex flex-column gap-md-2 mb-md-4">
+                  <p class="text-left mb-0">
+                    You Enter the amount <span class="fw-bold">$100</span> in
+                    the spend box and click continue.
+                  </p>
+                  <p class="fw-bold mb-0">
+                    You will receive full amount paid fees won't be deduced.
+                  </p>
+                </div>
+              </div>
+            </section>
             <!--  ====================================================
                   ====confirm with coin finalization / p-4 === End ======
                   ====================================================-->
