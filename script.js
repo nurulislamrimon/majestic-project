@@ -13,8 +13,12 @@ const paymentMethodsContainer = document.getElementById(
   "payment-methods-container"
 );
 // --------==========variables=========---------
-let selectedCountry = { name: { common: "United State" } };
+let selectedCountry = {
+  name: { common: "United State" },
+  flags: { svg: "https://flagcdn.com/pf.svg" },
+};
 let selectedCurrency;
+let selectedPaymentMethod;
 
 // currencies variable-------------------------->
 const currencies = [
@@ -65,7 +69,7 @@ const currencies = [
 ];
 
 // payment method selection variables---------------------->
-const paymentMethodsDescription = {
+const paymentMethodsDescriptions = {
   idPassportRequired: `<p
 class="card-text payment-modal-text-dark-gray payment-modal-font-xs"
 >
@@ -90,57 +94,57 @@ const paymentMethods = [
   {
     label: "Visa",
     value: "visa",
-    description: paymentMethodsDescription.idPassportRequired,
+    description: paymentMethodsDescriptions.idPassportRequired,
   },
   {
     label: "Mastercard",
     value: "mastercard",
-    description: paymentMethodsDescription.idPassportRequired,
+    description: paymentMethodsDescriptions.idPassportRequired,
   },
   {
     label: "Apple Pay",
     value: "applePay",
-    description: paymentMethodsDescription.idPassportRequired,
+    description: paymentMethodsDescriptions.idPassportRequired,
   },
   {
     label: "Google Pay",
     value: "googlePay",
-    description: paymentMethodsDescription.idPassportRequired,
+    description: paymentMethodsDescriptions.idPassportRequired,
   },
   {
     label: "Cash App",
     value: "cashApp",
-    description: paymentMethodsDescription.socialSecurityNumberRequired,
+    description: paymentMethodsDescriptions.socialSecurityNumberRequired,
   },
   {
     label: "Robinhood Connect",
     value: "robinhoodConnect",
-    description: paymentMethodsDescription.robinhoodConnect,
+    description: paymentMethodsDescriptions.robinhoodConnect,
   },
   {
     label: "SEPA",
     value: "sepa",
-    description: paymentMethodsDescription.idPassportRequired,
+    description: paymentMethodsDescriptions.idPassportRequired,
   },
   {
     label: "REVOLUT",
     value: "revolut",
-    description: paymentMethodsDescription.idPassportRequired,
+    description: paymentMethodsDescriptions.idPassportRequired,
   },
   {
     label: "PSE",
     value: "pse",
-    description: paymentMethodsDescription.idPassportRequired,
+    description: paymentMethodsDescriptions.idPassportRequired,
   },
   {
     label: "Open Banking",
     value: "openBanking",
-    description: paymentMethodsDescription.idPassportRequired,
+    description: paymentMethodsDescriptions.idPassportRequired,
   },
   {
     label: "Faster Payments",
     value: "fasterPayments",
-    description: paymentMethodsDescription.idPassportRequired,
+    description: paymentMethodsDescriptions.idPassportRequired,
   },
 ];
 
@@ -307,7 +311,6 @@ const paymentMethodSupportedCountries = [
 // ====================================================
 // handle selected country
 const handleSelectedCountry = (country) => {
-  console.log(country);
   selectedCountry = country;
 };
 
@@ -383,12 +386,13 @@ currencies.forEach((currency) => {
 });
 
 // get selected payment option
-const handleSelectedPaymentMethod = (paymentMethod, card) => {
-  console.log("clicked", paymentMethod);
+const handleSelectedPaymentMethod = (paymentMethod, selectedCard) => {
   paymentMethodsContainer.childNodes.forEach((element) => {
     element?.classList?.remove("selected-payment-method");
   });
-  card.classList.add("selected-payment-method");
+  selectedCard.classList.add("selected-payment-method");
+  selectedPaymentMethod = paymentMethod;
+  console.log(selectedPaymentMethod);
 };
 
 // get only available payment methods based on country and currency
