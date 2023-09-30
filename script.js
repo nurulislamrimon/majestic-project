@@ -1,6 +1,9 @@
+let selectedCountry = "united state";
+let selectedCurrency = "USD";
 // ====================================================
 // ======country selection sectionsection / p-1========
 // ====================================================
+
 const searchBox = document.getElementById("payment-modal-search-country-input");
 const countriesContainer = document.getElementById(
   "payment-modal-countries-container"
@@ -151,6 +154,8 @@ const paymentMethods = [
     label: "Visa",
     value: "visa",
     description: paymentMethodsDescription.idPassportRequired,
+    supportedCountries: ["usa"],
+    supportedCurrencies: ["usd"],
   },
   {
     label: "Mastercard",
@@ -207,7 +212,8 @@ const paymentMethods = [
 const paymentMethodsContainer = document.getElementById(
   "payment-methods-container"
 );
-const getPaymentMethod = (paymentMethod, card) => {
+// get selected payment option
+const getSelectedPaymentMethod = (paymentMethod, card) => {
   console.log("clicked", paymentMethod);
   paymentMethodsContainer.childNodes.forEach((element) => {
     element?.classList?.remove("selected-payment-method");
@@ -246,7 +252,7 @@ paymentMethods.forEach((paymentMethod) => {
 
   newPaymentMethodCard.innerHTML = cardBody;
   newPaymentMethodCard.addEventListener("click", () =>
-    getPaymentMethod(paymentMethod, newPaymentMethodCard)
+    getSelectedPaymentMethod(paymentMethod, newPaymentMethodCard)
   );
   paymentMethodsContainer.appendChild(newPaymentMethodCard);
 });
