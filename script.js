@@ -13,17 +13,21 @@ const showSelectedCurrency = document.getElementById("show-selected-currency");
 const paymentMethodsContainer = document.getElementById(
   "payment-methods-container"
 );
-// Payment modal - payment method selection / p-3
+// Payment modal - confirm payment / p-3
 const confirmOrderCountryInfoContainer = document.getElementById(
   "confirm-order-country-info-container"
 );
+const confirmOrderPaymentMethodContainer = document.getElementById(
+  "confirm-order-payment-method-container"
+);
+
 // --------==========variables=========---------
 let selectedCountry = {
   name: { common: "United State" },
   flags: { svg: "https://flagcdn.com/pf.svg" },
 };
 let selectedCurrency;
-let selectedPaymentMethod;
+let selectedPaymentMethod = { label: "Visa" };
 
 // currencies variable-------------------------->
 const currencies = [
@@ -365,7 +369,9 @@ getFilteredData();
 // ====================================================
 
 const handleSelectedCurrencies = (currency) => {
-  showSelectedCurrency.innerHTML = `<img src="../asset/flags/${currency.value}.svg" alt=${currency.label} /> <span>${currency.label}</span>`;
+  if (showSelectedCurrency) {
+    showSelectedCurrency.innerHTML = `<img src="../asset/flags/${currency.value}.svg" alt=${currency.label} /> <span>${currency.label}</span>`;
+  }
   selectedCurrency = currency.label;
   // render only available payment methods
   handleRenderPaymentMethodCards(selectedCountry.name.common, selectedCurrency);
@@ -387,7 +393,7 @@ currencies.forEach((currency) => {
   newCurrencyOption.addEventListener("click", () =>
     handleSelectedCurrencies(currency)
   );
-  currenciesSelectContainer.appendChild(newCurrencyOption);
+  currenciesSelectContainer?.appendChild(newCurrencyOption);
 });
 
 // get selected payment option
@@ -418,18 +424,21 @@ const handleRenderPaymentMethodCards = (selectedCountry, selectedCurrency) => {
     renderPaymentCards(availablePaymentMethods);
   } else {
     // no card found
-    paymentMethodsContainer.innerHTML = `<p class="text-center">No Payment Method Available in <strong>${selectedCountry}</strong> and <strong>${selectedCurrency}</strong> currency!</p>`;
+    if (paymentMethodsContainer) {
+      paymentMethodsContainer.innerHTML = `<p class="text-center">No Payment Method Available in <strong>${selectedCountry}</strong> and <strong>${selectedCurrency}</strong> currency!</p>`;
+    }
   }
 };
 // render payment method cards
 const renderPaymentCards = (availablePaymentMethods) => {
-  paymentMethodsContainer.innerHTML = "";
-  // set all payment method card to DOM
-  availablePaymentMethods?.forEach((paymentMethod) => {
-    const newPaymentMethodCard = document.createElement("label");
-    newPaymentMethodCard.classList.add("card", "p-2");
-    newPaymentMethodCard.setAttribute("for", paymentMethod.value);
-    const cardBody = `
+  if (paymentMethodsContainer) {
+    paymentMethodsContainer.innerHTML = "";
+    // set all payment method card to DOM
+    availablePaymentMethods?.forEach((paymentMethod) => {
+      const newPaymentMethodCard = document.createElement("label");
+      newPaymentMethodCard.classList.add("card", "p-2");
+      newPaymentMethodCard.setAttribute("for", paymentMethod.value);
+      const cardBody = `
   <div class="d-flex justify-content-between align-items-center my-auto   ">
       <div class="d-flex align-items-center gap-1 ">
       <div class="payment-logo-container">
@@ -452,12 +461,13 @@ const renderPaymentCards = (availablePaymentMethods) => {
       />
     </div>
   `;
-    newPaymentMethodCard.innerHTML = cardBody;
-    newPaymentMethodCard.addEventListener("click", () =>
-      handleSelectedPaymentMethod(paymentMethod, newPaymentMethodCard)
-    );
-    paymentMethodsContainer.appendChild(newPaymentMethodCard);
-  });
+      newPaymentMethodCard.innerHTML = cardBody;
+      newPaymentMethodCard.addEventListener("click", () =>
+        handleSelectedPaymentMethod(paymentMethod, newPaymentMethodCard)
+      );
+      paymentMethodsContainer.appendChild(newPaymentMethodCard);
+    });
+  }
 };
 
 // for initial currency
@@ -466,7 +476,13 @@ handleSelectedCurrencies(currencies[0]);
 // ====================================================
 // ======Review & confirm payment section / p-3========
 // ====================================================
+// selected country render
 confirmOrderCountryInfoContainer.innerHTML = `
-<img src="${selectedCountry?.flags?.svg}"/>
-                  <p class="ms-3 h6">${selectedCountry?.name?.common}</p>
-`;
+<img src="${selectedCountry?.flags?.svg}" width="30"/>
+    <p class="my-auto ">${selectedCountry?.name?.common}</p>`;
+
+//  payment method render
+confirmOrderPaymentMethodContainer.innerHTML = `
+    <img src="../asset/logos/${selectedPaymentMethod.label.toLowerCase()}.svg" alt="${
+  selectedPaymentMethod.label
+} image" />`;
