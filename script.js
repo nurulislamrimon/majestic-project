@@ -206,19 +206,20 @@ const paymentMethods = [
     description: paymentMethodsDescription.idPassportRequired,
   },
 ];
+
 const paymentMethodSupportedCountries = [
   {
     country: "Australia",
     AUD: {
-      paymentMethods: ["Visa", "MasterCard", "Apple Pay", "Google Pay"],
+      paymentMethods: ["Visa", "Mastercard", "Apple Pay", "Google Pay"],
     },
     USD: {
-      paymentMethods: ["Visa", "MasterCard", "Google Pay"],
+      paymentMethods: ["Visa", "Mastercard", "Google Pay"],
     },
     EUR: {
       paymentMethods: [
         "Visa",
-        "MasterCard",
+        "Mastercard",
         "Apple Pay",
         "Google Pay",
         "SEPA",
@@ -231,7 +232,7 @@ const paymentMethodSupportedCountries = [
     EUR: {
       paymentMethods: [
         "Visa",
-        "MasterCard",
+        "Mastercard",
         "Apple Pay",
         "Google Pay",
         "SEPA",
@@ -242,27 +243,27 @@ const paymentMethodSupportedCountries = [
   {
     country: "Belize",
     BZD: {
-      paymentMethods: ["Visa", "MasterCard"],
+      paymentMethods: ["Visa", "Mastercard"],
     },
     USD: {
-      paymentMethods: ["Visa", "MasterCard"],
+      paymentMethods: ["Visa", "Mastercard"],
     },
   },
   {
     country: "British Virgin Island",
 
     USD: {
-      paymentMethods: ["Visa", "MasterCard", "Apple Pay", "Google Pay"],
+      paymentMethods: ["Visa", "Mastercard", "Apple Pay", "Google Pay"],
     },
   },
   {
     country: "Canada",
 
     USD: {
-      paymentMethods: ["Visa", "MasterCard", "Apple Pay", "Google Pay"],
+      paymentMethods: ["Visa", "Mastercard", "Apple Pay", "Google Pay"],
     },
     CAD: {
-      paymentMethods: ["Visa", "MasterCard", "Apple Pay", "Google Pay"],
+      paymentMethods: ["Visa", "Mastercard", "Apple Pay", "Google Pay"],
     },
   },
   {
@@ -271,7 +272,7 @@ const paymentMethodSupportedCountries = [
       paymentMethods: ["Visa"],
     },
     USD: {
-      paymentMethods: [CRC],
+      paymentMethods: ["Visa", "Mastercard"],
     },
   },
   {
@@ -283,10 +284,10 @@ const paymentMethodSupportedCountries = [
   {
     country: "Costa Rica",
     CRC: {
-      paymentMethods: ["Visa", "MasterCard"],
+      paymentMethods: ["Visa", "Mastercard"],
     },
     USD: {
-      paymentMethods: ["Visa", "MasterCard"],
+      paymentMethods: ["Visa", "Mastercard"],
     },
   },
   {
@@ -294,7 +295,7 @@ const paymentMethodSupportedCountries = [
     EUR: {
       paymentMethods: [
         "Visa",
-        "MasterCard",
+        "Mastercard",
         "Apple Pay",
         "Google Pay",
         "SEPA",
@@ -307,7 +308,7 @@ const paymentMethodSupportedCountries = [
     EUR: {
       paymentMethods: [
         "Visa",
-        "MasterCard",
+        "Mastercard",
         "Apple Pay",
         "Google Pay",
         "SEPA",
@@ -318,16 +319,16 @@ const paymentMethodSupportedCountries = [
   {
     country: "Denmark",
     DKK: {
-      paymentMethods: ["Visa", "MasterCard", "Apple Pay", "Google Pay"],
+      paymentMethods: ["Visa", "Mastercard", "Apple Pay", "Google Pay"],
     },
     EUR: {
-      paymentMethods: ["Visa", "MasterCard", "Apple Pay", "Google Pay"],
+      paymentMethods: ["Visa", "Mastercard", "Apple Pay", "Google Pay"],
     },
   },
   {
     country: "Dominican Republic",
     DOP: {
-      paymentMethods: ["Visa", "MasterCard"],
+      paymentMethods: ["Visa", "Mastercard"],
     },
   },
   {
@@ -335,7 +336,7 @@ const paymentMethodSupportedCountries = [
     GBP: {
       paymentMethods: [
         "Visa",
-        "MasterCard",
+        "Mastercard",
         "Apple Pay",
         "Google Pay",
         "Faster Payments",
@@ -356,8 +357,21 @@ const getSelectedPaymentMethod = (paymentMethod, card) => {
   });
   card.classList.add("selected-payment-method");
 };
+// get only available payment methods based on country and currency
+
+const isAvailablePaymentMethods = paymentMethodSupportedCountries.find(
+  (method) => method.country === selectedCountry && method[selectedCurrency]
+);
+const availablePaymentMethods =
+  isAvailablePaymentMethods &&
+  isAvailablePaymentMethods[selectedCurrency].paymentMethods.map(
+    (availablePaymentMethod) =>
+      paymentMethods.find(
+        (paymentMethod) => paymentMethod.label === availablePaymentMethod
+      )
+  );
 // set all payment method card to DOM
-paymentMethods.forEach((paymentMethod) => {
+availablePaymentMethods.forEach((paymentMethod) => {
   const newPaymentMethodCard = document.createElement("label");
   newPaymentMethodCard.classList.add("card", "p-2");
   newPaymentMethodCard.setAttribute("for", paymentMethod.value);
@@ -392,8 +406,3 @@ paymentMethods.forEach((paymentMethod) => {
   );
   paymentMethodsContainer.appendChild(newPaymentMethodCard);
 });
-const availablePaymentMethods = paymentMethodSupportedCountries.find(
-  (method) => method.country === selectedCountry && method[selectedCurrency]
-);
-
-console.log(availablePaymentMethods[selectedCurrency].paymentMethods);
