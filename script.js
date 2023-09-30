@@ -368,7 +368,10 @@ const handleSelectedCountry = (country) => {
 
 searchBox?.addEventListener("keyup", function (event) {
   const searchKey = event.target.value;
-  getFilteredData(searchKey);
+  const inte = setInterval(() => {
+    getFilteredData(searchKey);
+    clearInterval(inte);
+  }, 500);
 });
 
 const getFilteredData = (searchKey) => {
@@ -475,7 +478,7 @@ const handleRenderPaymentMethodCards = (selectedCountry, selectedCurrency) => {
   } else {
     // no card found
     if (paymentMethodsContainer) {
-      paymentMethodsContainer.innerHTML = `<p class="text-center">No Payment Method Available in <strong>${selectedCountry}</strong> and <strong>${selectedCurrency}</strong> currency!</p>`;
+      paymentMethodsContainer.innerHTML = `<p class="text-center position-absolute top-50">No Payment Method Available in <strong>${selectedCountry}</strong> and <strong>${selectedCurrency}</strong> currency!</p>`;
     }
   }
 };
@@ -555,6 +558,6 @@ const handleRenderConfirmPaymentMethod = () => {
 const handleRenderConfirmAmount = () => {
   if (confirmPaymentAmount) {
     confirmPaymentAmount.innerHTML = `
-    ${selectedAmount}<span class="h6">${selectedCurrency}</span>`;
+    ${selectedAmount}<span class="h6 ms-2 ">${selectedCurrency}</span>`;
   }
 };

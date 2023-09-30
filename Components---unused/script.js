@@ -1,4 +1,7 @@
 // ======select dom========
+// all container selection
+const mainContainerPages =
+  document.getElementsByClassName("payment-modal-body");
 // Payment modal - country selection / p -1
 const searchBox = document.getElementById("payment-modal-search-country-input");
 const countriesContainer = document.getElementById(
@@ -22,11 +25,15 @@ const confirmOrderPaymentMethodContainer = document.getElementById(
   "confirm-order-payment-method-container"
 );
 const confirmPaymentAmount = document.getElementById("confirm-payment-amount");
+const paymentMethodStepNextBtn = document.getElementById(
+  "payment-method-step-next-btn"
+);
 
 // --------==========variables=========---------
+let activePage = 0;
 let selectedCountry = {
-  name: { common: "United State" },
-  flags: { svg: "https://flagcdn.com/pf.svg" },
+  name: { common: "United States" },
+  flags: { svg: "https://flagcdn.com/usa.svg" },
 };
 let selectedCurrency = "USD";
 let selectedAmount = 0;
@@ -162,7 +169,7 @@ const paymentMethods = [
 
 const paymentMethodSupportedCountries = [
   {
-    country: "United State",
+    country: "United States",
     USD: {
       paymentMethods: [
         "Visa",
@@ -319,16 +326,52 @@ const paymentMethodSupportedCountries = [
 ];
 
 // ====================================================
-// ======country selection sectionsection / p-1========
+// ======active and inactive pages========
+// ====================================================
+const activeNextPage = () => {
+  if (activePage <= mainContainerPages.length - 1) {
+    activePage++;
+    for (const page of mainContainerPages) {
+      page.classList.add("d-none");
+    }
+    mainContainerPages[activePage - 1].classList.remove("d-none");
+  }
+};
+// initially active
+activeNextPage();
+const activePreviousPage = () => {
+  if (activePage > 0) {
+    for (const page of mainContainerPages) {
+      page.classList.add("d-none");
+    }
+    activePage -= 2;
+    mainContainerPages[activePage].classList.remove("d-none");
+    activePage++;
+  }
+};
+const handleCloseAllPage = () => {
+  activePage = 0;
+  handleSelectedCurrency({ label: "USD", value: "usd" });
+  activeNextPage();
+};
+// ====================================================
+// ======country selection section / p-1========
 // ====================================================
 // handle selected country
 const handleSelectedCountry = (country) => {
   selectedCountry = country;
+  // render only available payment methods
+  handleRenderPaymentMethodCards(selectedCountry.name.common, selectedCurrency);
+  handleRenderConfirmCountryWithFlag();
+  activeNextPage();
 };
 
 searchBox?.addEventListener("keyup", function (event) {
   const searchKey = event.target.value;
-  getFilteredData(searchKey);
+  const inte = setInterval(() => {
+    getFilteredData(searchKey);
+    clearInterval(inte);
+  }, 500);
 });
 
 const getFilteredData = (searchKey) => {
@@ -374,6 +417,8 @@ getFilteredData();
 if (paymentAmountInput) {
   paymentAmountInput.addEventListener("keyup", () => {
     selectedAmount = paymentAmountInput.value;
+    handleRenderConfirmAmount();
+    handleStepNextBtnState();
   });
 }
 // handle selected currency
@@ -383,7 +428,7 @@ const handleSelectedCurrency = (currency) => {
   }
   selectedCurrency = currency.label;
   // render only available payment methods
-  handleRenderPaymentMethodCards(selectedCountry.name.common, selectedCurrency);
+  handleRenderPaymentMethodCards(selectedCountry.name.common, currency.label);
 };
 
 // render currencies
@@ -412,13 +457,12 @@ const handleSelectedPaymentMethod = (paymentMethod, selectedCard) => {
   });
   selectedCard.classList.add("selected-payment-method");
   selectedPaymentMethod = paymentMethod;
-  console.log(selectedPaymentMethod);
+  handleRenderConfirmPaymentMethod();
+  handleStepNextBtnState();
 };
 
 // get only available payment methods based on country and currency
 const handleRenderPaymentMethodCards = (selectedCountry, selectedCurrency) => {
-  console.log(selectedCurrency);
-
   const isAvailablePaymentMethods = paymentMethodSupportedCountries.find(
     (method) => method.country === selectedCountry && method[selectedCurrency]
   );
@@ -434,7 +478,7 @@ const handleRenderPaymentMethodCards = (selectedCountry, selectedCurrency) => {
   } else {
     // no card found
     if (paymentMethodsContainer) {
-      paymentMethodsContainer.innerHTML = `<p class="text-center">No Payment Method Available in <strong>${selectedCountry}</strong> and <strong>${selectedCurrency}</strong> currency!</p>`;
+      paymentMethodsContainer.innerHTML = `<p class="text-center position-absolute top-50">No Payment Method Available in <strong>${selectedCountry}</strong> and <strong>${selectedCurrency}</strong> currency!</p>`;
     }
   }
 };
@@ -482,25 +526,38 @@ const renderPaymentCards = (availablePaymentMethods) => {
 // for initial currency
 handleSelectedCurrency(currencies[0]);
 
+const handleStepNextBtnState = () => {
+  if (selectedAmount > 0 && selectedPaymentMethod.value) {
+    paymentMethodStepNextBtn.removeAttribute("disabled");
+  } else {
+    paymentMethodStepNextBtn.setAttribute("disabled", true);
+  }
+};
+
 // ====================================================
 // ======Review & confirm payment section / p-3========
 // ====================================================
 // selected country render
-if (confirmOrderCountryInfoContainer) {
-  confirmOrderCountryInfoContainer.innerHTML = `
+
+const handleRenderConfirmCountryWithFlag = () => {
+  if (confirmOrderCountryInfoContainer) {
+    confirmOrderCountryInfoContainer.innerHTML = `
   <img src="${selectedCountry?.flags?.svg}" width="30"/>
       <p class="my-auto ">${selectedCountry?.name?.common}</p>`;
-}
-
-//  payment method render
-if (confirmOrderPaymentMethodContainer) {
-  confirmOrderPaymentMethodContainer.innerHTML = `
-      <img src="../asset/logos/${selectedPaymentMethod.label.toLowerCase()}.svg" alt="${
-    selectedPaymentMethod.label
-  } image" />`;
-}
-
-if (confirmPaymentAmount) {
-  confirmPaymentAmount.innerHTML = `
-    ${selectedAmount}<span class="h6">${selectedCurrency}</span>`;
-}
+  }
+};
+const handleRenderConfirmPaymentMethod = () => {
+  //  payment method render
+  if (confirmOrderPaymentMethodContainer) {
+    confirmOrderPaymentMethodContainer.innerHTML = `
+      <img src="../asset/logos/${selectedPaymentMethod.value.toLowerCase()}.svg" alt="${
+      selectedPaymentMethod.label
+    } image" /> &nbsp; <span>${selectedPaymentMethod.label}</span>`;
+  }
+};
+const handleRenderConfirmAmount = () => {
+  if (confirmPaymentAmount) {
+    confirmPaymentAmount.innerHTML = `
+    ${selectedAmount}<span class="h6 ms-2 ">${selectedCurrency}</span>`;
+  }
+};
