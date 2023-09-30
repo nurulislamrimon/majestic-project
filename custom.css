@@ -139,10 +139,12 @@
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-top: 5px solid orange;
     font-size: small;
-    padding: 10px;
   }
   .amount-tooltip::after {
     display: none;
+  }
+  .modal-scroll-bar-add {
+    padding-bottom: 134px;
   }
 }
 /* ======================================== */
