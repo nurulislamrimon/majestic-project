@@ -406,6 +406,7 @@ getFilteredData();
 if (paymentAmountInput) {
   paymentAmountInput.addEventListener("keyup", () => {
     selectedAmount = paymentAmountInput.value;
+    handleRenderConfirmAmount();
   });
 }
 // handle selected currency
@@ -529,8 +530,9 @@ if (confirmOrderPaymentMethodContainer) {
     selectedPaymentMethod.label
   } image" />`;
 }
-
-if (confirmPaymentAmount) {
-  confirmPaymentAmount.innerHTML = `
+const handleRenderConfirmAmount = () => {
+  if (confirmPaymentAmount) {
+    confirmPaymentAmount.innerHTML = `
     ${selectedAmount}<span class="h6">${selectedCurrency}</span>`;
-}
+  }
+};
