@@ -1,16 +1,21 @@
-// Payment modal - country selection
+// ======select dom========
+// Payment modal - country selection / p -1
 const searchBox = document.getElementById("payment-modal-search-country-input");
 const countriesContainer = document.getElementById(
   "payment-modal-countries-container"
 );
-// Payment modal - currency selection
+// Payment modal - currency selection / p-2
 const currenciesSelectContainer = document.getElementById(
   "currencies-container"
 );
 const showSelectedCurrency = document.getElementById("show-selected-currency");
-// Payment modal - payment method selection
+// Payment modal - payment method selection / p-2
 const paymentMethodsContainer = document.getElementById(
   "payment-methods-container"
+);
+// Payment modal - payment method selection / p-3
+const confirmOrderCountryInfoContainer = document.getElementById(
+  "confirm-order-country-info-container"
 );
 // --------==========variables=========---------
 let selectedCountry = {
@@ -457,3 +462,11 @@ const renderPaymentCards = (availablePaymentMethods) => {
 
 // for initial currency
 handleSelectedCurrencies(currencies[0]);
+
+// ====================================================
+// ======Review & confirm payment section / p-3========
+// ====================================================
+confirmOrderCountryInfoContainer.innerHTML = `
+<img src="${selectedCountry?.flags?.svg}"/>
+                  <p class="ms-3 h6">${selectedCountry?.name?.common}</p>
+`;
