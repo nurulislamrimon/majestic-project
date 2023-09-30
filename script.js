@@ -207,6 +207,14 @@ const paymentMethods = [
 const paymentMethodsContainer = document.getElementById(
   "payment-methods-container"
 );
+const getPaymentMethod = (paymentMethod, card) => {
+  console.log("clicked", paymentMethod);
+  paymentMethodsContainer.childNodes.forEach((element) => {
+    element?.classList?.remove("selected-payment-method");
+  });
+  card.classList.add("selected-payment-method");
+};
+// set all payment method card to DOM
 paymentMethods.forEach((paymentMethod) => {
   const newPaymentMethodCard = document.createElement("label");
   newPaymentMethodCard.classList.add("card", "p-2");
@@ -214,14 +222,14 @@ paymentMethods.forEach((paymentMethod) => {
 
   const cardBody = `
   <div class="d-flex justify-content-between align-items-center my-auto">
-      <div class="d-flex align-items-center gap-3 ">
+      <div class="d-flex align-items-center gap-1 ">
+      <div class="payment-logo-container">
         <img
-        class="img-fluid"
+        class="img-fluid d-block mx-auto"
           src="../asset/logos/${paymentMethod.value}.svg"
           alt="${paymentMethod.label} Image"
-          height="20"
-          width="62"
         />
+        </div>
         <div>
           <h6 class="card-title fs-6">${paymentMethod.label}</h6>
           ${paymentMethod.description}
@@ -237,5 +245,8 @@ paymentMethods.forEach((paymentMethod) => {
   `;
 
   newPaymentMethodCard.innerHTML = cardBody;
+  newPaymentMethodCard.addEventListener("click", () =>
+    getPaymentMethod(paymentMethod, newPaymentMethodCard)
+  );
   paymentMethodsContainer.appendChild(newPaymentMethodCard);
 });

@@ -53,7 +53,7 @@
 
 /* pages designed custom css========= */
 
-/* -----payment modal - country selection section------*/
+/* -----payment modal - country selection / section-1 ------*/
 .country-search-box {
   width: 90%;
 }
@@ -67,7 +67,7 @@
   cursor: pointer;
 }
 
-/* ------payment modal - select payment methode section----- */
+/* ------payment modal - select payment methode / section-2 ----- */
 .payment-amount-input {
   border-color: var(--border-light-navy) !important;
 }
@@ -81,6 +81,15 @@
 }
 .payment-methods-container {
   height: calc(var(--modal-height) - 200px);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.payment-methods-container .payment-logo-container {
+  min-width: 20%;
+}
+.selected-payment-method {
+  box-shadow: 0px 4px 30px 0px #00000017;
 }
 
 /* ------payment modal - {} section----- */
