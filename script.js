@@ -154,7 +154,7 @@ const paymentMethods = [
     label: "Visa",
     value: "visa",
     description: paymentMethodsDescription.idPassportRequired,
-    supportedCountries: ["usa"],
+    supportedCountries: ["argentina", "australia"],
     supportedCurrencies: ["usd"],
   },
   {
