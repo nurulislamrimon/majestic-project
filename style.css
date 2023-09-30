@@ -66,6 +66,9 @@
   background-color: var(--bg-light-gray);
   cursor: pointer;
 }
+.modal-scroll-bar-add {
+  padding-bottom: 134px;
+}
 
 /* ------payment modal - select payment methode / section-2 ----- */
 .payment-amount-input {
