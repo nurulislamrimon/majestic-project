@@ -13,7 +13,7 @@ const paymentMethodsContainer = document.getElementById(
   "payment-methods-container"
 );
 // --------==========variables=========---------
-let selectedCountry = { name: { common: "Australia" } };
+let selectedCountry = { name: { common: "Belize" } };
 let selectedCurrency;
 
 // currencies variable-------------------------->
@@ -147,7 +147,6 @@ const paymentMethods = [
 const paymentMethodSupportedCountries = [
   {
     country: "United State",
-
     USD: {
       paymentMethods: [
         "Visa",
@@ -157,6 +156,12 @@ const paymentMethodSupportedCountries = [
         "Cash App",
         "Robinhood Connect",
       ],
+    },
+  },
+  {
+    country: "Argentina",
+    USD: {
+      paymentMethods: ["Visa", "Mastercard"],
     },
   },
   {
@@ -354,11 +359,9 @@ getFilteredData();
 const handleSelectedCurrencies = (currency) => {
   showSelectedCurrency.innerHTML = `<img src="../asset/flags/${currency.value}.svg" alt=${currency.label} /> <span>${currency.label}</span>`;
   selectedCurrency = currency.label;
-  console.log(selectedCurrency);
+  // render only available payment methods
+  handleRenderPaymentMethodCards(selectedCountry.name.common, selectedCurrency);
 };
-
-// for initial currency
-handleSelectedCurrencies(currencies[0]);
 
 // render currencies
 currencies.forEach((currency) => {
@@ -390,7 +393,7 @@ const handleSelectedPaymentMethod = (paymentMethod, card) => {
 
 // get only available payment methods based on country and currency
 const handleRenderPaymentMethodCards = (selectedCountry, selectedCurrency) => {
-  console.log(selectedCountry);
+  console.log(selectedCurrency);
 
   const isAvailablePaymentMethods = paymentMethodSupportedCountries.find(
     (method) => method.country === selectedCountry && method[selectedCurrency]
@@ -406,18 +409,17 @@ const handleRenderPaymentMethodCards = (selectedCountry, selectedCurrency) => {
     renderPaymentCards(availablePaymentMethods);
   } else {
     // no card found
+    paymentMethodsContainer.innerHTML = `<p class="text-center">No Payment Method Available in <strong>${selectedCountry}</strong> and <strong>${selectedCurrency}</strong> currency!</p>`;
   }
 };
 // render payment method cards
 const renderPaymentCards = (availablePaymentMethods) => {
+  paymentMethodsContainer.innerHTML = "";
   // set all payment method card to DOM
   availablePaymentMethods?.forEach((paymentMethod) => {
-    console.log(paymentMethod);
-
     const newPaymentMethodCard = document.createElement("label");
     newPaymentMethodCard.classList.add("card", "p-2");
     newPaymentMethodCard.setAttribute("for", paymentMethod.value);
-
     const cardBody = `
   <div class="d-flex justify-content-between align-items-center my-auto">
       <div class="d-flex align-items-center gap-1 ">
@@ -441,7 +443,6 @@ const renderPaymentCards = (availablePaymentMethods) => {
       />
     </div>
   `;
-
     newPaymentMethodCard.innerHTML = cardBody;
     newPaymentMethodCard.addEventListener("click", () =>
       handleSelectedPaymentMethod(paymentMethod, newPaymentMethodCard)
@@ -449,5 +450,6 @@ const renderPaymentCards = (availablePaymentMethods) => {
     paymentMethodsContainer.appendChild(newPaymentMethodCard);
   });
 };
-// call while rendering for the first time
-handleRenderPaymentMethodCards("United State", "USD");
+
+// for initial currency
+handleSelectedCurrencies(currencies[0]);
