@@ -44,7 +44,7 @@
           <div class="modal-content position-relative">
             <!-- modal header section -->
             <div
-              class="d-flex justify-content-between align-items-center border-bottom py-2 px-3 mb-3"
+              class="d-flex justify-content-between align-items-center border-bottom py-2 px-4"
             >
               <h1
                 class="fs-5 fw-bold payment-modal-title-color"
@@ -63,16 +63,16 @@
             <!--  ====================================================
                   ====country selection section / p-1 === Start ======
                   ====================================================-->
-            <section class="payment-modal-body overflow-hidden">
-              <div class="px-3">
+            <section class="payment-body overflow-hidden">
+              <div class="px-3 pt-3">
                 <!-- alert section -->
                 <div
                   class="alert alert-info alert-dismissible fade show p-1 d-flex justify-content-between px-3"
                   role="alert"
                 >
-                  <span>
-                    <i class="fa-regular fa-circle-question me-2"></i> Want to
-                    check your payment status?
+                  <span class="d-flex align-items-center gap-1">
+                    <img src="/asset/icons/infoIcon.svg" alt="" /> Want to check
+                    your payment status?
                     <a href="#">Click here</a>
                   </span>
                   <button
@@ -129,7 +129,7 @@
                   type="number"
                   id="payment-amount-input"
                   pattern="[0-9]"
-                  class="fs-1 ps-3 my-3 border-0 w-75 fw-medium border-start border-2 payment-amount-input"
+                  class="fs-1 ps-3 my-3 border-0 w-75 fw-medium border-start border-2 payment-amount-input fw-bold opacity-50"
                   placeholder="$0.00"
                   aria-label="Username"
                   aria-describedby="basic-addon1"
@@ -157,7 +157,7 @@
 
               <!-- payment method cards -->
 
-              <div class="p-2">
+              <div class="py-2 px-2">
                 <div
                   class="overflow-y-scroll overflow-x-hidden payment-methods-container"
                   id="payment-methods-container"
@@ -270,18 +270,18 @@
             <!--  ====================================================
                   ====confirm with coin finalization / p-4 === Start ======
                   ====================================================-->
-            <section class="payment-modal-body d-none">
-              <div
-                class="mx-2 mt-2 overflow-auto overflow-md-scroll modal-scroll-bar-add"
-              >
+            <section
+              class="payment-body overflow-auto overflow-y-scroll modal-scroll-bar-add d-none"
+            >
+              <div class="mx-2 mt-2">
                 <div class="px-3">
                   <!-- alert section -->
                   <div
                     class="alert alert-info alert-dismissible fade show p-1 d-flex justify-content-between px-3"
                     role="alert"
                   >
-                    <span>
-                      <i class="fa-regular fa-circle-question me-2"></i> Want to
+                    <span class="d-flex align-items-center gap-1">
+                      <img src="/asset/icons/infoIcon.svg" alt="" /> Want to
                       check your payment status?
                       <a href="#">Click here</a>
                     </span>
