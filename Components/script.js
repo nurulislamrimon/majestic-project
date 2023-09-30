@@ -24,8 +24,13 @@ const confirmOrderPaymentMethodContainer = document.getElementById(
 const confirmPaymentAmount = document.getElementById("confirm-payment-amount");
 
 // --------==========variables=========---------
-let selectedCountry = { name: { common: "Belize" } };
-let selectedCurrency;
+let selectedCountry = {
+  name: { common: "United State" },
+  flags: { svg: "https://flagcdn.com/pf.svg" },
+};
+let selectedCurrency = "USD";
+let selectedAmount = 0;
+let selectedPaymentMethod = { label: "Visa" };
 
 // currencies variable-------------------------->
 const currencies = [
@@ -314,7 +319,7 @@ const paymentMethodSupportedCountries = [
 ];
 
 // ====================================================
-// ======country selection section / p-1========
+// ======country selection sectionsection / p-1========
 // ====================================================
 // handle selected country
 const handleSelectedCountry = (country) => {
@@ -435,13 +440,14 @@ const handleRenderPaymentMethodCards = (selectedCountry, selectedCurrency) => {
 };
 // render payment method cards
 const renderPaymentCards = (availablePaymentMethods) => {
-  paymentMethodsContainer.innerHTML = "";
-  // set all payment method card to DOM
-  availablePaymentMethods?.forEach((paymentMethod) => {
-    const newPaymentMethodCard = document.createElement("label");
-    newPaymentMethodCard.classList.add("card", "p-2");
-    newPaymentMethodCard.setAttribute("for", paymentMethod.value);
-    const cardBody = `
+  if (paymentMethodsContainer) {
+    paymentMethodsContainer.innerHTML = "";
+    // set all payment method card to DOM
+    availablePaymentMethods?.forEach((paymentMethod) => {
+      const newPaymentMethodCard = document.createElement("label");
+      newPaymentMethodCard.classList.add("card", "p-2");
+      newPaymentMethodCard.setAttribute("for", paymentMethod.value);
+      const cardBody = `
   <div class="d-flex justify-content-between align-items-center my-auto   ">
       <div class="d-flex align-items-center gap-1 ">
       <div class="payment-logo-container">
@@ -452,7 +458,7 @@ const renderPaymentCards = (availablePaymentMethods) => {
         />
         </div>
         <div>
-          <h6 class="card-title fs-6 ">${paymentMethod.label}</h6>
+          <h6 class="card-title fs-6">${paymentMethod.label}</h6>
           ${paymentMethod.description}
         </div>
       </div>

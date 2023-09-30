@@ -28,7 +28,7 @@
         Go to the payment option
       </button>
 
-      <!-- Modal -->
+      <!-- Modal start here -->
       <div
         class="modal fade payment-modal"
         id="paymentModal"
@@ -41,7 +41,9 @@
         <div
           class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down modal-lg"
         >
-          <div class="modal-content overflow-hidden">
+          <!-- =====Modal content start here===== -->
+          <div class="modal-content">
+            <!-- ======= Modal head start======= -->
             <div class="d-flex justify-content-between border-bottom pt-2 px-4">
               <h1
                 class="fs-5 fw-bold payment-modal-title-color"
@@ -56,43 +58,51 @@
                 aria-label="Close"
               ></button>
             </div>
-            <div
-              class="alert alert-info alert-dismissible fade show p-1 d-flex justify-content-between px-3"
-              role="alert"
-            >
-              <span>
-                <strong>Important!</strong> You will required to pass a 1 time
-                ID verification with our payment provider, all transactions will
-                be automatically approved in about 15 minute after successful
-                payment.
-              </span>
-              <button
-                type="button"
-                class="btn btn-sm"
-                data-bs-dismiss="alert"
-                aria-label="Close"
+            <!-- ===== Modal head end ===== -->
+
+            <!-- ====== centered content start with scroll======= -->
+            <div class="h-75 overflow-y-auto">
+              <div
+                class="alert alert-warning alert-dismissible fade show p-1 mx-3 mt-2 d-flex justify-content-between align-items-center px-3"
+                role="alert"
               >
-                X
-              </button>
-            </div>
-            <div class="ms-3 me-3 mt-3">
-              <div>
+                <span>
+                  <strong>Important!</strong> You will required to pass a 1 time
+                  ID verification with our payment provider, all transactions
+                  will be automatically approved in about 15 minute after
+                  successful payment.
+                </span>
+                <span
+                  class="border rounded-circle ms-2 bg-warning bg-opacity-25"
+                >
+                  <button
+                    type="button"
+                    class="btn btn-sm"
+                    data-bs-dismiss="alert"
+                    aria-label="Close"
+                  >
+                    X
+                  </button>
+                </span>
+              </div>
+              <div class="ms-3 me-3 mt-3">
+                <!-- <div class="h-75 overflow-scroll "> -->
                 <div
                   class="justify-content-center text-center mt-lg-3 mt-md-3 mt-5 mb-lg-3 mb-md-3 my-5"
                 >
                   <p class="h3">Review Top Up Order</p>
                 </div>
-                <div class="d-flex align-items-center justify-content-center">
-                  <img />
-                  <p class="ms-3 h6">United state</p>
+                <div
+                  class="d-flex align-items-center justify-content-center gap-2"
+                  id="confirm-order-country-info-container"
+                >
+                  <!-- country flag and country name rendered through DOM manipulation -->
                 </div>
                 <div class="d-flex justify-content-center">
                   <hr class="w-75" />
                 </div>
                 <div class="d-flex align-items-center justify-content-center">
-                  <h1 class="fs-1 fw-bold">
-                    <span>$</span>100.00 <span class="h6">USD</span>
-                  </h1>
+                  <h1 class="fs-1 fw-bold" id="confirm-payment-amount"></h1>
                 </div>
                 <div class="d-flex justify-content-center">
                   <hr class="w-75" />
@@ -100,28 +110,39 @@
                 <div class="d-flex justify-content-center">
                   <p class="h6 payment_method">Payment Method</p>
                 </div>
-                <div class="mt-1 mb-5 d-flex justify-content-center">
-                  <img src="../asset/flags/usd.svg" alt="" />
+                <div
+                  class="mt-1 mb-5 d-flex justify-content-center"
+                  id="confirm-order-payment-method-container"
+                >
+                  <!-- payment method rendered through DOM manipulation -->
                 </div>
               </div>
-              <div class="d-md-flex gap-3 w-75 mx-auto">
-                <button
-                  class="btn btn-outline-secondary bg-white w-100 py-2"
-                  type="button"
-                >
-                  Back
-                </button>
-                <button
-                  class="btn btn-outline-secondary text-white btn-primary w-100"
-                  type="button"
-                >
-                  Button
-                </button>
-              </div>
             </div>
+            <!-- ======= centered content end ======= -->
+
+            <!-- ====== Bottom button start========= -->
+            <div
+              class="d-md-flex flex-md-row gap-3 w-75 mx-auto position-absolute bottom-0 end-0 start-0 mb-3"
+            >
+              <button
+                class="btn btn-outline-secondary bg-white w-100 py-2"
+                type="button"
+              >
+                Back
+              </button>
+              <button
+                class="btn btn-outline-secondary mt-lg-0 mt-md-0 mt-3 text-white btn-primary w-100"
+                type="button"
+              >
+                Pay now
+              </button>
+            </div>
+            <!-- ====== Bottom button end ======= -->
           </div>
+          <!-- =======Modal content end here======== -->
         </div>
       </div>
+      <!-- Modal end here -->
     </div>
     <!-- custom js -->
     <script src="../script.js"></script>
@@ -134,11 +155,6 @@
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
       integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-      crossorigin="anonymous"
-    ></script>
-    <!-- font awesome -->
-    <script
-      src="https://kit.fontawesome.com/56fc42ddae.js"
       crossorigin="anonymous"
     ></script>
   </body>
