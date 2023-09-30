@@ -421,7 +421,7 @@ const renderPaymentCards = (availablePaymentMethods) => {
     newPaymentMethodCard.classList.add("card", "p-2");
     newPaymentMethodCard.setAttribute("for", paymentMethod.value);
     const cardBody = `
-  <div class="d-flex justify-content-between align-items-center my-auto">
+  <div class="d-flex justify-content-between align-items-center my-auto   ">
       <div class="d-flex align-items-center gap-1 ">
       <div class="payment-logo-container">
         <img
