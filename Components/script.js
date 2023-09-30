@@ -319,7 +319,7 @@ const paymentMethodSupportedCountries = [
 ];
 
 // ====================================================
-// ======country selection section / p-1========
+// ======country selection sectionsection / p-1========
 // ====================================================
 // handle selected country
 const handleSelectedCountry = (country) => {
