@@ -1,4 +1,7 @@
 // ======select dom========
+// all container selection
+const mainContainerPages =
+  document.getElementsByClassName("payment-modal-body");
 // Payment modal - country selection / p -1
 const searchBox = document.getElementById("payment-modal-search-country-input");
 const countriesContainer = document.getElementById(
@@ -24,8 +27,9 @@ const confirmOrderPaymentMethodContainer = document.getElementById(
 const confirmPaymentAmount = document.getElementById("confirm-payment-amount");
 
 // --------==========variables=========---------
+let activePage = 0;
 let selectedCountry = {
-  name: { common: "United State" },
+  name: { common: "United States" },
   flags: { svg: "https://flagcdn.com/pf.svg" },
 };
 let selectedCurrency = "USD";
@@ -162,7 +166,7 @@ const paymentMethods = [
 
 const paymentMethodSupportedCountries = [
   {
-    country: "United State",
+    country: "United States",
     USD: {
       paymentMethods: [
         "Visa",
@@ -319,11 +323,30 @@ const paymentMethodSupportedCountries = [
 ];
 
 // ====================================================
+// ======active and inactive pages========
+// ====================================================
+const activeNextPage = () => {
+  for (const page of mainContainerPages) {
+    page.classList.add("d-none");
+  }
+  mainContainerPages[activePage].classList.remove("d-none");
+  activePage++;
+};
+const handleCloseAllPage = () => {
+  activePage = 0;
+  activeNextPage();
+};
+// initially active
+activeNextPage();
+// ====================================================
 // ======country selection section / p-1========
 // ====================================================
 // handle selected country
 const handleSelectedCountry = (country) => {
   selectedCountry = country;
+  // render only available payment methods
+  handleRenderPaymentMethodCards(selectedCountry.name.common, selectedCurrency);
+  activeNextPage();
 };
 
 searchBox?.addEventListener("keyup", function (event) {
@@ -417,8 +440,6 @@ const handleSelectedPaymentMethod = (paymentMethod, selectedCard) => {
 
 // get only available payment methods based on country and currency
 const handleRenderPaymentMethodCards = (selectedCountry, selectedCurrency) => {
-  console.log(selectedCurrency);
-
   const isAvailablePaymentMethods = paymentMethodSupportedCountries.find(
     (method) => method.country === selectedCountry && method[selectedCurrency]
   );
