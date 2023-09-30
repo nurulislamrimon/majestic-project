@@ -30,7 +30,7 @@ const confirmPaymentAmount = document.getElementById("confirm-payment-amount");
 let activePage = 0;
 let selectedCountry = {
   name: { common: "United States" },
-  flags: { svg: "https://flagcdn.com/pf.svg" },
+  flags: { svg: "https://flagcdn.com/usa.svg" },
 };
 let selectedCurrency = "USD";
 let selectedAmount = 0;
@@ -329,15 +329,24 @@ const activeNextPage = () => {
   for (const page of mainContainerPages) {
     page.classList.add("d-none");
   }
+  activePage++;
+  mainContainerPages[activePage - 1].classList.remove("d-none");
+};
+// initially active
+activeNextPage();
+const activePreviousPage = () => {
+  for (const page of mainContainerPages) {
+    page.classList.add("d-none");
+  }
+  activePage -= 2;
   mainContainerPages[activePage].classList.remove("d-none");
   activePage++;
 };
 const handleCloseAllPage = () => {
   activePage = 0;
+  handleSelectedCurrency({ label: "USD", value: "usd" });
   activeNextPage();
 };
-// initially active
-activeNextPage();
 // ====================================================
 // ======country selection section / p-1========
 // ====================================================
@@ -406,7 +415,7 @@ const handleSelectedCurrency = (currency) => {
   }
   selectedCurrency = currency.label;
   // render only available payment methods
-  handleRenderPaymentMethodCards(selectedCountry.name.common, selectedCurrency);
+  handleRenderPaymentMethodCards(selectedCountry.name.common, currency.label);
 };
 
 // render currencies
