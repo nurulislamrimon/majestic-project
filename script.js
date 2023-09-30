@@ -1,8 +1,9 @@
-// internal imports
-
+let selectedCountry = "united state";
+let selectedCurrency = "USD";
 // ====================================================
 // ======country selection sectionsection / p-1========
 // ====================================================
+
 const searchBox = document.getElementById("payment-modal-search-country-input");
 const countriesContainer = document.getElementById(
   "payment-modal-countries-container"
@@ -50,6 +51,8 @@ getFilteredData();
 // ====================================================
 // ======payment method selection section / p-2========
 // ====================================================
+// currency selection-------------------------->
+// variables
 const currencies = [
   {
     label: "USD",
@@ -96,6 +99,7 @@ const currencies = [
     value: "dop",
   },
 ];
+// dom manupulation - currency selection
 const currenciesSelectContainer = document.getElementById(
   "currencies-container"
 );
@@ -121,4 +125,134 @@ currencies.forEach((currency) => {
     setSelectedCurrency(currency)
   );
   currenciesSelectContainer.appendChild(newCurrencyOption);
+});
+// payment method selection---------------------->
+// variables
+const paymentMethodsDescription = {
+  idPassportRequired: `<p
+class="card-text payment-modal-text-dark-gray payment-modal-font-xs"
+>
+Verification required:
+<strong class="text-black">ID card</strong> or
+<strong class="text-black">passport.</strong>
+</p>`,
+  socialSecurityNumberRequired: `<p
+class="card-text payment-modal-text-dark-gray payment-modal-font-xs"
+>
+Verification required:
+<strong class="text-black">Social Security Number</strong>
+</p>`,
+  robinhoodConnect: `<p
+class="card-text payment-modal-text-dark-gray payment-modal-font-xs"
+>
+Buy and transfer instantly using your debit card,
+bank account, or Robinhood balance. USA only
+</p>`,
+};
+const paymentMethods = [
+  {
+    label: "Visa",
+    value: "visa",
+    description: paymentMethodsDescription.idPassportRequired,
+    supportedCountries: ["usa"],
+    supportedCurrencies: ["usd"],
+  },
+  {
+    label: "Mastercard",
+    value: "mastercard",
+    description: paymentMethodsDescription.idPassportRequired,
+  },
+  {
+    label: "Apple Pay",
+    value: "applePay",
+    description: paymentMethodsDescription.idPassportRequired,
+  },
+  {
+    label: "Google Pay",
+    value: "googlePay",
+    description: paymentMethodsDescription.idPassportRequired,
+  },
+  {
+    label: "Cash App",
+    value: "cashApp",
+    description: paymentMethodsDescription.socialSecurityNumberRequired,
+  },
+  {
+    label: "Robinhood Connect",
+    value: "robinhoodConnect",
+    description: paymentMethodsDescription.robinhoodConnect,
+  },
+  {
+    label: "SEPA",
+    value: "sepa",
+    description: paymentMethodsDescription.idPassportRequired,
+  },
+  {
+    label: "REVOLUT",
+    value: "revolut",
+    description: paymentMethodsDescription.idPassportRequired,
+  },
+  {
+    label: "PSE",
+    value: "pse",
+    description: paymentMethodsDescription.idPassportRequired,
+  },
+  {
+    label: "Open Banking",
+    value: "openBanking",
+    description: paymentMethodsDescription.idPassportRequired,
+  },
+  {
+    label: "Faster Payments",
+    value: "fasterPayments",
+    description: paymentMethodsDescription.idPassportRequired,
+  },
+];
+// dom manupulation - payment method selection
+const paymentMethodsContainer = document.getElementById(
+  "payment-methods-container"
+);
+// get selected payment option
+const getSelectedPaymentMethod = (paymentMethod, card) => {
+  console.log("clicked", paymentMethod);
+  paymentMethodsContainer.childNodes.forEach((element) => {
+    element?.classList?.remove("selected-payment-method");
+  });
+  card.classList.add("selected-payment-method");
+};
+// set all payment method card to DOM
+paymentMethods.forEach((paymentMethod) => {
+  const newPaymentMethodCard = document.createElement("label");
+  newPaymentMethodCard.classList.add("card", "p-2");
+  newPaymentMethodCard.setAttribute("for", paymentMethod.value);
+
+  const cardBody = `
+  <div class="d-flex justify-content-between align-items-center my-auto">
+      <div class="d-flex align-items-center gap-1 ">
+      <div class="payment-logo-container">
+        <img
+        class="img-fluid d-block mx-auto"
+          src="../asset/logos/${paymentMethod.value}.svg"
+          alt="${paymentMethod.label} Image"
+        />
+        </div>
+        <div>
+          <h6 class="card-title fs-6">${paymentMethod.label}</h6>
+          ${paymentMethod.description}
+        </div>
+      </div>
+      <input
+        type="radio"
+        class="form-check-input"
+        id="${paymentMethod.value}"
+        name="payment-method-card"
+      />
+    </div>
+  `;
+
+  newPaymentMethodCard.innerHTML = cardBody;
+  newPaymentMethodCard.addEventListener("click", () =>
+    getSelectedPaymentMethod(paymentMethod, newPaymentMethodCard)
+  );
+  paymentMethodsContainer.appendChild(newPaymentMethodCard);
 });

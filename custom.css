@@ -15,6 +15,8 @@
   --bg-light-green: #1ce8c7;
   --bg-light-gray: #f2f2f2;
   --border-light-navy: #0d6efd4d;
+  /* height--------------------- */
+  --modal-height: clamp(500px, 90vh, 640px);
 }
 
 /* ======================================== */
@@ -26,7 +28,7 @@
 }
 
 .payment-modal .modal-content {
-  height: clamp(500px, 90vh, 640px);
+  height: var(--modal-height);
   max-width: 640px;
   margin-inline: auto;
 }
@@ -50,7 +52,22 @@
 }
 
 /* pages designed custom css========= */
-/* ------payment modal payment input page----- */
+
+/* -----payment modal - country selection / section-1 ------*/
+.country-search-box {
+  width: 90%;
+}
+
+.payment-modal-countries-container {
+  height: calc(var(--modal-height) - 160px);
+}
+
+.payment-modal-country:hover {
+  background-color: var(--bg-light-gray);
+  cursor: pointer;
+}
+
+/* ------payment modal - select payment methode / section-2 ----- */
 .payment-amount-input {
   border-color: var(--border-light-navy) !important;
 }
@@ -58,22 +75,24 @@
   outline: none;
 }
 .currencies-dropdown-element {
+  min-width: clamp(100px, 100%, 150px) !important;
   height: 30vh;
   overflow: auto;
 }
-/* =================country selection section================= */
-.country-search-box {
-  width: 90%;
+.payment-methods-container {
+  height: calc(var(--modal-height) - 200px);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.payment-methods-container .payment-logo-container {
+  min-width: 20%;
+}
+.selected-payment-method {
+  box-shadow: 0px 4px 30px 0px #00000017;
 }
 
-.payment-modal-countries-container {
-  height: calc(clamp(500px, 90vh, 640px) - 170px);
-}
-
-.payment-modal-country:hover {
-  background-color: var(--bg-light-gray);
-  cursor: pointer;
-}
+/* ------payment modal - {} section----- */
 
 .input_con {
   border-color: rgba(0, 0, 0, 0.1);
@@ -107,7 +126,7 @@
   z-index: -1;
 }
 /* ======================================== */
-/* ========tab / medium device=============== */
+/* ========tab / medium device============= */
 /* ======================================== */
 @media screen and (max-width: 850px) {
   /* confirmation section  */
@@ -128,7 +147,7 @@
 /* ======================================== */
 /* ========small device=============== */
 /* ======================================== */
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 575px) {
   .payment-modal .modal-content {
     height: 100vh;
   }
@@ -137,20 +156,27 @@
     height: calc(100vh - 170px);
   }
 
-  /* poran css */
-  .amount-tooltip {
-    border-top: 4px solid darkorange;
-    padding: 10px 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    gap: 3%;
-    height: 123px;
-    width: 90%;
-    text-align: left;
+  .payment-methods-container {
+    height: calc(100vh - 180px);
   }
-  .tooltip-info p {
-    font-size: 14px;
-    margin: 0;
-  }
+}
+/* ======================================== */
+/* ==========scrollbar customization======= */
+/* ======================================== */
+
+.payment-modal ::-webkit-scrollbar {
+  width: 5px;
+}
+
+.payment-modal ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.payment-modal ::-webkit-scrollbar-thumb {
+  background: #dbd8d8;
+  border-radius: 10px;
+}
+
+.payment-modal ::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
