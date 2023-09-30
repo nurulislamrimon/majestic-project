@@ -42,55 +42,61 @@
         <div
           class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down modal-lg"
         >
-          <div class="modal-content">
+          <div class="modal-content position-relative">
             <!-- modal header section -->
-            <div class="d-flex justify-content-between border-bottom pt-2 px-3">
+            <div
+              class="d-flex justify-content-between align-items-center border-bottom pt-2 px-3"
+            >
               <h1
-                class="fs-5 fw-bold payment-method-header-color"
+                class="fs-5 fw-bold payment-modal-title-color"
                 id="paymentMethodsModalLabel"
               >
                 Cashier
               </h1>
               <button
                 type="button"
-                class="btn-close"
+                class="btn-close btn-sm"
                 data-bs-dismiss="modal"
                 aria-label="Close"
               ></button>
             </div>
 
-            <!-- alerts -->
-
-            <div class="payment-method-modal-container">
-              <div
-                class="alert b alert-dismissible fade show payment-method-modal-alerts"
-                role="alert"
-              >
-                <i class="fa-regular fa-circle-question"></i>
-                Want to check your payment status?
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="alert"
-                  aria-label="Close"
-                ></button>
-              </div>
-              <div>
+            <div class="mx-2 mt-2">
+              <div class="px-3">
+                <!-- alert section -->
+                <div
+                  class="alert alert-info alert-dismissible fade show p-1 d-flex justify-content-between px-3"
+                  role="alert"
+                >
+                  <span>
+                    <i class="fa-regular fa-circle-question me-2"></i> Want to
+                    check your payment status?
+                    <a href="#">Click here</a>
+                  </span>
+                  <button
+                    type="button"
+                    class="btn btn-sm"
+                    data-bs-dismiss="alert"
+                    aria-label="Close"
+                  >
+                    X
+                  </button>
+                </div>
                 <p>You spend</p>
-                <div class="input-group mb-5">
+                <div class="input-group mb-2 border border-1 p-1 rounded-3">
                   <input
                     type="text"
-                    class="form-control py-2 fs-4"
+                    class="form-control py-2 fs-4 border border-0"
                     aria-label="Text input with dropdown button"
                     placeholder="$ 0.00"
                   />
                   <button
-                    class="btn payment-method-secondary-color dropdown-toggle px-4"
+                    class="btn payment-modal-bg-light-green dropdown-toggle px-4 border border-0 border-3 rounded-3"
                     type="button"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    <h1 class="me-5 fs-5 fw-bold">USD</h1>
+                    <h1 class="fs-5 fw-bold d-flex">USD</h1>
                     CreDit/ Debit Card
                   </button>
                   <ul class="dropdown-menu dropdown-menu-end">
@@ -108,15 +114,17 @@
                   </ul>
                 </div>
                 <p>You receive</p>
-                <div class="input-group mb-5 opacity-50">
+                <div
+                  class="input-group mb-2 opacity-50 border border-1 p-1 rounded-3"
+                >
                   <input
                     type="text"
-                    class="form-control py-2 fs-4"
+                    class="form-control py-2 fs-4 border border-0"
                     aria-label="Text input with dropdown button"
                     placeholder="$ 0.00"
                   />
                   <button
-                    class="btn payment-method-secondary-color px-4"
+                    class="btn payment-modal-bg-light-green px-4 border border-0 border-3 rounded-3"
                     type="button"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
@@ -127,11 +135,11 @@
                 </div>
                 <p class="mb-3">
                   <span class="opacity-50">You receive in Fiat -</span>
-                  <span class="h1 fs-6 text-dark fw-bold">0 USD</span>
+                  <span class="text-dark fw-bold">0 USD</span>
                 </p>
                 <div class="d-grid g-2">
                   <button
-                    class="btn btn-light border border-primary text-black p-2 payment-method-secondary-color"
+                    class="btn btn-light border border-primary text-black p-2 payment-modal-bg-light-green"
                     type="button"
                   >
                     Continue
@@ -140,11 +148,33 @@
                 <div
                   class="d-flex justify-content-center align-content-center gap-3 mt-4"
                 >
-                  <img src="../asset/image/masterCard.svg" alt="" />
-                  <img src="../asset/image/visa.svg" alt="" />
-                  <img src="../asset/image/applePay.svg" alt="" />
-                  <img src="../asset/image/googlePay.svg" alt="" />
+                  <img src="../asset/logos/masterCard.svg" alt="" />
+                  <img src="../asset/logos/visa.svg" alt="" />
+                  <img src="../asset/logos/applePay.svg" alt="" />
+                  <img src="../asset/logos/googlePay.svg" alt="" />
                 </div>
+              </div>
+            </div>
+
+            <!-- ===========tooltip========== -->
+
+            <div
+              class="amount-tooltip position-absolute rounded-3 bg-white text-md-center d-flex flex-sm-column align-items-center"
+            >
+              <img
+                src="../asset/icons/question-mark.svg"
+                class="mt-lg-3 mb-lg-3"
+                height="25"
+                width="25"
+              />
+              <div class="tooltip-info d-flex flex-column gap-md-2">
+                <p class="text-left mb-0">
+                  You Enter the amount <span class="fw-bold">$100</span> in the
+                  spend box and click continue.
+                </p>
+                <p class="fw-bold mb-0">
+                  You will receive full amount paid fees won't be deduced.
+                </p>
               </div>
             </div>
           </div>

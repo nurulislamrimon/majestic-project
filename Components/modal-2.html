@@ -41,15 +41,16 @@
         <div
           class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down modal-lg"
         >
-          <div class="modal-content">
+          <div class="modal-content overflow-hidden">
             <!-- modal header section -->
             <div class="d-flex justify-content-between border-bottom pt-2 px-3">
               <h1
-                class="fs-5 fw-bold payment-method-header-color"
+                class="fs-5 fw-bold payment-modal-title-color"
                 id="paymentMethodsModalLabel"
               >
                 Cashier
               </h1>
+
               <button
                 type="button"
                 class="btn-close"
@@ -57,10 +58,63 @@
                 aria-label="Close"
               ></button>
             </div>
+
+            <!-- amount input & currency select dropdown  -->
+            <section
+              class="d-flex px-4 justify-content-center align-items-center border-bottom"
+            >
+              <input
+                type="number"
+                class="fs-1 ps-3 my-3 border-0 w-75 fw-medium border-start border-2 payment-amount-input"
+                placeholder="$0.00"
+                aria-label="Username"
+                aria-describedby="basic-addon1"
+              />
+              <!-- currency select dropdown -->
+              <div class="dropdown w-25">
+                <button
+                  class="btn w-100 btn-md d-flex align-items-center justify-content-between w-100"
+                  data-bs-toggle="dropdown"
+                >
+                  <span
+                    id="show-selected-currency"
+                    class="d-flex align-items-center gap-2"
+                  ></span>
+                  <img src="../asset/icons/down-arrow.svg" alt="down-arrow" />
+                </button>
+                <ul
+                  id="currencies-container"
+                  class="dropdown-menu currencies-dropdown-element"
+                >
+                  <!-- currencies appended through DOM manupulation -->
+                </ul>
+              </div>
+            </section>
+
+            <!-- payment method cards -->
+
+            <div class="p-2">
+              <div
+                class="overflow-y-scroll overflow-x-hidden payment-methods-container"
+                id="payment-methods-container"
+              >
+                <!-- payment methods appended through DOM manupulation -->
+              </div>
+              <!-- next button -->
+              <button
+                class="btn btn-light border border-primary text-primary w-100 bg-white mt-2"
+                type="button"
+              >
+                Step Next
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <!-- custom js -->
+    <script type="module" src="../script.js"></script>
+
     <!-- bootstrap cdn -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

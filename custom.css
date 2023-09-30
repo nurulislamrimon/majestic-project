@@ -1,3 +1,6 @@
+/* ======================================== */
+/* ========payment modal custom css======== */
+/* ======================================== */
 /* custom fonts */
 @font-face {
   font-family: averta;
@@ -6,74 +9,90 @@
 
 /* variables */
 :root {
-  --header-color: #0e0e6e;
+  --title-color: #0e0e6e;
+  --text-dark-gray: #00000080;
   --bg-light-blue: #cfe2ff;
   --bg-light-green: #1ce8c7;
+  --bg-light-gray: #f2f2f2;
+  --border-light-navy: #0d6efd4d;
+  /* height--------------------- */
+  --modal-height: clamp(500px, 90vh, 640px);
 }
 
-/* custom classes */
+/* ======================================== */
+/* ========custom classes================== */
+/* ======================================== */
+/* ------payment modal main classes -------*/
 .payment-modal * {
   font-family: averta;
 }
+
 .payment-modal .modal-content {
-  height: clamp(500px, 90vh, 640px);
+  height: var(--modal-height);
   max-width: 640px;
   margin-inline: auto;
 }
 
-.payment-method-header-color {
-  color: var(--header-color);
+/*------repeatedly used classes-----*/
+.payment-modal-title-color {
+  color: var(--title-color);
 }
-.payment-method-modal-container {
-  width: 95%;
-  margin: 0 auto;
+.payment-modal-bg-light-green {
+  background: var(--bg-light-green);
 }
-.payment-method-secondary-color {
-  background: #1ce8c7;
+.payment-modal-text-dark-gray {
+  color: var(--text-dark-gray);
 }
-.btn-secondary-color {
-  background-color: var(--bg-light-green);
-}
-
-/* payment select section custom css */
-
-.text-custom-gray {
-  color: rgba(0, 0, 0, 0.5);
-}
-.card-description-text {
+.payment-modal-font-xs {
   font-size: 12px;
 }
-.card-title-text {
-  font-size: 16px;
-}
-.payment-method-modal-custom-radio-input:checked {
+.payment-modal input[type="radio"]:checked {
   background-color: #309e3a;
   border-color: #309e3a;
 }
-.custom-payment-input {
-  font-weight: 700;
-  border: none;
-  border-left: 2px solid rgba(13, 110, 253, 0.3) !important;
-  font-size: 40px !important;
-  padding-left: 10px !important;
-}
-.custom-payment-input::-webkit-inner-spin-button,
-.custom-payment-input::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-.custom-payment-input:focus {
-  outline: none !important;
-}
 
-/* ===search box===== */
-.search_box {
+/* pages designed custom css========= */
+
+/* -----payment modal - country selection / section-1 ------*/
+.country-search-box {
   width: 90%;
 }
 
-.container {
-  width: 95%;
+.payment-modal-countries-container {
+  height: calc(var(--modal-height) - 160px);
 }
+
+.payment-modal-country:hover {
+  background-color: var(--bg-light-gray);
+  cursor: pointer;
+}
+
+/* ------payment modal - select payment methode / section-2 ----- */
+.payment-amount-input {
+  border-color: var(--border-light-navy) !important;
+}
+.payment-amount-input:focus {
+  outline: none;
+}
+.currencies-dropdown-element {
+  min-width: clamp(100px, 100%, 150px) !important;
+  height: 30vh;
+  overflow: auto;
+}
+.payment-methods-container {
+  height: calc(var(--modal-height) - 200px);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.payment-methods-container .payment-logo-container {
+  min-width: 20%;
+}
+.selected-payment-method {
+  box-shadow: 0px 4px 30px 0px #00000017;
+}
+
+/* ------payment modal - {} section----- */
 
 .input_con {
   border-color: rgba(0, 0, 0, 0.1);
@@ -87,12 +106,77 @@
 .custom_color {
   background-color: rgba(207, 226, 255, 0.3);
 }
-
+/*========== payment confirmation section========== */
+.amount-tooltip {
+  width: 30%;
+  right: -35%;
+  top: 90px;
+  border-top: 9px solid orange;
+}
+.amount-tooltip::after {
+  content: "";
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  top: 20px;
+  left: -10px;
+  background-color: white;
+  border-bottom-left-radius: 5px;
+  rotate: 45deg;
+  z-index: -1;
+}
 /* ======================================== */
-/* ========for small device=============== */
+/* ========tab / medium device============= */
 /* ======================================== */
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 850px) {
+  /* confirmation section  */
+  .amount-tooltip {
+    top: unset;
+    left: 5%;
+    width: 90%;
+    bottom: 5%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 5px solid orange;
+    font-size: small;
+    padding: 10px;
+  }
+  .amount-tooltip::after {
+    display: none;
+  }
+}
+/* ======================================== */
+/* ========small device=============== */
+/* ======================================== */
+@media screen and (max-width: 575px) {
   .payment-modal .modal-content {
     height: 100vh;
   }
+
+  .payment-modal-countries-container {
+    height: calc(100vh - 170px);
+  }
+
+  .payment-methods-container {
+    height: calc(100vh - 180px);
+  }
+}
+/* ======================================== */
+/* ==========scrollbar customization======= */
+/* ======================================== */
+
+.payment-modal ::-webkit-scrollbar {
+  width: 5px;
+}
+
+.payment-modal ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.payment-modal ::-webkit-scrollbar-thumb {
+  background: #dbd8d8;
+  border-radius: 10px;
+}
+
+.payment-modal ::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
