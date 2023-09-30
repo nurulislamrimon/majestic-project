@@ -439,7 +439,7 @@ const renderPaymentCards = (availablePaymentMethods) => {
   // set all payment method card to DOM
   availablePaymentMethods?.forEach((paymentMethod) => {
     const newPaymentMethodCard = document.createElement("label");
-    newPaymentMethodCard.classList.add("card", "p-2");
+    newPaymentMethodCard.classList.add("card", "p-3");
     newPaymentMethodCard.setAttribute("for", paymentMethod.value);
     const cardBody = `
   <div class="d-flex justify-content-between align-items-center my-auto   ">

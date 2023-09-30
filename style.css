@@ -66,8 +66,10 @@
   background-color: var(--bg-light-gray);
   cursor: pointer;
 }
+
+/* modal-2 scroll bar padding*/
 .modal-scroll-bar-add {
-  padding-bottom: 134px;
+  padding-bottom: 80px;
 }
 
 /* ------payment modal - select payment methode / section-2 ----- */
@@ -83,17 +85,17 @@
   overflow: auto;
 }
 .payment-methods-container {
-  padding: 39px 11px 20px 13px;
+  padding: 18px 11px 12px 13px;
   height: calc(var(--modal-height) - 200px);
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(auto-fit, minmax(120px, 120px));
+  grid-template-rows: repeat(auto-fit, minmax(100px, 100px));
 
-  gap: 20px;
+  gap: 15px;
 }
 
 .payment-methods-container > label {
-  height: 120px;
+  height: fit-content;
 }
 .payment-methods-container .payment-logo-container {
   min-width: 20%;
