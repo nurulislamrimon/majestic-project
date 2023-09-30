@@ -15,6 +15,8 @@
   --bg-light-green: #1ce8c7;
   --bg-light-gray: #f2f2f2;
   --border-light-navy: #0d6efd4d;
+  /* height--------------------- */
+  --modal-height: clamp(500px, 90vh, 640px);
 }
 
 /* ======================================== */
@@ -26,7 +28,7 @@
 }
 
 .payment-modal .modal-content {
-  height: clamp(500px, 90vh, 640px);
+  height: var(--modal-height);
   max-width: 640px;
   margin-inline: auto;
 }
@@ -50,6 +52,21 @@
 }
 
 /* pages designed custom css========= */
+
+/* -----payment modal - country selection section------*/
+.country-search-box {
+  width: 90%;
+}
+
+.payment-modal-countries-container {
+  height: calc(var(--modal-height) - 160px);
+}
+
+.payment-modal-country:hover {
+  background-color: var(--bg-light-gray);
+  cursor: pointer;
+}
+
 /* ------payment modal - select payment methode section----- */
 .payment-amount-input {
   border-color: var(--border-light-navy) !important;
@@ -63,24 +80,10 @@
   overflow: auto;
 }
 .payment-methods-container {
-  height: calc(clamp(500px, 100vh, 640px) - 200px);
+  height: calc(var(--modal-height) - 200px);
 }
 
 /* ------payment modal - {} section----- */
-
-/* =================country selection section================= */
-.country-search-box {
-  width: 90%;
-}
-
-.payment-modal-countries-container {
-  height: calc(clamp(500px, 90vh, 640px) - 160px);
-}
-
-.payment-modal-country:hover {
-  background-color: var(--bg-light-gray);
-  cursor: pointer;
-}
 
 .input_con {
   border-color: rgba(0, 0, 0, 0.1);
@@ -135,7 +138,7 @@
 /* ======================================== */
 /* ========small device=============== */
 /* ======================================== */
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 575px) {
   .payment-modal .modal-content {
     height: 100vh;
   }
