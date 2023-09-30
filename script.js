@@ -212,6 +212,136 @@ const paymentMethodSupportedCountries = [
     AUD: {
       paymentMethods: ["Visa", "MasterCard", "Apple Pay", "Google Pay"],
     },
+    USD: {
+      paymentMethods: ["Visa", "MasterCard", "Google Pay"],
+    },
+    EUR: {
+      paymentMethods: [
+        "Visa",
+        "MasterCard",
+        "Apple Pay",
+        "Google Pay",
+        "SEPA",
+        "REVOLUT",
+      ],
+    },
+  },
+  {
+    country: "Belgium",
+    EUR: {
+      paymentMethods: [
+        "Visa",
+        "MasterCard",
+        "Apple Pay",
+        "Google Pay",
+        "SEPA",
+        "REVOLUT",
+      ],
+    },
+  },
+  {
+    country: "Belize",
+    BZD: {
+      paymentMethods: ["Visa", "MasterCard"],
+    },
+    USD: {
+      paymentMethods: ["Visa", "MasterCard"],
+    },
+  },
+  {
+    country: "British Virgin Island",
+
+    USD: {
+      paymentMethods: ["Visa", "MasterCard", "Apple Pay", "Google Pay"],
+    },
+  },
+  {
+    country: "Canada",
+
+    USD: {
+      paymentMethods: ["Visa", "MasterCard", "Apple Pay", "Google Pay"],
+    },
+    CAD: {
+      paymentMethods: ["Visa", "MasterCard", "Apple Pay", "Google Pay"],
+    },
+  },
+  {
+    country: "Chile",
+    CLP: {
+      paymentMethods: ["Visa"],
+    },
+    USD: {
+      paymentMethods: [CRC],
+    },
+  },
+  {
+    country: "Colombia",
+    COP: {
+      paymentMethods: ["PSE"],
+    },
+  },
+  {
+    country: "Costa Rica",
+    CRC: {
+      paymentMethods: ["Visa", "MasterCard"],
+    },
+    USD: {
+      paymentMethods: ["Visa", "MasterCard"],
+    },
+  },
+  {
+    country: "Croatia",
+    EUR: {
+      paymentMethods: [
+        "Visa",
+        "MasterCard",
+        "Apple Pay",
+        "Google Pay",
+        "SEPA",
+        "REVOLUT",
+      ],
+    },
+  },
+  {
+    country: "Cyprus",
+    EUR: {
+      paymentMethods: [
+        "Visa",
+        "MasterCard",
+        "Apple Pay",
+        "Google Pay",
+        "SEPA",
+        "REVOLUT",
+      ],
+    },
+  },
+  {
+    country: "Denmark",
+    DKK: {
+      paymentMethods: ["Visa", "MasterCard", "Apple Pay", "Google Pay"],
+    },
+    EUR: {
+      paymentMethods: ["Visa", "MasterCard", "Apple Pay", "Google Pay"],
+    },
+  },
+  {
+    country: "Dominican Republic",
+    DOP: {
+      paymentMethods: ["Visa", "MasterCard"],
+    },
+  },
+  {
+    country: "United Kingdom",
+    GBP: {
+      paymentMethods: [
+        "Visa",
+        "MasterCard",
+        "Apple Pay",
+        "Google Pay",
+        "Faster Payments",
+        "Open Banking",
+      ],
+    },
   },
 ];
 // dom manupulation - payment method selection
