@@ -25,6 +25,9 @@ const confirmOrderPaymentMethodContainer = document.getElementById(
   "confirm-order-payment-method-container"
 );
 const confirmPaymentAmount = document.getElementById("confirm-payment-amount");
+const paymentMethodStepNextBtn = document.getElementById(
+  "payment-method-step-next-btn"
+);
 
 // --------==========variables=========---------
 let activePage = 0;
@@ -326,21 +329,25 @@ const paymentMethodSupportedCountries = [
 // ======active and inactive pages========
 // ====================================================
 const activeNextPage = () => {
-  for (const page of mainContainerPages) {
-    page.classList.add("d-none");
+  if (activePage <= mainContainerPages.length - 1) {
+    activePage++;
+    for (const page of mainContainerPages) {
+      page.classList.add("d-none");
+    }
+    mainContainerPages[activePage - 1].classList.remove("d-none");
   }
-  activePage++;
-  mainContainerPages[activePage - 1].classList.remove("d-none");
 };
 // initially active
 activeNextPage();
 const activePreviousPage = () => {
-  for (const page of mainContainerPages) {
-    page.classList.add("d-none");
+  if (activePage > 0) {
+    for (const page of mainContainerPages) {
+      page.classList.add("d-none");
+    }
+    activePage -= 2;
+    mainContainerPages[activePage].classList.remove("d-none");
+    activePage++;
   }
-  activePage -= 2;
-  mainContainerPages[activePage].classList.remove("d-none");
-  activePage++;
 };
 const handleCloseAllPage = () => {
   activePage = 0;
@@ -355,6 +362,7 @@ const handleSelectedCountry = (country) => {
   selectedCountry = country;
   // render only available payment methods
   handleRenderPaymentMethodCards(selectedCountry.name.common, selectedCurrency);
+  handleRenderConfirmCountryWithFlag();
   activeNextPage();
 };
 
@@ -406,6 +414,8 @@ getFilteredData();
 if (paymentAmountInput) {
   paymentAmountInput.addEventListener("keyup", () => {
     selectedAmount = paymentAmountInput.value;
+    handleRenderConfirmAmount();
+    handleStepNextBtnState();
   });
 }
 // handle selected currency
@@ -444,7 +454,8 @@ const handleSelectedPaymentMethod = (paymentMethod, selectedCard) => {
   });
   selectedCard.classList.add("selected-payment-method");
   selectedPaymentMethod = paymentMethod;
-  console.log(selectedPaymentMethod);
+  handleRenderConfirmPaymentMethod();
+  handleStepNextBtnState();
 };
 
 // get only available payment methods based on country and currency
@@ -512,25 +523,38 @@ const renderPaymentCards = (availablePaymentMethods) => {
 // for initial currency
 handleSelectedCurrency(currencies[0]);
 
+const handleStepNextBtnState = () => {
+  if (selectedAmount > 0 && selectedPaymentMethod.value) {
+    paymentMethodStepNextBtn.removeAttribute("disabled");
+  } else {
+    paymentMethodStepNextBtn.setAttribute("disabled", true);
+  }
+};
+
 // ====================================================
 // ======Review & confirm payment section / p-3========
 // ====================================================
 // selected country render
-if (confirmOrderCountryInfoContainer) {
-  confirmOrderCountryInfoContainer.innerHTML = `
+
+const handleRenderConfirmCountryWithFlag = () => {
+  if (confirmOrderCountryInfoContainer) {
+    confirmOrderCountryInfoContainer.innerHTML = `
   <img src="${selectedCountry?.flags?.svg}" width="30"/>
       <p class="my-auto ">${selectedCountry?.name?.common}</p>`;
-}
-
-//  payment method render
-if (confirmOrderPaymentMethodContainer) {
-  confirmOrderPaymentMethodContainer.innerHTML = `
+  }
+};
+const handleRenderConfirmPaymentMethod = () => {
+  //  payment method render
+  if (confirmOrderPaymentMethodContainer) {
+    confirmOrderPaymentMethodContainer.innerHTML = `
       <img src="../asset/logos/${selectedPaymentMethod.label.toLowerCase()}.svg" alt="${
-    selectedPaymentMethod.label
-  } image" />`;
-}
-
-if (confirmPaymentAmount) {
-  confirmPaymentAmount.innerHTML = `
+      selectedPaymentMethod.label
+    } image" />`;
+  }
+};
+const handleRenderConfirmAmount = () => {
+  if (confirmPaymentAmount) {
+    confirmPaymentAmount.innerHTML = `
     ${selectedAmount}<span class="h6">${selectedCurrency}</span>`;
-}
+  }
+};
