@@ -24,7 +24,7 @@ const confirmOrderPaymentMethodContainer = document.getElementById(
 const confirmPaymentAmount = document.getElementById("confirm-payment-amount");
 
 // --------==========variables=========---------
-let selectedCountry = { name: { common: "Belize" } };
+let selectedCountry = { name: { common: "United State" } };
 let selectedCurrency;
 
 // currencies variable-------------------------->
@@ -464,13 +464,12 @@ const renderPaymentCards = (availablePaymentMethods) => {
       />
     </div>
   `;
-      newPaymentMethodCard.innerHTML = cardBody;
-      newPaymentMethodCard.addEventListener("click", () =>
-        handleSelectedPaymentMethod(paymentMethod, newPaymentMethodCard)
-      );
-      paymentMethodsContainer.appendChild(newPaymentMethodCard);
-    });
-  }
+    newPaymentMethodCard.innerHTML = cardBody;
+    newPaymentMethodCard.addEventListener("click", () =>
+      handleSelectedPaymentMethod(paymentMethod, newPaymentMethodCard)
+    );
+    paymentMethodsContainer.appendChild(newPaymentMethodCard);
+  });
 };
 
 // for initial currency

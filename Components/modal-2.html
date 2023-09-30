@@ -43,7 +43,7 @@
         >
           <div class="modal-content overflow-hidden">
             <!-- modal header section -->
-            <div class="d-flex justify-content-between border-bottom pt-2 px-4">
+            <div class="d-flex justify-content-between border-bottom py-2 px-3">
               <h1
                 class="fs-5 fw-bold payment-modal-title-color"
                 id="paymentMethodsModalLabel"
@@ -65,9 +65,7 @@
             >
               <input
                 type="number"
-                id="payment-amount-input"
-                pattern="[0-9]"
-                class="fs-1 ps-3 my-3 border-0 w-75 fw-medium border-start border-2 payment-amount-input"
+                class="fs-1 ps-3 my-3 border-0 w-75 fw-medium border-start border-2 payment-amount-input fw-bold opacity-50"
                 placeholder="$0.00"
                 aria-label="Username"
                 aria-describedby="basic-addon1"
@@ -97,13 +95,13 @@
 
             <div class="py-2 px-2">
               <div
-                class="overflow-y-scroll overflow-auto payment-methods-container"
+                class="overflow-y-scroll overflow-x-hidden payment-methods-container"
                 id="payment-methods-container"
               >
                 <!-- payment methods appended through DOM manupulation -->
               </div>
               <!-- next button -->
-              <div class="px-3">
+              <div class="mx-3">
                 <button
                   type="button"
                   class="btn btn-outline-primary w-100 py-2"

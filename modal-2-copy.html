@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section class="payment-body">
+        <div
+          class="d-flex px-4 justify-content-center align-items-center border-bottom"
+        >
+          <input
+            type="number"
+            id="payment-amount-input"
+            pattern="[0-9]"
+            class="fs-1 ps-3 my-3 border-0 w-75 fw-medium border-start border-2 payment-amount-input"
+            placeholder="$0.00"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
+          <!-- currency select dropdown -->
+          <div class="dropdown w-25">
+            <button
+              class="btn w-100 btn-md d-flex align-items-center justify-content-between w-100 border border-1"
+              data-bs-toggle="dropdown"
+            >
+              <span
+                id="show-selected-currency"
+                class="d-flex align-items-center gap-2"
+              ></span>
+              <img src="../asset/icons/down-arrow.svg" alt="down-arrow" />
+            </button>
+            <ul
+              id="currencies-container"
+              class="dropdown-menu currencies-dropdown-element"
+            >
+              <!-- currencies appended through DOM manupulation -->
+            </ul>
+          </div>
+        </div>
+
+        <!-- payment method cards -->
+
+        <div class="py-2 px-2">
+          <div
+            class="overflow-y-scroll overflow-x-hidden payment-methods-container"
+            id="payment-methods-container"
+          >
+            <!-- payment methods appended through DOM manupulation -->
+          </div>
+          <!-- next button -->
+         <div class="px-3">
+          <button
+            type="button"
+            class="btn btn-outline-primary w-100 py-2"
+          >
+            Step Next
+          </button>
+        </div>
+      </section>
+</body>
+</html>

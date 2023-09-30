@@ -87,7 +87,7 @@
   height: calc(var(--modal-height) - 200px);
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(auto-fit, minmax(100px, 100px));
+  grid-template-rows: repeat(auto-fill, minmax(100px, 100px));
   gap: 20px;
 }
 .payment-methods-container > label {
@@ -175,6 +175,9 @@
 
   .payment-methods-container {
     height: calc(100vh - 180px);
+  }
+  .payment-methods-container {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 /* ======================================== */
