@@ -53,6 +53,7 @@
                 Cashier
               </h1>
               <button
+                onclick="handleCloseAllPage()"
                 type="button"
                 class="btn btn-close btn-sm"
                 data-bs-dismiss="modal"
@@ -62,7 +63,7 @@
             <!--  ====================================================
                   ====country selection section / p-1 === Start ======
                   ====================================================-->
-            <section class="payment-body overflow-hidden">
+            <section class="payment-modal-body overflow-hidden">
               <div class="px-3">
                 <!-- alert section -->
                 <div
@@ -120,7 +121,7 @@
                   ====================================================-->
 
             <!-- amount input & currency select dropdown  -->
-            <section class="payment-body d-none">
+            <section class="payment-modal-body d-none">
               <div
                 class="d-flex px-4 justify-content-center align-items-center border-bottom"
               >
@@ -179,7 +180,7 @@
             <!--  ====================================================
                   ====confirm payment amount / p-3 === Start ======
                   ====================================================-->
-            <section class="payment-body d-none">
+            <section class="payment-modal-body d-none">
               <!-- ====== centered content start with scroll======= -->
               <div class="h-75 overflow-y-auto">
                 <div
@@ -266,7 +267,7 @@
             <!--  ====================================================
                   ====confirm with coin finalization / p-4 === Start ======
                   ====================================================-->
-            <section class="payment-body d-none">
+            <section class="payment-modal-body d-none">
               <div
                 class="mx-2 mt-2 overflow-auto overflow-md-scroll modal-scroll-bar-add"
               >
