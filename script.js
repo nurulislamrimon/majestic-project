@@ -13,7 +13,7 @@ const paymentMethodsContainer = document.getElementById(
   "payment-methods-container"
 );
 // --------==========variables=========---------
-let selectedCountry = { name: { common: "Belize" } };
+let selectedCountry = { name: { common: "United State" } };
 let selectedCurrency;
 
 // currencies variable-------------------------->
@@ -418,11 +418,11 @@ const renderPaymentCards = (availablePaymentMethods) => {
   // set all payment method card to DOM
   availablePaymentMethods?.forEach((paymentMethod) => {
     const newPaymentMethodCard = document.createElement("label");
-    newPaymentMethodCard.classList.add("card", "p-2");
+    newPaymentMethodCard.classList.add("card", "p-3");
     newPaymentMethodCard.setAttribute("for", paymentMethod.value);
     const cardBody = `
-  <div class="d-flex justify-content-between align-items-center my-auto   ">
-      <div class="d-flex align-items-center gap-1 ">
+  <div class="d-flex justify-content-between align-items-center my-auto">
+      <div class="d-flex align-items-center">
       <div class="payment-logo-container">
         <img
         class="img-fluid d-block mx-auto"
@@ -431,7 +431,7 @@ const renderPaymentCards = (availablePaymentMethods) => {
         />
         </div>
         <div>
-          <h6 class="card-title fs-6">${paymentMethod.label}</h6>
+          <h6 class="card-title fs-6 ">${paymentMethod.label}</h6>
           ${paymentMethod.description}
         </div>
       </div>

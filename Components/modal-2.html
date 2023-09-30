@@ -43,7 +43,7 @@
         >
           <div class="modal-content overflow-hidden">
             <!-- modal header section -->
-            <div class="d-flex justify-content-between border-bottom pt-2 px-3">
+            <div class="d-flex justify-content-between border-bottom pt-2 px-4">
               <h1
                 class="fs-5 fw-bold payment-modal-title-color"
                 id="paymentMethodsModalLabel"
@@ -53,7 +53,7 @@
 
               <button
                 type="button"
-                class="btn-close"
+                class="btn-close btn-sm"
                 data-bs-dismiss="modal"
                 aria-label="Close"
               ></button>
@@ -61,11 +61,11 @@
 
             <!-- amount input & currency select dropdown  -->
             <section
-              class="d-flex px-4 justify-content-center align-items-center border-bottom"
+              class="d-flex px-4 justify-content-center align-items-center border-bottom px-4"
             >
               <input
                 type="number"
-                class="fs-1 ps-3 my-3 border-0 w-75 fw-medium border-start border-2 payment-amount-input"
+                class="fs-1 ps-3 my-3 border-0 w-75 fw-medium border-start border-2 payment-amount-input fw-bold opacity-50"
                 placeholder="$0.00"
                 aria-label="Username"
                 aria-describedby="basic-addon1"
@@ -93,20 +93,22 @@
 
             <!-- payment method cards -->
 
-            <div class="p-2">
+            <div class="py-2 px-2">
               <div
-                class="overflow-y-scroll overflow-x-hidden payment-methods-container"
+                class="overflow-y-scroll overflow-auto payment-methods-container"
                 id="payment-methods-container"
               >
                 <!-- payment methods appended through DOM manupulation -->
               </div>
               <!-- next button -->
-              <button
-                class="btn btn-light border border-primary text-primary w-100 bg-white mt-2"
-                type="button"
-              >
-                Step Next
-              </button>
+              <div class="px-3">
+                <button
+                  type="button"
+                  class="btn btn-outline-primary w-100 py-2"
+                >
+                  Step Next
+                </button>
+              </div>
             </div>
           </div>
         </div>
