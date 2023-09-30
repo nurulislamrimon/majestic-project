@@ -137,7 +137,7 @@
 }
 
 .modal-review-oreder-content-custom-height{
-  height: 90% !important;
+  height: 100% !important;
 }
 
 /* ======================================== */
@@ -183,6 +183,7 @@
   .modal-3-bottom-button-custom-style{
     display: flex !important;
     flex-direction:column-reverse !important;
+  }
   .payment-methods-container {
     grid-template-columns: 1fr;
   }
@@ -206,5 +207,4 @@
 
 .payment-modal ::-webkit-scrollbar-thumb:hover {
   background: #555;
-}
 }
