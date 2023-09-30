@@ -13,7 +13,7 @@ const paymentMethodsContainer = document.getElementById(
   "payment-methods-container"
 );
 // --------==========variables=========---------
-let selectedCountry = { name: { common: "Belize" } };
+let selectedCountry = { name: { common: "United State" } };
 let selectedCurrency;
 
 // currencies variable-------------------------->
