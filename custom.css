@@ -50,7 +50,7 @@
 }
 
 /* pages designed custom css========= */
-/* ------payment modal payment input page----- */
+/* ------payment modal - select payment methode section----- */
 .payment-amount-input {
   border-color: var(--border-light-navy) !important;
 }
@@ -62,13 +62,19 @@
   height: 30vh;
   overflow: auto;
 }
+.payment-methods-container {
+  height: calc(clamp(500px, 100vh, 640px) - 200px);
+}
+
+/* ------payment modal - {} section----- */
+
 /* =================country selection section================= */
 .country-search-box {
   width: 90%;
 }
 
 .payment-modal-countries-container {
-  height: calc(clamp(500px, 90vh, 640px) - 170px);
+  height: calc(clamp(500px, 90vh, 640px) - 160px);
 }
 
 .payment-modal-country:hover {
@@ -135,6 +141,10 @@
 
   .payment-modal-countries-container {
     height: calc(100vh - 170px);
+  }
+
+  .payment-methods-container {
+    height: calc(100vh - 180px);
   }
 }
 /* ======================================== */
