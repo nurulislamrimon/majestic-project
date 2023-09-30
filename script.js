@@ -406,7 +406,6 @@ getFilteredData();
 if (paymentAmountInput) {
   paymentAmountInput.addEventListener("keyup", () => {
     selectedAmount = paymentAmountInput.value;
-    handleRenderConfirmAmount();
   });
 }
 // handle selected currency
@@ -471,13 +470,14 @@ const handleRenderPaymentMethodCards = (selectedCountry, selectedCurrency) => {
 };
 // render payment method cards
 const renderPaymentCards = (availablePaymentMethods) => {
-  paymentMethodsContainer.innerHTML = "";
-  // set all payment method card to DOM
-  availablePaymentMethods?.forEach((paymentMethod) => {
-    const newPaymentMethodCard = document.createElement("label");
-    newPaymentMethodCard.classList.add("card", "p-2");
-    newPaymentMethodCard.setAttribute("for", paymentMethod.value);
-    const cardBody = `
+  if (paymentMethodsContainer) {
+    paymentMethodsContainer.innerHTML = "";
+    // set all payment method card to DOM
+    availablePaymentMethods?.forEach((paymentMethod) => {
+      const newPaymentMethodCard = document.createElement("label");
+      newPaymentMethodCard.classList.add("card", "p-2");
+      newPaymentMethodCard.setAttribute("for", paymentMethod.value);
+      const cardBody = `
   <div class="d-flex justify-content-between align-items-center my-auto   ">
       <div class="d-flex align-items-center gap-1 ">
       <div class="payment-logo-container">
@@ -488,7 +488,7 @@ const renderPaymentCards = (availablePaymentMethods) => {
         />
         </div>
         <div>
-          <h6 class="card-title fs-6 ">${paymentMethod.label}</h6>
+          <h6 class="card-title fs-6">${paymentMethod.label}</h6>
           ${paymentMethod.description}
         </div>
       </div>
@@ -500,12 +500,13 @@ const renderPaymentCards = (availablePaymentMethods) => {
       />
     </div>
   `;
-    newPaymentMethodCard.innerHTML = cardBody;
-    newPaymentMethodCard.addEventListener("click", () =>
-      handleSelectedPaymentMethod(paymentMethod, newPaymentMethodCard)
-    );
-    paymentMethodsContainer.appendChild(newPaymentMethodCard);
-  });
+      newPaymentMethodCard.innerHTML = cardBody;
+      newPaymentMethodCard.addEventListener("click", () =>
+        handleSelectedPaymentMethod(paymentMethod, newPaymentMethodCard)
+      );
+      paymentMethodsContainer.appendChild(newPaymentMethodCard);
+    });
+  }
 };
 
 // for initial currency
@@ -528,9 +529,8 @@ if (confirmOrderPaymentMethodContainer) {
     selectedPaymentMethod.label
   } image" />`;
 }
-const handleRenderConfirmAmount = () => {
-  if (confirmPaymentAmount) {
-    confirmPaymentAmount.innerHTML = `
+
+if (confirmPaymentAmount) {
+  confirmPaymentAmount.innerHTML = `
     ${selectedAmount}<span class="h6">${selectedCurrency}</span>`;
-  }
-};
+}
