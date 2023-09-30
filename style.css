@@ -201,3 +201,13 @@
 .payment-modal ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+/* ======================================== */
+/* ==========number type arrow remove======= */
+/* ======================================== */
+.payment-modal [type="number"]::-webkit-inner-spin-button,
+.payment-modal [type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  display: none;
+}
