@@ -1,5 +1,5 @@
-let selectedCountry = "united state";
-let selectedCurrency = "USD";
+let selectedCountry = "Australia";
+let selectedCurrency = "AUD";
 // ====================================================
 // ======country selection sectionsection / p-1========
 // ====================================================
@@ -154,8 +154,6 @@ const paymentMethods = [
     label: "Visa",
     value: "visa",
     description: paymentMethodsDescription.idPassportRequired,
-    supportedCountries: ["argentina", "australia"],
-    supportedCurrencies: ["usd"],
   },
   {
     label: "Mastercard",
@@ -208,6 +206,14 @@ const paymentMethods = [
     description: paymentMethodsDescription.idPassportRequired,
   },
 ];
+const paymentMethodSupportedCountries = [
+  {
+    country: "Australia",
+    AUD: {
+      paymentMethods: ["Visa", "MasterCard", "Apple Pay", "Google Pay"],
+    },
+  },
+];
 // dom manupulation - payment method selection
 const paymentMethodsContainer = document.getElementById(
   "payment-methods-container"
@@ -256,3 +262,8 @@ paymentMethods.forEach((paymentMethod) => {
   );
   paymentMethodsContainer.appendChild(newPaymentMethodCard);
 });
+const availablePaymentMethods = paymentMethodSupportedCountries.find(
+  (method) => method.country === selectedCountry && method[selectedCurrency]
+);
+
+console.log(availablePaymentMethods[selectedCurrency].paymentMethods);
