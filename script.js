@@ -547,9 +547,9 @@ const handleRenderConfirmPaymentMethod = () => {
   //  payment method render
   if (confirmOrderPaymentMethodContainer) {
     confirmOrderPaymentMethodContainer.innerHTML = `
-      <img src="../asset/logos/${selectedPaymentMethod.label.toLowerCase()}.svg" alt="${
+      <img src="../asset/logos/${selectedPaymentMethod.value.toLowerCase()}.svg" alt="${
       selectedPaymentMethod.label
-    } image" />`;
+    } image" /> &nbsp; <span>${selectedPaymentMethod.label}</span>`;
   }
 };
 const handleRenderConfirmAmount = () => {

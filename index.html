@@ -183,10 +183,12 @@
             <!--  ====================================================
                   ====confirm payment amount / p-3 === Start ======
                   ====================================================-->
-              <section class="payment-modal-body  ">
+            <section class="payment-modal-body">
               <!-- ====== centered content start with scroll======= -->
-              <div class="overflow-y-auto modal-review-oreder-content-custom-height  ">
-                <div 
+              <div
+                class="overflow-y-auto modal-review-oreder-content-custom-height"
+              >
+                <div
                   class="alert payment-modal alert-warning alert-dismissible fade show p-1 mx-3 d-flex justify-content-between align-items-center px-3"
                   role="alert"
                 >
@@ -211,9 +213,7 @@
                 </div>
                 <div class="ms-3 me-3 mt-3">
                   <!-- <div class="h-75 overflow-scroll "> -->
-                  <div
-                    class="text-center my-3"
-                  >
+                  <div class="text-center my-3">
                     <p class="h3">Review Top Up Order</p>
                   </div>
                   <div
@@ -226,7 +226,7 @@
                     <hr class="w-75" />
                   </div>
                   <div class="text-center">
-                    <h1 class=" fw-bold" id="confirm-payment-amount"></h1>
+                    <h1 class="fw-bold" id="confirm-payment-amount"></h1>
                   </div>
                   <div class="d-flex justify-content-center">
                     <hr class="w-75" />
@@ -246,15 +246,17 @@
 
               <!-- ====== Bottom button start========= -->
               <div
-                class=" modal-3-bottom-button-custom-style d-flex flex-column d-lg-flex flex-lg-row flex-md-row flex-sm-column-reverse gap-3 w-75 mx-auto position-absolute bottom-0 end-0 start-0 mb-3"
+                class="modal-3-bottom-button-custom-style d-flex flex-column d-lg-flex flex-lg-row flex-md-row flex-sm-column-reverse gap-3 w-75 mx-auto position-absolute bottom-0 end-0 start-0 mb-3"
               >
                 <button
-                  class="btn text-secondary  btn-outline-secondary bg-white w-100 py-2"
+                  class="btn text-secondary btn-outline-secondary bg-white w-100 py-2"
                   type="button"
+                  onclick="activePreviousPage()"
                 >
                   Back
                 </button>
                 <button
+                  onclick="activeNextPage()"
                   class="btn mt-lg-0 mt-md-0 mt-3 text-white btn-primary w-100"
                   type="button"
                 >
