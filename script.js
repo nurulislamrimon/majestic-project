@@ -3,7 +3,9 @@
 const mainContainerPages =
   document.getElementsByClassName("payment-modal-body");
 // Payment modal - country selection / p -1
-const searchBox = document.getElementById("payment-modal-search-country-input");
+const countryInput = document.getElementById(
+  "payment-modal-search-country-input"
+);
 const countriesContainer = document.getElementById(
   "payment-modal-countries-container"
 );
@@ -28,9 +30,11 @@ const confirmPaymentAmount = document.getElementById("confirm-payment-amount");
 const paymentMethodStepNextBtn = document.getElementById(
   "payment-method-step-next-btn"
 );
-
+const spinnerContainer = document.getElementById(
+  "payment-modal-spinner-container"
+);
 // --------==========variables=========---------
-let activePage = 1;
+let activePage = 0;
 let selectedCountry = {
   name: { common: "United States" },
   flags: { svg: "https://flagcdn.com/usa.svg" },
@@ -348,7 +352,17 @@ const paymentMethodSupportedCountries = [
 // ====================================================
 // ======active and inactive pages========
 // ====================================================
+const handleSpinnerActivity = () => {
+  spinnerContainer.classList.remove("d-none");
+  spinnerContainer.classList.add("d-block");
+  const spinnerTimeout = setTimeout(() => {
+    spinnerContainer.classList.remove("d-block");
+    spinnerContainer.classList.add("d-none");
+    clearTimeout(spinnerTimeout);
+  }, 500);
+};
 const activeNextPage = () => {
+  handleSpinnerActivity();
   if (activePage <= mainContainerPages.length - 1) {
     activePage++;
     for (const page of mainContainerPages) {
@@ -357,9 +371,8 @@ const activeNextPage = () => {
     mainContainerPages[activePage - 1].classList.remove("d-none");
   }
 };
-// initially active
-activeNextPage();
 const activePreviousPage = () => {
+  handleSpinnerActivity();
   if (activePage > 0) {
     for (const page of mainContainerPages) {
       page.classList.add("d-none");
@@ -369,10 +382,26 @@ const activePreviousPage = () => {
     activePage++;
   }
 };
+// close and clear all state
+const clearAllSession = () => {
+  activePage = 0;
+  selectedCountry = {
+    name: { common: "United States" },
+    flags: { svg: "https://flagcdn.com/usa.svg" },
+  };
+  selectedCurrency = "USD";
+  selectedAmount = 0;
+  selectedPaymentMethod = { label: "Visa" };
+  paymentAmountInput.value = "";
+  countryInput.value = "";
+};
 const handleCloseAllPage = () => {
   activePage = 0;
   handleSelectedCurrency({ label: "USD", value: "usd" });
   activeNextPage();
+  clearAllSession();
+  getFilteredData();
+  handleStepNextBtnState();
 };
 // ====================================================
 // ======country selection section / p-1========
@@ -386,12 +415,9 @@ const handleSelectedCountry = (country) => {
   activeNextPage();
 };
 
-searchBox?.addEventListener("keyup", function (event) {
+countryInput?.addEventListener("keyup", function (event) {
   const searchKey = event.target.value;
-  const inte = setInterval(() => {
-    getFilteredData(searchKey);
-    clearInterval(inte);
-  }, 500);
+  getFilteredData(searchKey);
 });
 
 const getFilteredData = (searchKey) => {
@@ -516,7 +542,6 @@ const renderPaymentCards = (availablePaymentMethods) => {
       <div class="d-flex align-items-center gap-1 w-75">
         <div class="w-25 d-flex justify-content-center ">
           <img
-          class="img-fluid"
             src="../asset/logos/${paymentMethod.value}.svg"
             alt="${paymentMethod.label} Image"
             height="40"

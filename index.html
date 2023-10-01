@@ -24,6 +24,7 @@
         class="btn btn-primary"
         data-bs-toggle="modal"
         data-bs-target="#paymentModal"
+        onclick="activeNextPage()"
       >
         Go to the payment option
       </button>
@@ -59,6 +60,14 @@
                 data-bs-dismiss="modal"
                 aria-label="Close"
               ></button>
+            </div>
+            <div
+              class="h-100 w-100 position-absolute bg-white z-1 d-flex justify-content-center align-items-center rounded-3 d-none"
+              id="payment-modal-spinner-container"
+            >
+              <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
             </div>
             <!--  ====================================================
                   ====country selection section / p-1 === Start ======
@@ -130,7 +139,7 @@
                   id="payment-amount-input"
                   pattern="[0-9]"
                   class="fs-1 ps-3 my-3 ms-3 border-0 w-75 fw-medium border-start border-2 payment-amount-input fw-bold"
-                  placeholder="$0.00"
+                  placeholder="0.00"
                   aria-label="Username"
                   aria-describedby="basic-addon1"
                 />
@@ -154,7 +163,7 @@
                   </ul>
                 </div>
               </div>
-              <hr class="my-0 bg-light payment-modal-input-bottom-hr" />
+              <hr class="my-0 bg-light" />
 
               <!-- payment method cards -->
 
@@ -165,7 +174,7 @@
                 <!-- payment methods appended through DOM manupulation -->
               </div>
               <!-- next button -->
-              <div class="mx-4 mb-3">
+              <div class="mx-4 mb-3 mt-auto">
                 <button
                   onclick="activeNextPage()"
                   class="btn btn-primary w-100"
@@ -239,7 +248,7 @@
                 class="d-flex flex-column-reverse flex-lg-row gap-3 w-75 mx-auto my-lg-4 mt-auto mb-2"
               >
                 <button
-                  class="btn text-secondary btn-outline-secondary bg-white w-100 py-2"
+                  class="btn text-secondary btn-outline-secondary bg-white w-100 py-2 small-device-border-remove"
                   type="button"
                   onclick="activePreviousPage()"
                 >
@@ -352,7 +361,7 @@
                     </button>
                   </div>
                   <div
-                    class="d-flex justify-content-center align-content-center gap-3 mt-4"
+                    class="d-flex justify-content-center align-content-center gap-3 my-4"
                   >
                     <img src="../asset/logos/masterCard.svg" alt="masterCard" />
                     <img src="../asset/logos/visa.svg" alt="visa" />
