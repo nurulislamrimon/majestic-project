@@ -30,7 +30,7 @@ const paymentMethodStepNextBtn = document.getElementById(
 );
 
 // --------==========variables=========---------
-let activePage = 0;
+let activePage = 1;
 let selectedCountry = {
   name: { common: "United States" },
   flags: { svg: "https://flagcdn.com/usa.svg" },

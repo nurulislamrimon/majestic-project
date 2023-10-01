@@ -159,23 +159,21 @@
 
               <div class="mx-2">
                 <div
-                  class="overflow-y-scroll overflow-x-hidden payment-methods-container"
+                  class="overflow-y-auto overflow-x-hidden payment-methods-container"
                   id="payment-methods-container"
                 >
                   <!-- payment methods appended through DOM manupulation -->
                 </div>
                 <!-- next button -->
-                <div class="mx-2">
-                  <button
-                    onclick="activeNextPage()"
-                    class="btn btn-primary w-100 mt-2"
-                    type="button"
-                    id="payment-method-step-next-btn"
-                    disabled
-                  >
-                    Step Next
-                  </button>
-                </div>
+                <button
+                  onclick="activeNextPage()"
+                  class="btn btn-primary w-100 my-2 mx-auto"
+                  type="button"
+                  id="payment-method-step-next-btn"
+                  disabled
+                >
+                  Step Next
+                </button>
               </div>
             </section>
             <!--  ====================================================
@@ -185,11 +183,9 @@
             <!--  ====================================================
                   ====confirm payment amount / p-3 === Start ======
                   ====================================================-->
-            <section class="payment-modal-body">
-              <!-- ====== centered content start with scroll======= -->
-              <div
-                class="overflow-y-auto modal-review-oreder-content-custom-height"
-              >
+            <section class="payment-modal-body d-flex flex-column flex-grow-1">
+              <div class="overflow-y-auto">
+                <!-- notice toast -->
                 <div
                   class="alert payment-modal alert-warning alert-dismissible fade show p-1 mx-3 d-flex justify-content-between align-items-center px-3 mt-2"
                   role="alert"
@@ -205,7 +201,7 @@
                   >
                     <button
                       type="button"
-                      class="btn btn-sm"
+                      class="btn btn-md"
                       data-bs-dismiss="alert"
                       aria-label="Close"
                     >
@@ -213,29 +209,23 @@
                     </button>
                   </span>
                 </div>
-                <div class="ms-3 me-3 mt-3">
-                  <!-- <div class="h-75 overflow-scroll "> -->
-                  <div class="text-center my-3">
-                    <p class="h3">Review Top Up Order</p>
-                  </div>
+                <!-- review topup order section -->
+                <div class="m-3">
+                  <p class="h3 text-center my-3">Review Top Up Order</p>
                   <div
                     class="d-flex align-items-center justify-content-center gap-2"
                     id="confirm-order-country-info-container"
                   >
                     <!-- country flag and country name rendered through DOM manipulation -->
                   </div>
-                  <div class="d-flex justify-content-center">
-                    <hr class="w-75" />
-                  </div>
-                  <div class="text-center">
-                    <h1 class="fw-bold" id="confirm-payment-amount"></h1>
-                  </div>
-                  <div class="d-flex justify-content-center">
-                    <hr class="w-75" />
-                  </div>
-                  <div class="text-center">
-                    <p class="h6 payment_method opacity-50">Payment Method</p>
-                  </div>
+                  <hr class="w-75 mx-auto" />
+                  <h1 class="fw-bold text-center" id="confirm-payment-amount">
+                    <!-- ==Payment amount will append through DOM manupulation== -->
+                  </h1>
+                  <hr class="w-75 mx-auto" />
+                  <p class="h6 payment_method opacity-50 text-center">
+                    Payment Method
+                  </p>
                   <div
                     class="mt-1 mb-5 d-flex justify-content-center align-items-center"
                     id="confirm-order-payment-method-container"
@@ -244,11 +234,9 @@
                   </div>
                 </div>
               </div>
-              <!-- ======= centered content end ======= -->
-
-              <!-- ====== Bottom button start========= -->
+              <!----- Bottom button start----- -->
               <div
-                class="modal-3-bottom-button-custom-style d-flex flex-column d-lg-flex flex-lg-row flex-md-row flex-sm-column-reverse gap-3 w-75 mx-auto position-absolute bottom-0 end-0 start-0 mb-3"
+                class="d-flex flex-column-reverse flex-lg-row gap-3 w-75 mx-auto my-lg-4 mt-auto mb-2"
               >
                 <button
                   class="btn text-secondary btn-outline-secondary bg-white w-100 py-2"
@@ -265,7 +253,7 @@
                   Pay now
                 </button>
               </div>
-              <!-- ====== Bottom button end ======= -->
+              <!------ Bottom button end----->
             </section>
             <!--  ====================================================
                   ====confirm payment amount / p-3 === End ======
@@ -275,7 +263,7 @@
                   ====confirm with coin finalization / p-4 === Start ======
                   ====================================================-->
             <section
-              class="payment-modal-body overflow-auto overflow-y-scroll modal-scroll-bar-add d-none"
+              class="payment-modal-body overflow-y-auto modal-scroll-bar-add d-none"
             >
               <div class="mx-2 mt-2">
                 <div class="px-3">
@@ -355,7 +343,7 @@
                     <span class="opacity-50">You receive in Fiat -</span>
                     <span class="text-dark fw-bold">0 USD</span>
                   </p>
-                  <div class="d-grid g-2">
+                  <div class="d-grid g-2 mt-5">
                     <button
                       class="p-2 payment-modal-bg-light-green border-0 rounded-2"
                       type="button"
@@ -366,10 +354,10 @@
                   <div
                     class="d-flex justify-content-center align-content-center gap-3 mt-4"
                   >
-                    <img src="../asset/logos/masterCard.svg" alt="" />
-                    <img src="../asset/logos/visa.svg" alt="" />
-                    <img src="../asset/logos/applePay.svg" alt="" />
-                    <img src="../asset/logos/googlePay.svg" alt="" />
+                    <img src="../asset/logos/masterCard.svg" alt="masterCard" />
+                    <img src="../asset/logos/visa.svg" alt="visa" />
+                    <img src="../asset/logos/applePay.svg" alt="applePay" />
+                    <img src="../asset/logos/googlePay.svg" alt="googlePay" />
                   </div>
                 </div>
               </div>
@@ -377,7 +365,7 @@
               <!-- ===========tooltip========== -->
 
               <div
-                class="amount-tooltip position-absolute rounded-3 bg-white text-md-center d-flex flex-sm-column align-items-center p-sm-1"
+                class="amount-tooltip position-absolute rounded-3 bg-white text-center d-flex flex-column align-items-center p-1 mb-1"
               >
                 <img
                   src="../asset/icons/question-mark.svg"
@@ -385,12 +373,12 @@
                   height="25"
                   width="25"
                 />
-                <div class="tooltip-info d-flex flex-column gap-md-2 mb-md-4">
-                  <p class="text-left mb-0">
+                <div class="tooltip-info d-flex flex-column gap-lg-2">
+                  <p class="text-left m-0">
                     You Enter the amount <span class="fw-bold">$100</span> in
                     the spend box and click continue.
                   </p>
-                  <p class="fw-bold mb-0">
+                  <p class="fw-bold m-0">
                     You will receive full amount paid fees won't be deduced.
                   </p>
                 </div>
