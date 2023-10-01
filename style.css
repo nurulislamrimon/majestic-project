@@ -9,16 +9,18 @@
 
 /* variables */
 :root {
-  --title-color: #0e0e6e;
-  --text-dark-gray: #00000080;
-  --bg-light-blue: #cfe2ff;
-  --bg-light-green: #1ce8c7;
-  --bg-light-gray: #f2f2f2;
-  --border-light-navy: #0d6efd4d;
+  --royal-blue: #0e0e6e;
+  --dark-gray: #00000080;
+  --medium-gray: #cac5c5;
+  --light-green: #1ce8c7;
+  --light-gray: #f2f2f2;
+  --light-navy: #0d6efd4d;
   /* height--------------------- */
   --modal-height: clamp(500px, 90vh, 640px);
   --modal-min-height: 300px;
   --modal-max-height: 90vh;
+  /* scrollbar--------------------- */
+  --scrollbar-width: 5px;
 }
 
 /* ======================================== */
@@ -30,8 +32,6 @@
 }
 
 .payment-modal .modal-content {
-  /* height: var(--modal-height);
-   */
   min-height: var(--modal-min-height);
   max-height: var(--modal-max-height);
   height: fit-content;
@@ -41,13 +41,13 @@
 
 /*------repeatedly used classes-----*/
 .payment-modal-title-color {
-  color: var(--title-color);
+  color: var(--royal-blue);
 }
 .payment-modal-bg-light-green {
-  background: var(--bg-light-green);
+  background: var(--light-green);
 }
 .payment-modal-text-dark-gray {
-  color: var(--text-dark-gray);
+  color: var(--dark-gray);
 }
 .payment-modal-font-xs {
   font-size: 12px;
@@ -56,31 +56,31 @@
   background-color: #309e3a;
   border-color: #309e3a;
 }
-
-/* pages designed custom css========= */
-
+/* ===================================================== */
+/*=================== pages designed custom css========= */
+/* ===================================================== */
 /* -----payment modal - country selection / section-1 ------*/
 .country-search-box {
   width: 90%;
 }
 
+.country-search-icon {
+  border-color: rgba(0, 0, 0, 0.1);
+  height: 40px;
+}
+
 .payment-modal-countries-container {
-  height: calc(var(--modal-height) - 160px);
+  height: calc(var(--modal-max-height) - 160px);
 }
 
 .payment-modal-country:hover {
-  background-color: var(--bg-light-gray);
+  background-color: var(--light-gray);
   cursor: pointer;
 }
 
-/* modal-2 scroll bar padding*/
-.modal-scroll-bar-add {
-  padding-bottom: 90px;
-}
-
-/* ------payment modal - select payment methode / section-2 ----- */
+/* ------payment modal - select payment method / section-2 ----- */
 .payment-amount-input {
-  border-color: var(--border-light-navy) !important;
+  border-color: var(--light-navy) !important;
 }
 .payment-amount-input:focus {
   outline: none;
@@ -90,41 +90,30 @@
   height: 30vh;
   overflow: auto;
 }
-.payment-methods-container {
-  padding: 18px 11px 12px 13px;
-  height: calc(var(--modal-height) - 200px);
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(auto-fit, minmax(100px, 100px));
-
-  gap: 15px;
+.payment-modal-input-bottom-hr {
+  width: 93%;
+  margin-inline: auto;
+}
+.payment-method-cards-container {
+  padding: 24px;
+  min-height: 200px;
+  max-height: calc(var(--modal-max-height) - 200px);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-.payment-methods-container > label {
+.payment-method-cards-container > label {
+  flex-basis: 49%;
+  margin-bottom: 2%;
   height: fit-content;
-}
-.payment-methods-container .payment-logo-container {
-  min-width: 20%;
 }
 .selected-payment-method {
   box-shadow: 0px 4px 30px 0px #00000017;
 }
+/* ------payment modal - view top up order / section-3 ----- */
 
-/* ------payment modal - {} section----- */
-
-.input_con {
-  border-color: rgba(0, 0, 0, 0.1);
-  height: 40px;
-}
-.payment-method-modal-alerts {
-  margin-top: 15px;
-  background: rgba(207, 226, 255, 0.3);
-  border: 1px solid #cfe2ff;
-}
-.custom_color {
-  background-color: rgba(207, 226, 255, 0.3);
-}
-/*========== payment confirmation section========== */
+/* ------payment modal - confirm amount / section-4 ----- */
 .amount-tooltip {
   width: 30%;
   right: -35%;
@@ -142,6 +131,10 @@
   border-bottom-left-radius: 5px;
   rotate: 45deg;
   z-index: -1;
+}
+/* modal-4 scroll padding*/
+.xtra-padding-at-bottom {
+  padding-bottom: 90px;
 }
 
 /* ======================================== */
@@ -161,6 +154,9 @@
   .amount-tooltip::after {
     display: none;
   }
+  .payment-method-cards-container > label {
+    flex-basis: 100%;
+  }
 }
 /* ======================================== */
 /* ========small device=============== */
@@ -174,11 +170,8 @@
     height: calc(100vh - 170px);
   }
 
-  .payment-methods-container {
-    height: calc(100vh - 180px);
-  }
-  .payment-methods-container {
-    grid-template-columns: 1fr;
+  .payment-method-cards-container {
+    max-height: calc(100vh - 175px);
   }
 }
 /* ======================================== */
@@ -186,20 +179,16 @@
 /* ======================================== */
 
 .payment-modal ::-webkit-scrollbar {
-  width: 5px;
+  width: var(--scrollbar-width);
 }
 
 .payment-modal ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--light-gray);
 }
 
 .payment-modal ::-webkit-scrollbar-thumb {
-  background: #dbd8d8;
+  background: var(--medium-gray);
   border-radius: 10px;
-}
-
-.payment-modal ::-webkit-scrollbar-thumb:hover {
-  background: #555;
 }
 
 /* ======================================== */

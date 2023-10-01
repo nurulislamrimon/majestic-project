@@ -88,7 +88,7 @@
                 <h4 class="fs-6">Select Country</h4>
 
                 <label
-                  class="d-flex align-items-center w-100 border input_con ps-2 rounded-1 mb-2"
+                  class="d-flex align-items-center w-100 border country-search-icon ps-2 rounded-1 mb-2"
                 >
                   <span class="ms-2">
                     <img
@@ -121,15 +121,15 @@
                   ====================================================-->
 
             <!-- amount input & currency select dropdown  -->
-            <section class="payment-modal-body d-none">
+            <section class="payment-modal-body overflow-hidden d-none">
               <div
-                class="d-flex px-4 justify-content-center align-items-center border-bottom"
+                class="d-flex px-4 justify-content-center align-items-center"
               >
                 <input
                   type="number"
                   id="payment-amount-input"
                   pattern="[0-9]"
-                  class="fs-1 ps-3 my-3 border-0 w-75 fw-medium border-start border-2 payment-amount-input fw-bold"
+                  class="fs-1 ps-3 my-3 ms-3 border-0 w-75 fw-medium border-start border-2 payment-amount-input fw-bold"
                   placeholder="$0.00"
                   aria-label="Username"
                   aria-describedby="basic-addon1"
@@ -154,20 +154,21 @@
                   </ul>
                 </div>
               </div>
+              <hr class="my-0 bg-light payment-modal-input-bottom-hr" />
 
               <!-- payment method cards -->
 
-              <div class="mx-2">
-                <div
-                  class="overflow-y-auto overflow-x-hidden payment-methods-container"
-                  id="payment-methods-container"
-                >
-                  <!-- payment methods appended through DOM manupulation -->
-                </div>
-                <!-- next button -->
+              <div
+                class="overflow-y-auto overflow-x-hidden payment-method-cards-container"
+                id="payment-method-cards-container"
+              >
+                <!-- payment methods appended through DOM manupulation -->
+              </div>
+              <!-- next button -->
+              <div class="mx-4 mb-3">
                 <button
                   onclick="activeNextPage()"
-                  class="btn btn-primary w-100 my-2 mx-auto"
+                  class="btn btn-primary w-100"
                   type="button"
                   id="payment-method-step-next-btn"
                   disabled
@@ -183,7 +184,9 @@
             <!--  ====================================================
                   ====confirm payment amount / p-3 === Start ======
                   ====================================================-->
-            <section class="payment-modal-body d-flex flex-column flex-grow-1">
+            <section
+              class="payment-modal-body d-flex flex-column flex-grow-1 overflow-hidden"
+            >
               <div class="overflow-y-auto">
                 <!-- notice toast -->
                 <div
@@ -196,18 +199,15 @@
                     transactions will be automatically approved in about 15
                     minute after successful payment.
                   </span>
-                  <span
-                    class="border rounded-circle ms-2 bg-warning bg-opacity-25"
+
+                  <button
+                    type="button"
+                    class="border rounded-circle ms-2 bg-warning opacity-75"
+                    data-bs-dismiss="alert"
+                    aria-label="Close"
                   >
-                    <button
-                      type="button"
-                      class="btn btn-md"
-                      data-bs-dismiss="alert"
-                      aria-label="Close"
-                    >
-                      X
-                    </button>
-                  </span>
+                    X
+                  </button>
                 </div>
                 <!-- review topup order section -->
                 <div class="m-3">
@@ -263,7 +263,7 @@
                   ====confirm with coin finalization / p-4 === Start ======
                   ====================================================-->
             <section
-              class="payment-modal-body overflow-y-auto modal-scroll-bar-add d-none"
+              class="payment-modal-body overflow-y-auto xtra-padding-at-bottom d-none"
             >
               <div class="mx-2 mt-2">
                 <div class="px-3">

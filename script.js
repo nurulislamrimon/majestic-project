@@ -14,7 +14,7 @@ const currenciesSelectContainer = document.getElementById(
 const showSelectedCurrency = document.getElementById("show-selected-currency");
 // Payment modal - payment method selection / p-2
 const paymentMethodsContainer = document.getElementById(
-  "payment-methods-container"
+  "payment-method-cards-container"
 );
 const paymentAmountInput = document.getElementById("payment-amount-input");
 // Payment modal - confirm payment / p-3
@@ -498,7 +498,7 @@ const handleRenderPaymentMethodCards = (selectedCountry, selectedCurrency) => {
   } else {
     // no card found
     if (paymentMethodsContainer) {
-      paymentMethodsContainer.innerHTML = `<p class="text-center position-absolute top-50">No Payment Method Available in <strong>${selectedCountry}</strong> and <strong>${selectedCurrency}</strong> currency!</p>`;
+      paymentMethodsContainer.innerHTML = `<p class="position-absolute start-0 end-0 text-center top-50 ">No Payment Method Available in <strong> ${selectedCountry} </strong> and <strong> ${selectedCurrency} </strong> currency!</p>`;
     }
   }
 };
@@ -512,26 +512,30 @@ const renderPaymentCards = (availablePaymentMethods) => {
       newPaymentMethodCard.classList.add("card", "p-2");
       newPaymentMethodCard.setAttribute("for", paymentMethod.value);
       const cardBody = `
-  <div class="d-flex justify-content-between align-items-center my-auto   ">
-      <div class="d-flex align-items-center gap-1 ">
-      <div class="payment-logo-container">
-        <img
-        class="img-fluid d-block mx-auto"
-          src="../asset/logos/${paymentMethod.value}.svg"
-          alt="${paymentMethod.label} Image"
-        />
+  <div class="d-flex justify-content-between align-items-center my-auto">
+      <div class="d-flex align-items-center gap-1 w-75">
+        <div class="w-25 d-flex justify-content-center ">
+          <img
+          class="img-fluid"
+            src="../asset/logos/${paymentMethod.value}.svg"
+            alt="${paymentMethod.label} Image"
+            height="40"
+            width="70"
+          />
         </div>
-        <div>
-          <h6 class="card-title fs-6">${paymentMethod.label}</h6>
-          ${paymentMethod.description}
+        <div class="w-75 ">
+            <h6 class="card-title fs-6">${paymentMethod.label}</h6>
+            <small>${paymentMethod.description}</small>
         </div>
       </div>
+      <div class="w-25">
       <input
         type="radio"
-        class="form-check-input"
+        class="form-check-input ms-auto d-block"
         id="${paymentMethod.value}"
         name="payment-method-card"
       />
+      </div>
     </div>
   `;
       newPaymentMethodCard.innerHTML = cardBody;
