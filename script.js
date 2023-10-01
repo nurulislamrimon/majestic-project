@@ -229,7 +229,7 @@ const paymentMethodSupportedCountries = [
     },
   },
   {
-    country: "British Virgin Island",
+    country: "British Virgin Islands",
 
     USD: {
       paymentMethods: ["Visa", "Mastercard", "Apple Pay", "Google Pay"],
