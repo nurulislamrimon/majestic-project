@@ -1,7 +1,7 @@
-## Majestic
+# Majestic
 
 ## V1
 
-### Live (preview)[majestic-payment.netlify.app/]
+### Live (preview) [majestic-payment.netlify.app/]
 
 ### Branch name: v1

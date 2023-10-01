@@ -182,6 +182,19 @@ const paymentMethodSupportedCountries = [
     },
   },
   {
+    country: "Austria",
+    EURO: {
+      paymentMethods: [
+        "Visa",
+        "Mastercard",
+        "Apple Pay",
+        "Google Pay",
+        "SEPA",
+        "REVOLUT",
+      ],
+    },
+  },
+  {
     country: "Argentina",
     USD: {
       paymentMethods: ["Visa", "Mastercard"],
@@ -301,7 +314,14 @@ const paymentMethodSupportedCountries = [
       paymentMethods: ["Visa", "Mastercard", "Apple Pay", "Google Pay"],
     },
     EURO: {
-      paymentMethods: ["Visa", "Mastercard", "Apple Pay", "Google Pay"],
+      paymentMethods: [
+        "Visa",
+        "Mastercard",
+        "Apple Pay",
+        "Google Pay",
+        "SEPA",
+        "REVOLUT",
+      ],
     },
   },
   {
