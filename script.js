@@ -3,11 +3,17 @@
 const mainContainerPages =
   document.getElementsByClassName("payment-modal-body");
 // Payment modal - country selection / p -1
-const countryInput = document.getElementById(
+const countrySearchInputBox = document.getElementById(
   "payment-modal-search-country-input"
 );
 const countriesContainer = document.getElementById(
   "payment-modal-countries-container"
+);
+const allCountries = document.getElementsByClassName("payment-modal-country");
+
+const countryLetterInObserLetterContainer = window.getComputedStyle(
+  countriesContainer,
+  ":after"
 );
 // Payment modal - currency selection / p-2
 const currenciesSelectContainer = document.getElementById(
@@ -393,18 +399,18 @@ const clearAllSession = () => {
   selectedAmount = 0;
   selectedPaymentMethod = { label: "Visa" };
   paymentAmountInput.value = "";
-  countryInput.value = "";
+  countrySearchInputBox.value = "";
 };
 const handleCloseAllPage = () => {
   activePage = 0;
   handleSelectedCurrency({ label: "USD", value: "usd" });
   activeNextPage();
   clearAllSession();
-  getFilteredData();
+  getCountriesOnSearchAndRender();
   handleStepNextBtnState();
 };
 // ====================================================
-// ======country selection section / p-1========
+// =========country selection section / p-1============
 // ====================================================
 // handle selected country
 const handleSelectedCountry = (country) => {
@@ -414,13 +420,12 @@ const handleSelectedCountry = (country) => {
   handleRenderConfirmCountryWithFlag();
   activeNextPage();
 };
-
-countryInput?.addEventListener("keyup", function (event) {
+const handleSearchCountryInput = (event) => {
   const searchKey = event.target.value;
-  getFilteredData(searchKey);
-});
+  getCountriesOnSearchAndRender(searchKey);
+};
 
-const getFilteredData = (searchKey) => {
+const getCountriesOnSearchAndRender = (searchKey) => {
   if (!searchKey) {
     searchKey = "a";
   }
@@ -429,9 +434,12 @@ const getFilteredData = (searchKey) => {
   )
     .then((response) => response.json())
     .then((data) => {
-      renderCountries(data);
+      renderCountries(
+        data.sort((a, b) => (a.name.common > b.name.common ? 1 : -1))
+      );
     })
     .catch((e) => console.log(e));
+  handleChangeCountryLetter("A");
 };
 const renderCountries = (countries) => {
   countriesContainer.innerHTML = "";
@@ -444,33 +452,55 @@ const renderCountries = (countries) => {
         "px-3",
         "payment-modal-country"
       );
-      newDiv.innerHTML = `<img src=${country?.flags?.svg} alt="" height='18' width='24'/>
+      newDiv.innerHTML = `<img loading="lazy" src=${country?.flags?.svg} alt="" height='18' width='24'/>
     <p style="font-size: 18px; margin-top: 12px; margin-left: 20px">${country?.name?.common}</p>`;
       countriesContainer?.appendChild(newDiv);
       newDiv.addEventListener("click", () => handleSelectedCountry(country));
     });
+
+    handleCountryObserver();
   } else {
     countriesContainer.innerHTML = `<p class="h-100 text-center mt-5 ">No countries found</p>`;
   }
 };
-// call while rendering for the first time
-getFilteredData();
 
+// handle change letter
+const countryObserver = new IntersectionObserver(
+  (entries) => hadleIntersectedCountry(entries),
+  {
+    threshold: 0,
+  }
+);
+const hadleIntersectedCountry = (entries) => {
+  const letter = entries[1]?.target?.innerText[0];
+  const existLetter =
+    countryLetterInObserLetterContainer.getPropertyValue("content")[1];
+  if (letter && letter !== existLetter) {
+    handleChangeCountryLetter(entries[1]?.target?.innerText[0]);
+  }
+};
+const handleCountryObserver = () => {
+  for (const country of allCountries) {
+    countryObserver.observe(country);
+  }
+};
+
+const handleChangeCountryLetter = (newLetter) => {
+  countriesContainer.style.setProperty("--letter", `"${newLetter}"`);
+};
 // ====================================================
 // ======payment method selection section / p-2========
 // ====================================================
 // get payment input
-if (paymentAmountInput) {
-  paymentAmountInput.addEventListener("keyup", () => {
-    selectedAmount = paymentAmountInput.value;
-    handleRenderConfirmAmount();
-    handleStepNextBtnState();
-  });
-}
+const handleInputPaymentAmount = () => {
+  selectedAmount = paymentAmountInput.value;
+  handleRenderConfirmAmount();
+  handleStepNextBtnState();
+};
 // handle selected currency
 const handleSelectedCurrency = (currency) => {
   if (showSelectedCurrency) {
-    showSelectedCurrency.innerHTML = `<img src="../asset/flags/${currency.value}.svg" alt=${currency.label} /> <span>${currency.label}</span>`;
+    showSelectedCurrency.innerHTML = `<img loading="lazy" src="../asset/flags/${currency.value}.svg" alt=${currency.label} /> <span>${currency.label}</span>`;
   }
   selectedCurrency = currency.label;
   // render only available payment methods
@@ -478,23 +508,25 @@ const handleSelectedCurrency = (currency) => {
 };
 
 // render currencies
-currencies.forEach((currency) => {
-  const newCurrencyOption = document.createElement("button");
-  newCurrencyOption.classList.add(
-    "border-0",
-    "bg-transparent",
-    "d-flex",
-    "align-items-center",
-    "gap-2",
-    "my-2"
-  );
-  const currencyWithFlag = `<img src="../asset/flags/${currency.value}.svg" alt=${currency.label} /> <span>${currency.label}</span>`;
-  newCurrencyOption.innerHTML = currencyWithFlag;
-  newCurrencyOption.addEventListener("click", () =>
-    handleSelectedCurrency(currency)
-  );
-  currenciesSelectContainer?.appendChild(newCurrencyOption);
-});
+const renderCurrencies = () => {
+  currencies.forEach((currency) => {
+    const newCurrencyOption = document.createElement("button");
+    newCurrencyOption.classList.add(
+      "border-0",
+      "bg-transparent",
+      "d-flex",
+      "align-items-center",
+      "gap-2",
+      "my-2"
+    );
+    const currencyWithFlag = `<img loading="lazy" src="../asset/flags/${currency.value}.svg" alt=${currency.label} /> <span>${currency.label}</span>`;
+    newCurrencyOption.innerHTML = currencyWithFlag;
+    newCurrencyOption.addEventListener("click", () =>
+      handleSelectedCurrency(currency)
+    );
+    currenciesSelectContainer?.appendChild(newCurrencyOption);
+  });
+};
 
 // get selected payment option
 const handleSelectedPaymentMethod = (paymentMethod, selectedCard) => {
@@ -572,9 +604,6 @@ const renderPaymentCards = (availablePaymentMethods) => {
   }
 };
 
-// for initial currency
-handleSelectedCurrency(currencies[0]);
-
 const handleStepNextBtnState = () => {
   if (selectedAmount > 0 && selectedPaymentMethod.value) {
     paymentMethodStepNextBtn.removeAttribute("disabled");
@@ -591,7 +620,7 @@ const handleStepNextBtnState = () => {
 const handleRenderConfirmCountryWithFlag = () => {
   if (confirmOrderCountryInfoContainer) {
     confirmOrderCountryInfoContainer.innerHTML = `
-  <img src="${selectedCountry?.flags?.svg}" width="30"/>
+  <img loading="lazy" src="${selectedCountry?.flags?.svg}" width="30"/>
       <p class="my-auto ">${selectedCountry?.name?.common}</p>`;
   }
 };
@@ -599,7 +628,7 @@ const handleRenderConfirmPaymentMethod = () => {
   //  payment method render
   if (confirmOrderPaymentMethodContainer) {
     confirmOrderPaymentMethodContainer.innerHTML = `
-      <img src="../asset/logos/${selectedPaymentMethod.value.toLowerCase()}.svg" alt="${
+      <img loading="lazy" src="../asset/logos/${selectedPaymentMethod.value.toLowerCase()}.svg" alt="${
       selectedPaymentMethod.label
     } image" /> &nbsp; <span>${selectedPaymentMethod.label}</span>`;
   }
@@ -610,3 +639,23 @@ const handleRenderConfirmAmount = () => {
     ${selectedAmount}<span class="h6 ms-2 ">${selectedCurrency}</span>`;
   }
 };
+
+// ==================================================
+// get datas====================================
+// ==================================================
+const paymentAllInfo = () => {
+  const paymentInfo = {
+    country: selectedCountry,
+    amount: selectedAmount,
+    paymentMethod: selectedPaymentMethod,
+    currency: selectedCurrency,
+  };
+  console.log(paymentInfo);
+};
+
+// ==================================================
+// initial render====================================
+// ==================================================
+renderCurrencies();
+getCountriesOnSearchAndRender();
+handleSelectedCurrency(currencies[0]);

@@ -16,11 +16,13 @@
   --light-gray: #f2f2f2;
   --light-navy: #0d6efd4d;
   /* height--------------------- */
-  --modal-height: clamp(500px, 80vh, 640px);
+  --modal-height: clamp(500px, 80dvh, 640px);
   --modal-min-height: 250px;
-  --modal-max-height: min(640px, 80vh);
+  --modal-max-height: min(640px, 80dvh);
   /* scrollbar--------------------- */
   --scrollbar-width: 5px;
+  /* alphabet initial value */
+  --letter: "A";
 }
 
 /* ======================================== */
@@ -73,6 +75,23 @@
 .payment-modal-countries-container {
   height: calc(var(--modal-max-height) - 160px);
 }
+.payment-modal-countries-container::after {
+  content: var(--letter);
+  font-size: large;
+  font-weight: bold;
+  color: var(--royal-blue);
+  background-color: var(--light-gray);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+  width: 35px;
+  border: 1px solid var(--medium-gray);
+  border-radius: 50%;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+}
 
 .payment-modal-country:hover {
   background-color: var(--light-gray);
@@ -86,9 +105,13 @@
 .payment-amount-input:focus {
   outline: none;
 }
+.select-currency-container,
+.select-currency-container button {
+  width: clamp(70px, 100%, 150px) !important;
+}
 .currencies-dropdown-element {
-  min-width: clamp(100px, 100%, 150px) !important;
-  height: 30vh;
+  min-width: clamp(80px, 100%, 150px) !important;
+  height: 30dvh;
   overflow: auto;
 }
 
@@ -176,15 +199,15 @@ hr {
 /* ======================================== */
 @media screen and (max-width: 575px) {
   .payment-modal .modal-content {
-    min-height: 100vh;
+    min-height: 100dvh;
   }
 
   .payment-modal-countries-container {
-    height: calc(100vh - 170px);
+    height: calc(100dvh - 170px);
   }
 
   .payment-method-cards-container {
-    min-height: calc(100vh - 175px);
+    min-height: calc(100dvh - 175px);
   }
 }
 /* ======================================== */

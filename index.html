@@ -80,8 +80,12 @@
                   role="alert"
                 >
                   <span class="d-flex align-items-center gap-1">
-                    <img src="/asset/icons/infoIcon.svg" alt="" /> Want to check
-                    your payment status?
+                    <img
+                      loading="lazy"
+                      src="/asset/icons/infoIcon.svg"
+                      alt=""
+                    />
+                    Want to check your payment status?
                     <a href="#">Click here</a>
                   </span>
                   <button
@@ -113,13 +117,16 @@
                     placeholder="Search"
                     aria-label="Search"
                     aria-describedby="basic-addon1"
+                    onkeyup="handleSearchCountryInput(event)"
                   />
                 </label>
               </div>
               <div
                 id="payment-modal-countries-container"
                 class="payment-modal-countries-container overflow-auto pb-5"
-              ></div>
+              >
+                <!-- render all countries through DOM manupulation -->
+              </div>
             </section>
             <!--  ====================================================
                   ====country selection section / p-1 === End ======
@@ -131,6 +138,7 @@
 
             <!-- amount input & currency select dropdown  -->
             <section class="payment-modal-body overflow-hidden d-none">
+              <!-- top section input amount and select currency -->
               <div
                 class="d-flex px-4 justify-content-center align-items-center"
               >
@@ -142,18 +150,23 @@
                   placeholder="0.00"
                   aria-label="Username"
                   aria-describedby="basic-addon1"
+                  onkeyup="handleInputPaymentAmount()"
                 />
                 <!-- currency select dropdown -->
-                <div class="dropdown w-25">
+                <div class="dropdown w-25 select-currency-container">
                   <button
-                    class="btn w-100 btn-md d-flex align-items-center justify-content-between w-100 border border-1"
+                    class="btn w-100 d-flex align-items-center justify-content-between border border-1"
                     data-bs-toggle="dropdown"
                   >
                     <span
                       id="show-selected-currency"
                       class="d-flex align-items-center gap-2"
                     ></span>
-                    <img src="../asset/icons/down-arrow.svg" alt="down-arrow" />
+                    <img
+                      loading="lazy"
+                      src="../asset/icons/down-arrow.svg"
+                      alt="down-arrow"
+                    />
                   </button>
                   <ul
                     id="currencies-container"
@@ -255,7 +268,7 @@
                   Back
                 </button>
                 <button
-                  onclick="activeNextPage()"
+                  onclick="activeNextPage(); paymentAllInfo()"
                   class="btn mt-lg-0 mt-md-0 mt-3 text-white btn-primary w-100"
                   type="button"
                 >
@@ -282,8 +295,12 @@
                     role="alert"
                   >
                     <span class="d-flex align-items-center gap-1">
-                      <img src="/asset/icons/infoIcon.svg" alt="" /> Want to
-                      check your payment status?
+                      <img
+                        loading="lazy"
+                        src="/asset/icons/infoIcon.svg"
+                        alt=""
+                      />
+                      Want to check your payment status?
                       <a href="#">Click here</a>
                     </span>
                     <button
@@ -363,10 +380,26 @@
                   <div
                     class="d-flex justify-content-center align-content-center gap-3 my-4"
                   >
-                    <img src="../asset/logos/masterCard.svg" alt="masterCard" />
-                    <img src="../asset/logos/visa.svg" alt="visa" />
-                    <img src="../asset/logos/applePay.svg" alt="applePay" />
-                    <img src="../asset/logos/googlePay.svg" alt="googlePay" />
+                    <img
+                      loading="lazy"
+                      src="../asset/logos/masterCard.svg"
+                      alt="masterCard"
+                    />
+                    <img
+                      loading="lazy"
+                      src="../asset/logos/visa.svg"
+                      alt="visa"
+                    />
+                    <img
+                      loading="lazy"
+                      src="../asset/logos/applePay.svg"
+                      alt="applePay"
+                    />
+                    <img
+                      loading="lazy"
+                      src="../asset/logos/googlePay.svg"
+                      alt="googlePay"
+                    />
                   </div>
                 </div>
               </div>
