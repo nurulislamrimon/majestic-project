@@ -1,3 +1,3 @@
 # Majestic
 
-Live [Preview](majestic-payment.netlify.app)
+Live [Preview](https://majestic-payment.netlify.app)
