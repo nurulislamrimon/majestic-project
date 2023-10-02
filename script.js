@@ -260,11 +260,10 @@ const paymentMethodSupportedCountries = [
   },
   {
     country: "Canada",
-
-    USD: {
+    CAD: {
       paymentMethods: ["Visa", "Mastercard", "Apple Pay", "Google Pay"],
     },
-    CAD: {
+    USD: {
       paymentMethods: ["Visa", "Mastercard", "Apple Pay", "Google Pay"],
     },
   },
@@ -403,7 +402,9 @@ const clearAllSession = () => {
 };
 const handleCloseAllPage = () => {
   activePage = 0;
-  handleSelectedCurrency({ label: "USD", value: "usd" });
+  handleSelectedCurrency(
+    currencies.find((currency) => currency.label === "USD")
+  );
   activeNextPage();
   clearAllSession();
   getCountriesOnSearchAndRender();
@@ -415,6 +416,19 @@ const handleCloseAllPage = () => {
 // handle selected country
 const handleSelectedCountry = (country) => {
   selectedCountry = country;
+  // check is any payment method is available for this country
+  const isPaymentMethodAvailAbleForTheCountry =
+    paymentMethodSupportedCountries.find(
+      (paymentMethod) => paymentMethod.country === country.name.common
+    );
+  // set selected currency to get the active payment method for the country
+  if (isPaymentMethodAvailAbleForTheCountry) {
+    selectedCurrency = Object.keys(isPaymentMethodAvailAbleForTheCountry)[1];
+    handleSelectedCurrency(
+      currencies.find((currency) => currency.label === selectedCurrency)
+    );
+  }
+
   // render only available payment methods
   handleRenderPaymentMethodCards(selectedCountry.name.common, selectedCurrency);
   handleRenderConfirmCountryWithFlag();
@@ -464,7 +478,7 @@ const renderCountries = (countries) => {
   }
 };
 
-// handle change letter
+// handle change country letter ===Start===
 const countryObserver = new IntersectionObserver(
   (entries) => hadleIntersectedCountry(entries),
   {
@@ -488,6 +502,7 @@ const handleCountryObserver = () => {
 const handleChangeCountryLetter = (newLetter) => {
   countriesContainer.style.setProperty("--letter", `"${newLetter}"`);
 };
+// handle change country letter ===End===
 // ====================================================
 // ======payment method selection section / p-2========
 // ====================================================
@@ -556,7 +571,7 @@ const handleRenderPaymentMethodCards = (selectedCountry, selectedCurrency) => {
   } else {
     // no card found
     if (paymentMethodsContainer) {
-      paymentMethodsContainer.innerHTML = `<p class="position-absolute start-0 end-0 text-center top-50 ">No Payment Method Available in <strong> ${selectedCountry} </strong> and <strong> ${selectedCurrency} </strong> currency!</p>`;
+      paymentMethodsContainer.innerHTML = `<p class="position-absolute start-0 end-0 text-center top-50 ">No Payment Method Available for <strong> ${selectedCountry} </strong> and <strong> ${selectedCurrency} </strong> currency!</p>`;
     }
   }
 };
